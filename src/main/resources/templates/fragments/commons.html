@@ -29,9 +29,9 @@
                         Admin Panel
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/statistics">Statistics</a>
+                        <a class="dropdown-item" href="/statistic">Statistics</a>
                         <a class="dropdown-item" href="/articles/add">Add article</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">New</a>
                     </div>
                 </div>
                 <div class="home-navbar1">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="home-middle">
                             <div class="home-left">
-                                <a href="/" class="navbar-link">HOME</a>
+                                <a th:href="@{/}" class="navbar-link">HOME</a>
                                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}" class="navbar-link">LOGIN</a>
                                 <a sec:authorize="!isAuthenticated()" class="navbar-link" th:href="@{/users/subscribe}">SUBSCRIBE</a>
 <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
@@ -59,6 +59,9 @@
 <!--                        </div>-->
                         <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
+                            <div class="logged-user">
+                                Welcome, <th:block sec:authentication="name"></th:block>!
+                            </div>
                             <div class="home-left">
 <!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
                                 <a class="navbar-link"   th:href="@{/users/profile}">PROFILE</a>
@@ -67,7 +70,9 @@
 <!--                                        <button type="submit" class="nav-link">Logout</button>-->
 <!--                                    </form>-->
 <!--                                </a>-->
-                                <a class="navbar-link"  th:href="@{/users/logout}">LOGOUT</a>
+                                <a class="navbar-link"
+                                   th:method="post"
+                                   th:href="@{/users/logout}">LOGOUT</a>
                                 <a class="navbar-link"  th:href="@{/articles/add}">ADD NEW ARTICLE</a>
 <!--                                <span> <a href="/">ADMIN</a></span>-->
                             </div>

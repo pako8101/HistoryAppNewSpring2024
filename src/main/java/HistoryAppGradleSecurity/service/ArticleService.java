@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.service;
 
+import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
@@ -12,4 +13,6 @@ public interface ArticleService {
     void addNewArticle(ArticleServiceModel articleServiceModel);
 
     ArticleDetailsViewModel findArticleBId(Long id);
+
+    Article findArticleById(Long id);
 }

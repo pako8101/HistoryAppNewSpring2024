@@ -84,7 +84,7 @@ public class UserController {
 //
 //        userService.registerAndLoginUser(userServiceModel);
 //
-//        return "redirect:/home";
+//        return "redirect:/";
 //    }
 
     @PostMapping("/subscribe")
@@ -121,20 +121,20 @@ public class UserController {
     public String onFailedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter
         .SPRING_SECURITY_FORM_USERNAME_KEY) String username,
                                 RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter
-                .SPRING_SECURITY_FORM_USERNAME_KEY,username);
+//        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter
+//                .SPRING_SECURITY_FORM_USERNAME_KEY,username);
         redirectAttributes.addFlashAttribute("bad_credentials",true);
-//    redirectAttributes.addFlashAttribute("bad_credentials", true);
-//    redirectAttributes.addFlashAttribute("username", username);
+
+    redirectAttributes.addFlashAttribute("username", username);
         return "redirect:/users/login";
 
 }
-    @GetMapping("/logout")
-    public String logout(HttpSession httpSession){
-        httpSession.invalidate();
-        return "redirect:/";
-
-    }
+//    @GetMapping("/logout")
+//    public String logout(HttpSession httpSession){
+//        httpSession.invalidate();
+//        return "redirect:/";
+//
+//    }
     @GetMapping("/profile")
     public ModelAndView profile() {
         UserViewModel userViewModel = userService.getUserProfile();

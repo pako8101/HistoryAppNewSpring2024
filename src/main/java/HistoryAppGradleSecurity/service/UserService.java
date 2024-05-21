@@ -30,4 +30,6 @@ public interface UserService {
     void login(UserLoginBindingModel userLoginBindingModel);
 
     UserServiceModel findByUsernameAndPassword(String username, String password);
+
+    UserEnt findByName(String username);
 }

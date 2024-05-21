@@ -11,6 +11,8 @@ import HistoryAppGradleSecurity.service.ArticleService;
 import HistoryAppGradleSecurity.session.LoggedUser;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -78,7 +80,8 @@ private final ArticleRepository articleRepository;
     @PostMapping("/add")
     public String addConfirm(@Valid ArticleAddBindingModel articleAddBindingModel,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes){
+                             RedirectAttributes redirectAttributes,
+    @AuthenticationPrincipal UserDetails principal){
         if (!loggedUser.isLogged()){
             throw  new IllegalArgumentException();
         }
@@ -91,6 +94,8 @@ private final ArticleRepository articleRepository;
             return "redirect:add";
         }
         ArticleServiceModel articleServiceModel = modelMapper.map(articleAddBindingModel, ArticleServiceModel.class);
+
+        articleServiceModel.setName(principal.getUsername());
 
         articleService.addNewArticle(articleServiceModel);
 

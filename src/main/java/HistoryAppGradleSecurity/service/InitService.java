@@ -91,7 +91,7 @@ public class InitService {
         var normalUser = new UserEnt().
                 setEmail("user@example.com").
                 setFullName("User").
-                setCountry("Tanzania").
+               setCountry("Tanzania").
                 setUsername("user").
                 setPassword(passwordEncoder.encode(defaultPassword));
 

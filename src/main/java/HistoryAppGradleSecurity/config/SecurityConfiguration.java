@@ -33,17 +33,13 @@ public class SecurityConfiguration {
                                 authorizeHttpRequests.
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                         .permitAll().
-                                        requestMatchers("/","/about", "/users/login", "/users/subscribe", "/users/login-error")
-                                        .permitAll().
-                                        requestMatchers("/articles/add", "/articles/all", "/articles/details/{id}")
-                                        .permitAll()
-                                .requestMatchers(HttpMethod.GET,"/articles/**","users/profile").permitAll()
-                                .requestMatchers("/error").permitAll().
-                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
-                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
-                                        requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
-                                       // requestMatchers("/**").authenticated().
-                                        anyRequest().authenticated()
+                                        requestMatchers("/","/about","/explore", "/users/login", "/users/subscribe",
+                                                "/users/login-error").permitAll().
+//                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
+//                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
+//                                        requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
+//                                        anyRequest().authenticated().
+                                       requestMatchers("/**").authenticated()
                 )
                 .formLogin(
                         (formLogin) ->

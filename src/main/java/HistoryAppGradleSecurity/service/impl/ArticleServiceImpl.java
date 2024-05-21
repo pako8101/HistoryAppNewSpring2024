@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.service.impl;
 
+import HistoryAppGradleSecurity.exception.ObjectNotFoundException;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -62,5 +63,11 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findById(id)
                 .map(article -> modelMapper.map(article, ArticleDetailsViewModel.class))
                 .orElse(null);
+    }
+
+    @Override
+    public Article findArticleById(Long id) {
+        return articleRepository.findById(id)
+                .orElseThrow(ObjectNotFoundException::new);
     }
 }

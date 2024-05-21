@@ -45,9 +45,11 @@ public class UserServiceImpl implements UserService {
     public void subscribeUser(UserSubscribeBindingModel userSubscribeBindingModel,
                               Consumer<Authentication>successfulLoginProcessor) {
         UserEnt userEntity = new UserEnt().
+
                 setUsername(userSubscribeBindingModel.getUsername()).
                 setFullName(userSubscribeBindingModel.getFullName()).
                 setEmail(userSubscribeBindingModel.getEmail()).
+
                 setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword()));
 
         userRepository.save(userEntity);
@@ -132,6 +134,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserByUsernameAndPassword(username,password)
                 .map(user -> modelMapper.map(user,UserServiceModel.class))
                 .orElse(null);
+    }
+
+    @Override
+    public UserEnt findByName(String username) {
+
+        return userRepository.findByUsername(username)
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
 
