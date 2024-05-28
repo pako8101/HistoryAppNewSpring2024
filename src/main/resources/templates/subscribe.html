@@ -28,7 +28,7 @@
                 name="username"/>
         <small th:if="${userExistsError}" id="usernameUniqueError"
                class=" bg-danger rounded">Username is already occupied</small>
-        <small th:each="e :${#fields.errors('password')}" th:text="${e}"
+        <small th:each="e :${#fields.errors('username')}" th:text="${e}"
                id="usernameError"
                class="invalid-feedback bg-danger rounded">Username length must be more than 3 characters</small>
 
@@ -42,7 +42,7 @@
                 type="text"
                 id="inputFullName"
                 name="fullName"/>
-        <small th:each="e :${#fields.errors('password')}" th:text="${e}"
+        <small th:each="e :${#fields.errors('fullName')}" th:text="${e}"
                 id="fullNameError" class="invalid-feedback
         form-text bg-danger rounded">Full name length must be more than 3 characters</small>
 
@@ -119,3 +119,5 @@
 </footer>
 </body>
 </html>
+
+

@@ -3,36 +3,35 @@ package HistoryAppGradleSecurity.web;
 import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.service.UserServiceModel;
-import HistoryAppGradleSecurity.model.view.UserViewModel;
 import HistoryAppGradleSecurity.service.UserService;
-import jakarta.persistence.PersistenceException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.TransactionalException;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolderStrategy;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/users")
-public class UserController {
+
+public class SubscribeController {
+
     private final UserService userService;
     private final SecurityContextRepository securityContextRepository;
 
     private final ModelMapper modelMapper;
 
-    public UserController(UserService userService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
+    public SubscribeController(UserService userService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
         this.userService = userService;
         this.securityContextRepository = securityContextRepository;
         this.modelMapper = modelMapper;
@@ -84,67 +83,26 @@ public class UserController {
 //
 //        userService.registerAndLoginUser(userServiceModel);
 //
-//        return "redirect:/";
+//        return "redirect:/login";
 //    }
+//}
 
     @PostMapping("/subscribe")
-        public String subscribeConfirm(UserSubscribeBindingModel userSubscribeBindingModel,
+    public String subscribeConfirm(UserSubscribeBindingModel userSubscribeBindingModel,
                                    HttpServletRequest request,
-                                   HttpServletResponse response){
+                                   HttpServletResponse response) {
 
-        userService.subscribeUser(userSubscribeBindingModel,successfulAuth ->{
+        userService.subscribeUser(userSubscribeBindingModel, successfulAuth -> {
             SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy();
 
             SecurityContext context = strategy.createEmptyContext();
             context.setAuthentication(successfulAuth);
 
             strategy.setContext(context);
-            securityContextRepository.saveContext(context,request,response);
+            securityContextRepository.saveContext(context, request, response);
         });
 
         return "redirect:/";
-
-
-}
-    @GetMapping("/login")
-    public String login(Model model) {
-        if (!model.containsAttribute("isFound")) {
-            model.addAttribute("isFound", true);
-        }
-        return "login";
     }
-
-
-
-
-@PostMapping("/login-error")
-    public String onFailedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter
-        .SPRING_SECURITY_FORM_USERNAME_KEY) String username,
-                                RedirectAttributes redirectAttributes){
-//        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter
-//                .SPRING_SECURITY_FORM_USERNAME_KEY,username);
-        redirectAttributes.addFlashAttribute("bad_credentials",true);
-
-    redirectAttributes.addFlashAttribute("username", username);
-        return "redirect:/users/login";
-
-}
-//    @GetMapping("/logout")
-//    public String logout(HttpSession httpSession){
-//        httpSession.invalidate();
-//        return "redirect:/";
-//
-//    }
-    @GetMapping("/profile")
-    public ModelAndView profile() {
-        UserViewModel userViewModel = userService.getUserProfile();
-
-        ModelAndView modelAndView = new ModelAndView("profile");
-        modelAndView.addObject("userProfileViewModel", userViewModel);
-
-        return modelAndView;
-    }
-
-
 
 }

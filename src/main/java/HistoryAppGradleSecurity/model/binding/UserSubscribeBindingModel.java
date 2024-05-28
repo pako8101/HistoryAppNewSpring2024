@@ -1,17 +1,20 @@
 package HistoryAppGradleSecurity.model.binding;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
+import HistoryAppGradleSecurity.model.validators.PropMatch;
+import jakarta.validation.constraints.*;
+@PropMatch(
+        first = "password",
+        second = "confirmPassword"
+)
 public class UserSubscribeBindingModel {
     @Size(min = 3,max = 20)
     @NotNull
     private String username;
     @NotNull
+    @Size(min = 2)
     private String fullName;
     @Email
+    @NotEmpty
     private String email;
     @Size(min = 3,max = 20)
     @NotNull

@@ -19,8 +19,13 @@
 </head>
 
 <body>
+
 <div>
+
     <div class="home-container">
+<!--        <div  class="logged-user"> <br>-->
+<!--            Welcome, <th:block sec:authentication="name"></th:block>!-->
+<!--        </div>-->
         <div class="home-navbar">
             <header th:fragment="nav" data-role="Header" class="home-header max-width-container">
                 <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
@@ -34,6 +39,7 @@
                         <a class="dropdown-item" href="#">New</a>
                     </div>
                 </div>
+
                 <div class="home-navbar1">
                     <th:block >
                         <div  class="home-container01">
@@ -42,6 +48,7 @@
                             </form>
 
                         </div>
+
                         <div class="home-middle">
                             <div class="home-left">
                                 <a th:href="@{/}" class="navbar-link">HOME</a>
@@ -59,12 +66,10 @@
 <!--                        </div>-->
                         <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
-                            <div class="logged-user">
-                                Welcome, <th:block sec:authentication="name"></th:block>!
-                            </div>
+
                             <div class="home-left">
 <!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
-                                <a class="navbar-link"   th:href="@{/users/profile}">PROFILE</a>
+                                <a  class="navbar-link"   th:href="@{/users/profile}">PROFILE</a>
 <!--                                <a class="navbar-link" >-->
 <!--                                    <form th:action="@{/logout}" method="post">-->
 <!--                                        <button type="submit" class="nav-link">Logout</button>-->
@@ -72,11 +77,12 @@
 <!--                                </a>-->
                                 <a class="navbar-link"
                                    th:method="post"
-                                   th:href="@{/users/logout}">LOGOUT</a>
-                                <a class="navbar-link"  th:href="@{/articles/add}">ADD NEW ARTICLE</a>
+                                   th:href="@{/logout}">LOGOUT</a>
+                                <a class="navbar-link"  th:href="@{/articles/add}">ADD NEW ARTICLE</a><br>
 <!--                                <span> <a href="/">ADMIN</a></span>-->
                             </div>
                         </div>
+
 
                     </th:block >
                     <span class="navbar-logo-title">

@@ -23,7 +23,7 @@ public class InitService {
     public InitService(UserRoleRepository userRoleRepository,
                        UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
-                       @Value("${app.default.password}") String defaultPassword) {
+                       @Value("pako") String defaultPassword) {
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -62,7 +62,6 @@ public class InitService {
         var adminUser = new UserEnt().
                 setEmail("admin@example.com").
                 setFullName("Admin").
-                setCountry("Bulgaria").
                 setUsername("admin").
                 setPassword(passwordEncoder.encode(defaultPassword)).
                 setRoles(userRoleRepository.findAll());
@@ -78,7 +77,6 @@ public class InitService {
         var moderatorUser = new UserEnt().
                 setEmail("moderator@example.com").
                 setFullName("Moderator").
-                setCountry("Greece").
                 setUsername("moderator").
                 setPassword(passwordEncoder.encode(defaultPassword)).
                 setRoles(List.of(moderatorRole));
@@ -91,7 +89,6 @@ public class InitService {
         var normalUser = new UserEnt().
                 setEmail("user@example.com").
                 setFullName("User").
-               setCountry("Tanzania").
                 setUsername("user").
                 setPassword(passwordEncoder.encode(defaultPassword));
 

@@ -25,20 +25,22 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return
                 userRepository.
-                        findByUsername(username).
+                        findUserEntByUsername(username).
                         map(this::map).
                         orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found!"));
     }
 
-    private UserDetails map(UserEnt userEntity) {
+    private  UserDetails map(UserEnt userEntity) {
+
         return new AppUserDetails(
-                userEntity.getEmail(),
+                userEntity.getUsername(),
                 userEntity.getPassword(),
                 extractAuthorities(userEntity)
-        ).
-                setCountry(userEntity.getCountry()).
+        ).setAge(userEntity.getAge()).
                 setFullName(userEntity.getFullName());
+
     }
+
 
     private List<GrantedAuthority> extractAuthorities(UserEnt userEntity) {
         return userEntity.
@@ -48,7 +50,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
                 toList();
     }
 
-    private GrantedAuthority mapRole(UserRoleEnt userRoleEntity) {
+    private  GrantedAuthority mapRole(UserRoleEnt userRoleEntity) {
         return new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name());
     }
 }

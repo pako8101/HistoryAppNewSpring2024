@@ -14,12 +14,6 @@ public interface UserService {
                        Consumer<Authentication> successfulLoginProcessor);
 
 
-  //  void loginUser(Long id, String username);
-
-   // UserServiceModel findByUsernameAndPassword(String username, String password);
-
-  //  UserServiceModel findById(Long id);
-
     UserEnt findCurrentUserLoginEntity();
    UserViewModel getUserProfile();
 
@@ -27,9 +21,12 @@ public interface UserService {
 
     void registerAndLoginUser(UserServiceModel userServiceModel);
 
-    void login(UserLoginBindingModel userLoginBindingModel);
-
-    UserServiceModel findByUsernameAndPassword(String username, String password);
 
     UserEnt findByName(String username);
+
+    void logout();
+
+    UserViewModel findBId(Long id);
+
+//    void seedUsers();
 }

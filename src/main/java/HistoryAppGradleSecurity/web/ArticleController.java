@@ -70,10 +70,10 @@ private final ArticleRepository articleRepository;
 
     @GetMapping("/add")
     public String add() {
-        if (loggedUser.getUsername() == null) {
-            return "redirect:/users/login";
-
-        }
+//        if (loggedUser.getUsername() == null) {
+//            return "redirect:/users/login";
+//
+//        }
         return "add-article";
     }
 

@@ -3,7 +3,9 @@ package HistoryAppGradleSecurity.model.entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -12,20 +14,38 @@ public class UserEnt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String email;
-    @Column(nullable = false)
     private String fullName;
+    @Column
+    private Integer age;
+    @Column(nullable = false,unique = true)
+    private String email;
+
     @Column(unique = true,nullable = false)
     private String username;
 
-    private String country;
+
     @Column(nullable = false)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<UserRoleEnt> roles = new ArrayList<>();
+    private List<UserRoleEnt> roles ;
 
     public UserEnt() {
+
+    }
+
+    public UserEnt setRoles(List<UserRoleEnt> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public UserEnt setAge(Integer age) {
+        this.age = age;
+        return this;
     }
 
     public String getUsername() {
@@ -36,7 +56,10 @@ public class UserEnt {
         this.username = username;
         return this;
     }
-
+    public UserEnt addRole(UserRoleEnt role) {
+        this.roles.add(role);
+        return this;
+    }
     public String getEmail() {
         return email;
     }
@@ -55,14 +78,7 @@ public class UserEnt {
         return this;
     }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public UserEnt setCountry(String country) {
-        this.country = country;
-        return this;
-    }
 
     public String getPassword() {
         return password;
@@ -77,14 +93,6 @@ public class UserEnt {
         return roles;
     }
 
-    public UserEnt setRoles(List<UserRoleEnt> roles) {
-        this.roles = roles;
-        return this;
-    }
-    public UserEnt addRole(UserRoleEnt role) {
-        this.roles.add(role);
-        return this;
-    }
     public Long getId() {
         return id;
     }
@@ -100,7 +108,6 @@ public class UserEnt {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", country='" + country + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : "[N/A]") + '\'' +
                 ", roles=" + roles +
                 '}';

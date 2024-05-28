@@ -132,6 +132,7 @@ body {
   align-items: center;
   justify-content: space-between;
   word-spacing: -10px;
+  line-break: normal;
 }
 .home-image {
   width: 24px;
@@ -158,6 +159,7 @@ body {
   flex-shrink: 1;
   border-color: transparent;
   justify-content: center;
+ line-break: auto;
 }
 .home-left,
 .home-right {

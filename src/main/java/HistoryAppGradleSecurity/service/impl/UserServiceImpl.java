@@ -1,6 +1,5 @@
 package HistoryAppGradleSecurity.service.impl;
 
-import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.entity.UserRoleEnt;
@@ -21,6 +20,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 @Service
 public class UserServiceImpl implements UserService {
@@ -45,11 +46,9 @@ public class UserServiceImpl implements UserService {
     public void subscribeUser(UserSubscribeBindingModel userSubscribeBindingModel,
                               Consumer<Authentication>successfulLoginProcessor) {
         UserEnt userEntity = new UserEnt().
-
-                setUsername(userSubscribeBindingModel.getUsername()).
                 setFullName(userSubscribeBindingModel.getFullName()).
+                setUsername(userSubscribeBindingModel.getUsername()).
                 setEmail(userSubscribeBindingModel.getEmail()).
-
                 setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword()));
 
         userRepository.save(userEntity);
@@ -67,14 +66,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEnt findCurrentUserLoginEntity() {
-        return userRepository.findByUsername(loggedUser.getUsername())
+        return userRepository.findUserEntByUsername(loggedUser.getUsername())
                 .orElse(null);
     }
 
     @Override
     public UserViewModel getUserProfile() {
         String username = loggedUser.getUsername();
-        UserEnt user = userRepository.findByUsername(username)
+        UserEnt user = userRepository.findUserEntByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found!"));
 
         return modelMapper.map(user,UserViewModel.class);
@@ -82,7 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userNameExists(String username) {
-        return userRepository.findByUsername(username).isPresent();
+        return userRepository.findUserEntByUsername(username).isPresent();
     }
 
     @Override
@@ -91,7 +90,7 @@ public class UserServiceImpl implements UserService {
         newUser.setPassword(passwordEncoder.encode(userServiceModel.getPassword()));
 
         UserRoleEnt userRole = userRoleRepository.
-                findUserRoleEntityByRole(UserRoleEnum.MODERATOR).orElseThrow(
+                findUserRoleEntityByRole(UserRoleEnum.USER).orElseThrow(
                         () -> new IllegalStateException("USER role not found. Please seed the roles."));
 
         newUser.addRole(userRole);
@@ -109,39 +108,71 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-    @Override
-    public void login(UserLoginBindingModel userLoginBindingModel) {
-        String username = userLoginBindingModel.getUsername();
+//    @Override
+//    public void login(UserLoginBindingModel userLoginBindingModel) {
+//        String username = userLoginBindingModel.getUsername();
+//
+//        UserEnt user = this.userRepository
+//                .findByUsername(username)
+//                .orElseThrow(() -> new IllegalStateException("User with username: [" + username + "] is not present"));
+//
+//        boolean passwordMatch = passwordEncoder.matches(userLoginBindingModel.getPassword(),
+//                user.getPassword());
+//
+//        if (!passwordMatch){
+//            throw new IllegalStateException("User entered incorrect password");
+//        }
+//
+//        loggedUser.setUsername(user.getUsername())
+//                .setLogged(true)
+//                .setRoles(user.getRoles());
+//    }
 
-        UserEnt user = this.userRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new IllegalStateException("User with username: [" + username + "] is not present"));
 
-        boolean passwordMatch = passwordEncoder.matches(userLoginBindingModel.getPassword(),
-                user.getPassword());
-
-        if (!passwordMatch){
-            throw new IllegalStateException("User entered incorrect password");
-        }
-
-        loggedUser.setUsername(user.getUsername())
-                .setLogged(true)
-                .setRoles(user.getRoles());
-    }
-
-    @Override
-    public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        return userRepository.findUserByUsernameAndPassword(username,password)
-                .map(user -> modelMapper.map(user,UserServiceModel.class))
-                .orElse(null);
-    }
 
     @Override
     public UserEnt findByName(String username) {
 
-        return userRepository.findByUsername(username)
+        return userRepository.findUserEntByUsername(username)
                 .orElseThrow(IllegalArgumentException::new);
     }
+
+    @Override
+    public void logout() {
+        loggedUser.reset();
+
+    }
+
+    @Override
+    public UserViewModel findBId(Long id) {
+        return userRepository.findById(id).
+                map(user -> modelMapper.map(user,UserViewModel.class))
+                .orElse(null);
+    }
+
+//    @Override
+//    public void seedUsers() {
+//        if (userRepository.count() == 0) {
+//
+//            UserRoleEnt adminRole = new UserRoleEnt().setRole(UserRoleEnum.ADMIN);
+//            UserRoleEnt userRole = new UserRoleEnt().setRole(UserRoleEnum.USER);
+//            UserRoleEnt moderatorRole = new UserRoleEnt().setRole(UserRoleEnum.MODERATOR);
+//
+//            userRoleRepository.saveAll(List.of(adminRole, userRole));
+//
+//            UserEnt admin = new UserEnt().setUsername("admin").setFullName("Admin Adminov").
+//                    setPassword(passwordEncoder.encode("pako"));
+//            UserEnt moderator = new UserEnt().setUsername("moderator").setFullName("Moderator Modev")
+//                    .setPassword(passwordEncoder.encode("pako"));
+//            UserEnt user = new UserEnt().setUsername("user").setFullName("Bai Ivan").
+//                    setPassword(passwordEncoder.encode("pako"));
+//            admin.setRoles(Set.of(adminRole, userRole));
+//            moderator.setRoles(Set.of(moderatorRole,userRole));
+//            user.setRoles(Set.of(userRole));
+//
+//            userRepository.saveAll(List.of(admin, user,moderator));
+//        }
+//    }
 }
 
 

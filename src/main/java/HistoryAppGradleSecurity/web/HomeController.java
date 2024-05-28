@@ -23,7 +23,7 @@ public class HomeController {
 
         if (appUserDetails != null) {
             model.addAttribute("fullName", appUserDetails.getFullName());
-            model.addAttribute("country", appUserDetails.getCountry());
+            model.addAttribute("age", appUserDetails.getAge());
         }
 
         model.addAttribute("pictures",pictureService.findAllUrls());
@@ -33,6 +33,10 @@ public class HomeController {
     @GetMapping("/about")
     public String about(){
         return "about";
+    }
+    @GetMapping("/explore")
+    public String explore(){
+        return "explore";
     }
     @GetMapping("/pages/all")
     public String all() {

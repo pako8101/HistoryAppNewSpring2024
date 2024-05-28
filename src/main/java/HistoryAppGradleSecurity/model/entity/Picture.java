@@ -1,9 +1,6 @@
 package HistoryAppGradleSecurity.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.security.core.userdetails.User;
 
 @Entity
@@ -13,9 +10,9 @@ public class Picture extends BaseEntity{
     private String title;
     @Column(columnDefinition = "TEXT",nullable = false)
     private String url;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private UserEnt author;
-    @ManyToOne
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Article article;
 
     public Picture() {

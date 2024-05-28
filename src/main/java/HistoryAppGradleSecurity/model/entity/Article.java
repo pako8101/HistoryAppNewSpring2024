@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,12 +21,16 @@ public class Article extends BaseEntity{
     private PeriodEnum period;
     @DateTimeFormat
     private LocalDate created;
-    @OneToMany(mappedBy = "article",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "article",
+            targetEntity = Picture.class,
+            fetch = FetchType.EAGER)
     private Set<Picture>pictures;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Category>categories;
 
     public Article() {
+        this.pictures = new HashSet<>();
+        this.categories = new HashSet<>();
     }
 
     public String getTitle() {

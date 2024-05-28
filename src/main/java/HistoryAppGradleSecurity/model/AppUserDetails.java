@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public class AppUserDetails extends User {
 
-    private String country;
+private int age;
     private String fullName;
 
     public AppUserDetails(String username, String password,
@@ -15,12 +15,12 @@ public class AppUserDetails extends User {
         super(username, password, authorities);
     }
 
-    public String getCountry() {
-        return country;
+    public int getAge() {
+        return age;
     }
 
-    public AppUserDetails setCountry(String country) {
-        this.country = country;
+    public AppUserDetails setAge(int age) {
+        this.age = age;
         return this;
     }
 
