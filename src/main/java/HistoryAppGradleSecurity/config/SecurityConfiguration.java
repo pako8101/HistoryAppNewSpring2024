@@ -42,17 +42,19 @@ public class SecurityConfiguration {
                                 authorizeHttpRequests.
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                                         .permitAll().
-                                        requestMatchers("/", "/about",
+                                        requestMatchers("/",
+                                                "/about",
                                                 "/users/login-error",
                                                 "/explore", "/users/profile",
                                                 "/users/login", "/users/subscribe"
-                                                ,"/articles/details","/articles"
-                                                ).permitAll().anyRequest().authenticated()
+                                                ,"/articles/details","/articles")
+                                        .permitAll().
+//                                        .anyRequest().authenticated().
 //                                        .requestMatchers("/error").permitAll().
-//                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
-//                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
-//                                        requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
-//                                        anyRequest().authenticated()
+                                        requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
+                                        requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
+                                        requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
+                                        anyRequest().authenticated()
 //                                       requestMatchers("/**").authenticated()
                 )
                 .formLogin(

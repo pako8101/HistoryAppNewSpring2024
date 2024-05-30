@@ -61,7 +61,7 @@
         <input th:field="*{password}"
                th:errorclass="is-invalid"
                required minlength="5" maxlength="20"
-               type="password"
+               type="text"
                id="password"
                name="password"/>
 <!--               pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"-->
@@ -75,7 +75,7 @@
         <input th:field="*{confirmPassword}"
                required minlength="5" maxlength="20"
                th:errorclass="is-invalid"
-               type="password"
+               type="text"
                id="confirmPassword"
                name="confirmPassword"/>
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"

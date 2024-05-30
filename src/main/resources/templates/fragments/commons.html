@@ -44,14 +44,14 @@
                     <th:block >
                         <div  class="home-container01">
                             <form action="https://www.google.com/search" method="get">
-                                <input type="text" name="s" id="search-input" placeholder="Search AH portal" class="home-input"/>
+                                <input  type="text" name="s" id="search-input" placeholder="Search AH portal" class="home-input"/>
                             </form>
 
                         </div>
 
                         <div class="home-middle">
                             <div class="home-left">
-                                <a th:href="@{/}" class="navbar-link">HOME</a>
+                                <a style="margin-left: 1rem" th:href="@{/}" class="navbar-link">HOME</a>
                                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}" class="navbar-link">LOGIN</a>
                                 <a sec:authorize="!isAuthenticated()" class="navbar-link" th:href="@{/users/subscribe}">SUBSCRIBE</a>
 <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
@@ -91,10 +91,64 @@
                     <br/>
                     <span style="font-size: x-small;margin-left: 3.5rem">LEARN ABOUT THE WORLD OF ANTIQUITY</span>
                     </span>
+
                     <div class="home-right">
-                        <a th:href="@{/about}" class="navbar-link">ABOUT</a>
-                        <a class="navbar-link">BLOG</a>
-                        <a class="navbar-link">CONTACT</a>
+
+                        <label style="margin-left: -2rem" th:href="@{/about}" for="about" class=" navbar-link"
+                        >ABOUT:</label>
+                        <select style="margin: 0.3rem 0 0 -2rem"
+                                id="about"
+                                name="about"
+                                required>
+                            <option th:href="@{/about}"  class="navbar-link" value="about">
+                                About
+                            </option>
+                            <option class="navbar-link" value="Maps">
+                                Maps
+                            </option>
+                            <option class="navbar-link" value="timeline">
+                                Timeline
+                            </option>
+                            <option class="navbar-link" value="translations">
+                                Translations
+                            </option>
+                        </select>
+<!--                        <a class="navbar-link">BLOG</a>-->
+                        <div class="encyclopedia">
+                        <label style="margin-left: -1rem" class=" navbar-link" for="encyclopedia"
+                        >ENCYCLOPEDIA:</label>
+                        <select class="input" style="margin: 0 0.5rem 0 0.5rem"
+                                id="encyclopedia"
+                                name="encyclopedia"
+                                required>
+                            <option th:href="@{/}"  class="navbar-link" value="index">
+                                Index
+                            </option>
+                            <option class="navbar-link" value="Maps">
+                                Maps
+                            </option>
+                            <option class="navbar-link" value="timeline">
+                                Timeline
+                            </option>
+                            <option class="navbar-link" value="translations">
+                                Translations
+                            </option>
+                            </select>
+
+<!--                            <ul class="top-nav">-->
+
+<!--                                <li class="top-level">-->
+<!--                                    <a>Media</a>-->
+<!--                                    <ul>-->
+<!--                                        <li><a th:href="@{/}">Library</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!--                                <li></li>-->
+<!--                                <li></li>-->
+<!--                                <li></li>-->
+<!--                            </ul>-->
+                        <a style="margin-left: 2rem" class="navbar-link">CONTACT</a>
+                    </div>
                     </div>
                 </div>
 
