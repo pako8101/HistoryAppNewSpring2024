@@ -4,7 +4,7 @@ public class UserViewModel {
     private Long id;
     private String fullName;
     private String username;
-    private Integer age;
+    private int age;
 
     public UserViewModel() {
     }
@@ -36,11 +36,11 @@ public class UserViewModel {
         return this;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public UserViewModel setAge(Integer age) {
+    public UserViewModel setAge(int age) {
         this.age = age;
         return this;
     }

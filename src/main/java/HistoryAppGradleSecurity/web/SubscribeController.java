@@ -88,9 +88,19 @@ public class SubscribeController {
 //}
 
     @PostMapping("/subscribe")
-    public String subscribeConfirm(UserSubscribeBindingModel userSubscribeBindingModel,
+    public String subscribeConfirm(@Valid UserSubscribeBindingModel userSubscribeBindingModel,
                                    HttpServletRequest request,
-                                   HttpServletResponse response) {
+                                   HttpServletResponse response,BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+
+                if (bindingResult.hasErrors() || !userSubscribeBindingModel.getPassword()
+                .equals(userSubscribeBindingModel.getConfirmPassword())) {
+            redirectAttributes.addFlashAttribute("subscribeBindingModel", userSubscribeBindingModel);
+            redirectAttributes.addFlashAttribute(
+                    "org.springframework.validation.BindingResult.subscribeBindingModel", bindingResult);
+
+            return "redirect:/users/subscribe";
+        }
+
 
         userService.subscribeUser(userSubscribeBindingModel, successfulAuth -> {
             SecurityContextHolderStrategy strategy = SecurityContextHolder.getContextHolderStrategy();
@@ -102,7 +112,7 @@ public class SubscribeController {
             securityContextRepository.saveContext(context, request, response);
         });
 
-        return "redirect:/";
+        return "redirect:/login";
     }
 
 }

@@ -14,7 +14,7 @@ public class UserServiceModel {
 
     private String email;
 
-    private Integer age;
+    private int age;
 
     private Set<Action> actions;
 
@@ -68,11 +68,11 @@ public class UserServiceModel {
         return this;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public UserServiceModel setAge(Integer age) {
+    public UserServiceModel setAge(int age) {
         this.age = age;
         return this;
     }

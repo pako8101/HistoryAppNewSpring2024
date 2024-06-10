@@ -2,7 +2,7 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: "jdbc:mysql://localhost:3306/history_gradle_security_new?useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
-    username: root
+    username: ${username}
     password: ${password}
   sql:
     init:

@@ -1,0 +1,114 @@
+.home-nav {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.home-navbar1 {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+}
+.home-left,
+.home-right {
+    display: flex;
+    grid-gap: 45px;
+    position: relative;
+    align-items: flex-start;
+}
+.navbar-logo-title {
+    color: darkolivegreen;
+    cursor: pointer;
+    height: auto;
+    font-size: 18px;
+    transition: 0.3s;
+    font-family: Jost;
+    font-weight: 400;
+    line-height: 20px;
+    margin-left: 54px;
+    margin-right: 54px;
+    letter-spacing: 0.2rem;
+    text-decoration: darkslategrey;
+    text-shadow:
+            1px 1px 1px #b0825c,
+            2px 2px 1px palegreen;
+    text-align: center;
+}
+.home-navbar {
+
+    top: 0;
+    width: 100%;
+    display: flex;
+    z-index: 1000;
+    position: fixed;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+/*form select style*/
+.home-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    word-spacing: normal;
+}
+.encyclopedia{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 3rem;
+    margin-left: -1rem;
+    font-family: Jost;
+    box-sizing: border-box;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.home-input:invalid{
+    box-shadow: 0 0 5px 1px red;
+}
+.home-input{
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 1px darkslategrey;
+
+}
+.home-input[type=text]{
+    transition: width 0.4s ease-in-out;
+}
+
+.input:invalid {
+    box-shadow: 0 0 5px 1px red;
+}
+
+.home-input:active {
+    width: 100%;
+    box-shadow: coral;
+}
+
+.button:hover {
+    background-color: #81ecec;
+    /*border: 2px solid darkorange;*/
+    box-shadow: 0 0 0 2px darkslategrey;
+}

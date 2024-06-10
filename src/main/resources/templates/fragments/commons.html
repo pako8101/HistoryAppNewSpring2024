@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
-
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
 <head th:fragment="head">
@@ -13,9 +12,13 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost" data-tag="font"/>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/reset-css.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -23,9 +26,11 @@
 <div>
 
     <div class="home-container">
-<!--        <div  class="logged-user"> <br>-->
-<!--            Welcome, <th:block sec:authentication="name"></th:block>!-->
-<!--        </div>-->
+        <div class="logged-user"><br>
+            Welcome,
+            <th:block sec:authentication="name"></th:block>
+            !
+        </div>
         <div class="home-navbar">
             <header th:fragment="nav" data-role="Header" class="home-header max-width-container">
                 <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
@@ -41,10 +46,12 @@
                 </div>
 
                 <div class="home-navbar1">
-                    <th:block >
-                        <div  class="home-container01">
+                    <th:block>
+                        <div class="home-container01">
                             <form action="https://www.google.com/search" method="get">
-                                <input  type="text" name="s" id="search-input" placeholder="Search AH portal" class="home-input"/>
+                                <input type="text" name="s"
+                                       id="search-input" placeholder="Search AH portal"
+                                       class="home-input"/>
                             </form>
 
                         </div>
@@ -52,55 +59,68 @@
                         <div class="home-middle">
                             <div class="home-left">
                                 <a style="margin-left: 1rem" th:href="@{/}" class="navbar-link">HOME</a>
-                                <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}" class="navbar-link">LOGIN</a>
-                                <a sec:authorize="!isAuthenticated()" class="navbar-link" th:href="@{/users/subscribe}">SUBSCRIBE</a>
-<!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
+                                <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}"
+                                   class="navbar-link active">LOGIN</a>
+                                <!--                                   th:classappend="${activeLink == 'login'}? 'active'"-->
+
+                                <a sec:authorize="!isAuthenticated()"
+                                   class="navbar-link active-table-tab"
+                                   th:href="@{/users/subscribe}"
+                                >SUBSCRIBE</a>
+                                <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
                             </div>
                         </div>
 
                     </th:block>
 
 
-<!--                        <div class="home-container01">-->
-<!--                            <input type="text" placeholder="Search AH portal" class="home- input"/>-->
-<!--                        </div>-->
-                        <th:block sec:authorize="isAuthenticated()">
+                    <!--                        <div class="home-container01">-->
+                    <!--                            <input type="text" placeholder="Search AH portal" class="home- input"/>-->
+                    <!--                        </div>-->
+                    <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
 
                             <div class="home-left">
-<!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
-                                <a  class="navbar-link"   th:href="@{/users/profile}">PROFILE</a>
-<!--                                <a class="navbar-link" >-->
-<!--                                    <form th:action="@{/logout}" method="post">-->
-<!--                                        <button type="submit" class="nav-link">Logout</button>-->
-<!--                                    </form>-->
-<!--                                </a>-->
-                                <a class="navbar-link"
-                                   th:method="post"
-                                   th:href="@{/logout}">LOGOUT</a>
-                                <a class="navbar-link"  th:href="@{/articles/add}">ADD NEW ARTICLE</a><br>
-<!--                                <span> <a href="/">ADMIN</a></span>-->
+                                <!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
+                                <a class="navbar-link" th:href="@{/users/profile}">PROFILE</a>
+                                                                <a class="navbar-link" >
+                                                                    <form th:action="@{/users/logout}" method="post">
+                                                                        <button type="submit" class="navbar-link">LOGOUT</button>
+                                                                    </form>
+                                                                </a>
+<!--                                <a class="navbar-link"-->
+<!--                                   th:method="post"-->
+<!--                                   th:action="@{/users/logout}">LOGOUT</a>-->
+
+                                <a class="navbar-link" th:href="@{/articles/add}"
+
+                                >ADD NEW ARTICLE</a><br>
+                                <!--                                <span> <a href="/">ADMIN</a></span>-->
                             </div>
                         </div>
 
 
-                    </th:block >
+                    </th:block>
                     <span class="navbar-logo-title">
-                    <a th:href="@{/}" style="font-weight: bold" class="navbar-logo-title">ANCIENT HISTORY PORTAL</a>
-
+                    <a th:href="@{/}" style="font-weight: bold;"
+                       class="navbar-logo-title">ANCIENT HISTORY </a>
+                                    <a th:href="@{/}" style="font-weight: bold;"
+                                       class="navbar-logo-title" >PORTAL</a>
                     <br/>
-                    <span style="font-size: x-small;margin-left: 3.5rem">LEARN ABOUT THE WORLD OF ANTIQUITY</span>
+                    <span style="font-size: x-small;text-align: justify">LEARN ABOUT THE WORLD OF ANTIQUITY</span>
                     </span>
 
                     <div class="home-right">
 
                         <label style="margin-left: -2rem" th:href="@{/about}" for="about" class=" navbar-link"
                         >ABOUT:</label>
+
                         <select style="margin: 0.3rem 0 0 -2rem"
                                 id="about"
                                 name="about"
                                 required>
-                            <option th:href="@{/about}"  class="navbar-link" value="about">
+                            <option  th:href="@{/about}" class="navbar-link active-table-tab" value="About">
+
                                 About
                             </option>
                             <option class="navbar-link" value="Maps">
@@ -113,42 +133,53 @@
                                 Translations
                             </option>
                         </select>
-<!--                        <a class="navbar-link">BLOG</a>-->
-                        <div class="encyclopedia">
-                        <label style="margin-left: -1rem" class=" navbar-link" for="encyclopedia"
-                        >ENCYCLOPEDIA:</label>
-                        <select class="input" style="margin: 0 0.5rem 0 0.5rem"
-                                id="encyclopedia"
-                                name="encyclopedia"
-                                required>
-                            <option th:href="@{/}"  class="navbar-link" value="index">
-                                Index
-                            </option>
-                            <option class="navbar-link" value="Maps">
-                                Maps
-                            </option>
-                            <option class="navbar-link" value="timeline">
-                                Timeline
-                            </option>
-                            <option class="navbar-link" value="translations">
-                                Translations
-                            </option>
+
+                        <a class="navbar-link">BLOG</a>
+                        <div style="margin-left: 2rem" class="encyclopedia">
+                            <label style="margin-left: -1rem" class=" navbar-link" for="encyclopedia"
+                            >ENCYCLOPEDIA:</label>
+                            <select class="input" style="margin: 0 0.5rem 0 0.5rem"
+                                    id="encyclopedia"
+                                    name="encyclopedia"
+                                    required>
+                                <option th:href="@{/}" class="navbar-link" value="index">
+                                    Index
+                                </option>
+                                <option class="navbar-link" value="Maps">
+                                    Maps
+                                </option>
+                                <option class="navbar-link" value="timeline">
+                                    Timeline
+                                </option>
+                                <option class="navbar-link" value="translations">
+                                    Translations
+                                </option>
                             </select>
+                        </div>
 
-<!--                            <ul class="top-nav">-->
+                        <!--                            <div style="margin-left: -2rem;margin-right: -3rem"  class="shop">-->
+                        <!--                                <label style="margin-left: -1rem" class=" navbar-link" for="shop"-->
+                        <!--                                >SHOP</label>-->
+                        <!--                                <select class="input" style="margin: 0 0.5rem 0 0.5rem"-->
+                        <!--                                        id="shop"-->
+                        <!--                                        name="shop"-->
+                        <!--                                        required>-->
+                        <!--                                    <option   class="navbar-link" value="books">-->
+                        <!--                                        <a class="dropdown-item" th:href="@{/}">Books</a>-->
 
-<!--                                <li class="top-level">-->
-<!--                                    <a>Media</a>-->
-<!--                                    <ul>-->
-<!--                                        <li><a th:href="@{/}">Library</a></li>-->
-<!--                                    </ul>-->
-<!--                                </li>-->
-<!--                                <li></li>-->
-<!--                                <li></li>-->
-<!--                                <li></li>-->
-<!--                            </ul>-->
-                        <a style="margin-left: 2rem" class="navbar-link">CONTACT</a>
-                    </div>
+                        <!--                                    </option>-->
+                        <!--                                    <option class="navbar-link" value="mapPosters">-->
+                        <!--                                        Map posters-->
+                        <!--                                    </option>-->
+                        <!--                                    <option class="navbar-link" value="clothing">-->
+                        <!--                                        Clothing-->
+                        <!--                                    </option>-->
+                        <!--                                    <option class="navbar-link" value="magazines">-->
+                        <!--                                        Magazines-->
+                        <!--                                    </option>-->
+                        <!--                                </select>-->
+
+                        <!--                    </div>-->
                     </div>
                 </div>
 
@@ -159,7 +190,7 @@
                     <h3 class="home-text32 Heading-3">ANCIENT WORLD</h3>
                     <span class="home-text33">
                 <span>5000 VELIKO TARNOVO</span>
-                <br />
+                <br/>
                 <span>BULGARIA</span>
               </span>
                     <span class="home-text36">(359) 899 199 149</span>

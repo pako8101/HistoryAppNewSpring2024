@@ -108,28 +108,6 @@ public class UserServiceImpl implements UserService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 
-//    @Override
-//    public void login(UserLoginBindingModel userLoginBindingModel) {
-//        String username = userLoginBindingModel.getUsername();
-//
-//        UserEnt user = this.userRepository
-//                .findByUsername(username)
-//                .orElseThrow(() -> new IllegalStateException("User with username: [" + username + "] is not present"));
-//
-//        boolean passwordMatch = passwordEncoder.matches(userLoginBindingModel.getPassword(),
-//                user.getPassword());
-//
-//        if (!passwordMatch){
-//            throw new IllegalStateException("User entered incorrect password");
-//        }
-//
-//        loggedUser.setUsername(user.getUsername())
-//                .setLogged(true)
-//                .setRoles(user.getRoles());
-//    }
-
-
-
     @Override
     public UserEnt findByName(String username) {
 
@@ -137,11 +115,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
-    @Override
-    public void logout() {
-        loggedUser.reset();
 
-    }
 
     @Override
     public UserViewModel findBId(Long id) {
@@ -150,29 +124,6 @@ public class UserServiceImpl implements UserService {
                 .orElse(null);
     }
 
-//    @Override
-//    public void seedUsers() {
-//        if (userRepository.count() == 0) {
-//
-//            UserRoleEnt adminRole = new UserRoleEnt().setRole(UserRoleEnum.ADMIN);
-//            UserRoleEnt userRole = new UserRoleEnt().setRole(UserRoleEnum.USER);
-//            UserRoleEnt moderatorRole = new UserRoleEnt().setRole(UserRoleEnum.MODERATOR);
-//
-//            userRoleRepository.saveAll(List.of(adminRole, userRole));
-//
-//            UserEnt admin = new UserEnt().setUsername("admin").setFullName("Admin Adminov").
-//                    setPassword(passwordEncoder.encode("pako"));
-//            UserEnt moderator = new UserEnt().setUsername("moderator").setFullName("Moderator Modev")
-//                    .setPassword(passwordEncoder.encode("pako"));
-//            UserEnt user = new UserEnt().setUsername("user").setFullName("Bai Ivan").
-//                    setPassword(passwordEncoder.encode("pako"));
-//            admin.setRoles(Set.of(adminRole, userRole));
-//            moderator.setRoles(Set.of(moderatorRole,userRole));
-//            user.setRoles(Set.of(userRole));
-//
-//            userRepository.saveAll(List.of(admin, user,moderator));
-//        }
-//    }
 }
 
 

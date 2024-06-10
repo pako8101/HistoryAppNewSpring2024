@@ -16,7 +16,7 @@ public class UserEnt {
     @Column(nullable = false)
     private String fullName;
     @Column
-    private Integer age;
+    private int age;
     @Column(nullable = false,unique = true)
     private String email;
 
@@ -39,13 +39,12 @@ public class UserEnt {
         return this;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public UserEnt setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
-        return this;
     }
 
     public String getUsername() {

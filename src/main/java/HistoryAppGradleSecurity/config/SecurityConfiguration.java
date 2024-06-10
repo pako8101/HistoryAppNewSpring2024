@@ -45,9 +45,10 @@ public class SecurityConfiguration {
                                         requestMatchers("/",
                                                 "/about",
                                                 "/users/login-error",
-                                                "/explore", "/users/profile",
+                                                "/explore",
                                                 "/users/login", "/users/subscribe"
-                                                ,"/articles/details","/articles")
+//                                                ,"/articles/details","/articles", "/users/profile"
+                                        )
                                         .permitAll().
 //                                        .anyRequest().authenticated().
 //                                        .requestMatchers("/error").permitAll().
@@ -71,7 +72,7 @@ public class SecurityConfiguration {
                                         failureForwardUrl("/users/login-error")
                 )
                 .logout((logout) ->
-                        logout.logoutUrl("/logout").
+                        logout.logoutUrl("/users/logout").
                                 logoutSuccessUrl("/").//go to homepage after logout
                                 invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")

@@ -39,8 +39,7 @@ private final UserService userService;
     public String onFailedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter
             .SPRING_SECURITY_FORM_USERNAME_KEY) String username,
                                 RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter
-                .SPRING_SECURITY_FORM_USERNAME_KEY,username);
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY,username);
         redirectAttributes.addFlashAttribute("bad_credentials",true);
 
 //        redirectAttributes.addFlashAttribute("username", username);
@@ -48,11 +47,11 @@ private final UserService userService;
 
     }
 
-    @PostMapping("/logout")
-    public ModelAndView logout(){
-
-        this.userService.logout();
-        return new ModelAndView("redirect:/");
-    }
+//    @PostMapping("/logout")
+//    public ModelAndView logout(){
+//
+//        this.userService.logout();
+//        return new ModelAndView("redirect:/");
+//    }
 
 }

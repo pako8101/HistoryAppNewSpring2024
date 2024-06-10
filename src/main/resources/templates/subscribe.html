@@ -61,7 +61,7 @@
         <input th:field="*{password}"
                th:errorclass="is-invalid"
                required minlength="5" maxlength="20"
-               type="text"
+               type="password"
                id="password"
                name="password"/>
 <!--               pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"-->
@@ -75,7 +75,7 @@
         <input th:field="*{confirmPassword}"
                required minlength="5" maxlength="20"
                th:errorclass="is-invalid"
-               type="text"
+               type="password"
                id="confirmPassword"
                name="confirmPassword"/>
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
@@ -83,7 +83,7 @@
             Password length must be between 5 and 20 characters and passwords should match.</small>
         <label for="age">Age:</label>
         <input th:field="*{age}"
-               min="0" max="90"
+               min="18" max="90"
                type="number"
                id="age"
                name="age"

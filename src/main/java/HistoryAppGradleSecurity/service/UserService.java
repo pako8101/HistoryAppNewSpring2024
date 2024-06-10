@@ -24,7 +24,7 @@ public interface UserService {
 
     UserEnt findByName(String username);
 
-    void logout();
+//    void logout();
 
     UserViewModel findBId(Long id);
 

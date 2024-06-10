@@ -23,9 +23,19 @@ public class UserSubscribeBindingModel {
     @NotNull
     private String confirmPassword;
     @Min(value = 18,message = "Over 18 years! ")
-    private Integer age;
+    @Max(90)
+    private int age;
 
     public UserSubscribeBindingModel() {
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public UserSubscribeBindingModel setAge(int age) {
+        this.age = age;
+        return this;
     }
 
     public String getUsername() {
@@ -68,11 +78,5 @@ public class UserSubscribeBindingModel {
         this.confirmPassword = confirmPassword;
     }
 
-    public Integer getAge() {
-        return age;
-    }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 }
