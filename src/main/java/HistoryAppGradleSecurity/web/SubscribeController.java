@@ -56,36 +56,7 @@ public class SubscribeController {
         return "subscribe";
     }
 
-//    @PostMapping("/subscribe")
-//    public String registerAndLoginUser(
-//            @Valid UserSubscribeBindingModel subscribeBindingModel,
-//            BindingResult bindingResult,
-//            RedirectAttributes redirectAttributes) {
-//
-//        if (bindingResult.hasErrors() || !subscribeBindingModel.getPassword()
-//                .equals(subscribeBindingModel.getConfirmPassword())) {
-//            redirectAttributes.addFlashAttribute("subscribeBindingModel", subscribeBindingModel);
-//            redirectAttributes.addFlashAttribute(
-//                    "org.springframework.validation.BindingResult.subscribeBindingModel", bindingResult);
-//
-//            return "redirect:/users/subscribe";
-//        }
-//
-//        if (userService.userNameExists(subscribeBindingModel.getUsername())) {
-//            redirectAttributes.addFlashAttribute("subscribeBindingModel", subscribeBindingModel);
-//            redirectAttributes.addFlashAttribute("userExistsError", true);
-//
-//            return "redirect:/users/subscribe";
-//        }
-//
-//        UserServiceModel userServiceModel = modelMapper
-//                .map(subscribeBindingModel, UserServiceModel.class);
-//
-//        userService.registerAndLoginUser(userServiceModel);
-//
-//        return "redirect:/login";
-//    }
-//}
+
 
     @PostMapping("/subscribe")
     public String subscribeConfirm(@Valid UserSubscribeBindingModel userSubscribeBindingModel,

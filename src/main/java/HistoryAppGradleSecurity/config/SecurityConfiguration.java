@@ -20,7 +20,7 @@ import org.springframework.security.web.context.RequestAttributeSecurityContextR
 import org.springframework.security.web.context.SecurityContextRepository;
 
 
-@EnableWebSecurity
+
 @Configuration
 public class SecurityConfiguration {
 
@@ -47,11 +47,11 @@ public class SecurityConfiguration {
                                                 "/users/login-error",
                                                 "/explore",
                                                 "/users/login", "/users/subscribe"
-//                                                ,"/articles/details","/articles", "/users/profile"
+                                                ,"/articles/details","/articles", "/users/profile"
                                         )
-                                        .permitAll().
+                                        .permitAll()
 //                                        .anyRequest().authenticated().
-//                                        .requestMatchers("/error").permitAll().
+                                       .requestMatchers("/error").permitAll().
                                         requestMatchers("/pages/moderators").hasRole(UserRoleEnum.MODERATOR.name()).
                                         requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
                                         requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
@@ -62,8 +62,6 @@ public class SecurityConfiguration {
                         (formLogin) ->
                                 formLogin.
                                         loginPage("/users/login").
-//                                .usernameParameter("username")
-//                                .passwordParameter("password").
         usernameParameter(
         UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                                         passwordParameter(
@@ -77,13 +75,13 @@ public class SecurityConfiguration {
                                 invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")
                 )
-//                .rememberMe(httpSecurityRememberMeConfigurer -> {
-//                    httpSecurityRememberMeConfigurer.key(rememberMeKey)
-//                            .rememberMeParameter("rememberMe")
-//                            .rememberMeCookieName("rememberMe")
-//                            .tokenValiditySeconds(10000);
-//                }
-//                )
+                .rememberMe(httpSecurityRememberMeConfigurer -> {
+                    httpSecurityRememberMeConfigurer.key(rememberMeKey)
+                            .rememberMeParameter("rememberMe")
+                            .rememberMeCookieName("rememberMe")
+                            .tokenValiditySeconds(10000);
+                }
+                )
 
                 .securityContext(
                         securityContext -> securityContext.
