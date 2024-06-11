@@ -44,4 +44,14 @@ public class UserViewModel {
         this.age = age;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserViewModel{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

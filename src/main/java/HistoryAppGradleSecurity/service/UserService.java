@@ -1,6 +1,6 @@
 package HistoryAppGradleSecurity.service;
 
-import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
+
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.service.UserServiceModel;
@@ -24,9 +24,9 @@ public interface UserService {
 
     UserEnt findByName(String username);
 
-//    void logout();
+
 
     UserViewModel findBId(Long id);
 
-//    void seedUsers();
+
 }

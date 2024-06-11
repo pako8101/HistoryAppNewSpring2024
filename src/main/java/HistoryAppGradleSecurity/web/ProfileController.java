@@ -33,16 +33,25 @@ public class ProfileController {
         this.userService = userService;
 
     }
-
-    @GetMapping("/profile/{id}")
-    public ModelAndView profile(@PathVariable Long id) {
-        UserViewModel userViewModel = userService.findBId(id);
+    @GetMapping("/profile")
+    public ModelAndView profile() {
+        UserViewModel userProfileViewModel = userService.getUserProfile();
 
         ModelAndView modelAndView = new ModelAndView("profile");
-        modelAndView.addObject("userProfileViewModel", userViewModel);
+        modelAndView.addObject("userProfileViewModel", userProfileViewModel);
 
         return modelAndView;
     }
+
+//    @GetMapping("/profile/{id}")
+//    public ModelAndView profile(@PathVariable Long id) {
+//        UserViewModel userViewModel = userService.findBId(id);
+//
+//        ModelAndView modelAndView = new ModelAndView("profile");
+//        modelAndView.addObject("userProfileViewModel", userViewModel);
+//
+//        return modelAndView;
+//    }
 
 
 

@@ -94,4 +94,18 @@ public class UserServiceModel {
         this.periods = periods;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserServiceModel{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + (password != null ? "[PROVIDED]" : "[N/A]") + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", actions=" + actions +
+                ", periods=" + periods +
+                '}';
+    }
 }

@@ -1,7 +1,10 @@
 package HistoryAppGradleSecurity.session;
 
+import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.entity.UserRoleEnt;
 import HistoryAppGradleSecurity.model.enums.UserRoleEnum;
+import HistoryAppGradleSecurity.repository.UserRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -13,8 +16,9 @@ public class LoggedUser {
     private String username;
     private List<UserRoleEnt> roles;
     private boolean isLogged;
-
-    public LoggedUser () {
+ private final UserRepository userRepository;
+    public LoggedUser (UserRepository userRepository) {
+        this.userRepository = userRepository;
 
         this.roles = new ArrayList<>();
     }
@@ -73,5 +77,11 @@ public class LoggedUser {
 
         return this.roles.stream()
                 .anyMatch(role -> role.getRole().equals(UserRoleEnum.ADMIN));
+    }
+    public UserEnt get(){
+        String username = getUsername();
+       return userRepository.findUserEntByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found!"));
+
     }
 }

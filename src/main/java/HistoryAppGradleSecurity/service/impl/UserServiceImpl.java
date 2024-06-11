@@ -72,10 +72,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserViewModel getUserProfile() {
-        String username = loggedUser.getUsername();
-        UserEnt user = userRepository.findUserEntByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found!"));
-
+    UserEnt user = loggedUser.get();
         return modelMapper.map(user,UserViewModel.class);
     }
 

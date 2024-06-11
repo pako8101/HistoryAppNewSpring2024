@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class AppUserDetails extends User {
 
-private int age;
+    private int age;
     private String fullName;
 
     public AppUserDetails(String username, String password,

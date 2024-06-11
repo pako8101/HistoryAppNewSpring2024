@@ -8,9 +8,9 @@ import jakarta.validation.constraints.*;
 )
 public class UserSubscribeBindingModel {
     @Size(min = 3,max = 20)
-    @NotNull
+    @NotEmpty
     private String username;
-    @NotNull
+    @NotEmpty
     @Size(min = 2)
     private String fullName;
     @Email
@@ -24,6 +24,8 @@ public class UserSubscribeBindingModel {
     private String confirmPassword;
     @Min(value = 18,message = "Over 18 years! ")
     @Max(90)
+    @NotNull
+    @Positive
     private int age;
 
     public UserSubscribeBindingModel() {
@@ -78,5 +80,15 @@ public class UserSubscribeBindingModel {
         this.confirmPassword = confirmPassword;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserSubscribeBindingModel{" +
+                "username='" + username + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + (password != null ? "[PROVIDED]" : "[N/A]") + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
