@@ -1,82 +1,57 @@
 package HistoryAppGradleSecurity.session;
 
 import HistoryAppGradleSecurity.model.entity.UserEnt;
-import HistoryAppGradleSecurity.model.entity.UserRoleEnt;
 import HistoryAppGradleSecurity.model.enums.UserRoleEnum;
 import HistoryAppGradleSecurity.repository.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.stereotype.Service;
 
-import java.util.*;
+@Service
 
-@Component
-@SessionScope
 public class LoggedUser {
-    private String username;
-    private List<UserRoleEnt> roles;
-    private boolean isLogged;
+
  private final UserRepository userRepository;
-    public LoggedUser (UserRepository userRepository) {
+
+    public LoggedUser(UserRepository userRepository) {
         this.userRepository = userRepository;
-
-        this.roles = new ArrayList<>();
     }
 
-    public List<UserRoleEnt> getRoles() {
-        return roles;
+
+    public boolean isLogged() {
+        return !hasRole(UserRoleEnum.USER);
     }
 
-    public LoggedUser setRoles(List<UserRoleEnt> roles) {
-        this.roles = roles;
-        return this;
+    public boolean isAdmin() {
+        return hasRole(UserRoleEnum.ADMIN);
     }
 
-    public void reset() {
-        this
-                .setUsername(null)
-                .setRoles(Collections.emptyList())
-                //.setRoles(Collections.emptySet())
-                .setLogged(false);
+    public boolean isModerator() {
+        return hasRole(UserRoleEnum.MODERATOR);
     }
 
-    public String getUsername () {
-
-        return username;
+    public boolean isOnlyUser() {
+        return getAuthentication().getAuthorities().stream()
+                .allMatch(role -> role.getAuthority().equals("ROLE_" + UserRoleEnum.USER));
     }
 
-    public LoggedUser setUsername (String username) {
-
-        this.username = username;
-        return this;
+    public String getUsername() {
+        return getUserDetails().getUsername();
     }
 
-//    public Set<UserRoleEnt> getRoles () {
-//
-//        return roles;
-//    }
-//
-//    public LoggedUser setRoles (Set<UserRoleEnt> roles) {
-//
-//        this.roles = roles;
-//        return this;
-//    }
-
-    public boolean isLogged () {
-
-        return isLogged;
+    public boolean hasRole(UserRoleEnum userRoles) {
+        return getAuthentication().getAuthorities().stream()
+                .anyMatch(role -> role.getAuthority().equals("ROLE_" + userRoles));
     }
 
-    public LoggedUser setLogged (boolean logged) {
-
-        isLogged = logged;
-        return this;
+    private UserDetails getUserDetails() {
+        return (UserDetails) getAuthentication().getPrincipal();
     }
 
-    public boolean isAdmin () {
-
-        return this.roles.stream()
-                .anyMatch(role -> role.getRole().equals(UserRoleEnum.ADMIN));
+    private Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
     public UserEnt get(){
         String username = getUsername();

@@ -35,7 +35,7 @@ public class ProfileController {
     }
     @GetMapping("/profile")
     public ModelAndView profile() {
-        UserViewModel userProfileViewModel = userService.getUserProfile();
+        UserViewModel userProfileViewModel = userService. getUserProfile();
 
         ModelAndView modelAndView = new ModelAndView("profile");
         modelAndView.addObject("userProfileViewModel", userProfileViewModel);

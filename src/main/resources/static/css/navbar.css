@@ -3,6 +3,7 @@
     align-items: flex-start;
     flex-direction: column;
 }
+
 .home-navbar1 {
     width: 100%;
     display: flex;
@@ -12,6 +13,7 @@
     flex-wrap: nowrap;
 
 }
+
 .home-left,
 .home-right {
     display: flex;
@@ -19,6 +21,7 @@
     position: relative;
     align-items: flex-start;
 }
+
 .navbar-logo-title {
     color: darkolivegreen;
     cursor: pointer;
@@ -30,13 +33,28 @@
     line-height: 20px;
     margin-left: 54px;
     margin-right: 54px;
+    margin-bottom: 20px;
     letter-spacing: 0.2rem;
     text-decoration: darkslategrey;
-    text-shadow:
-            1px 1px 1px #b0825c,
-            2px 2px 1px palegreen;
+    text-shadow: 1px 1px 1px #b0825c,
+    2px 2px 1px palegreen;
+
     text-align: center;
+
 }
+.home-container01 {
+    display: flex;
+    align-items: initial;
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    font-size: 18px;
+    justify-content: space-between;
+    word-spacing: -10px;
+    line-break: normal;
+    transition: width 0.4s ease-in-out;
+}
+
 .home-navbar {
 
     top: 0;
@@ -50,7 +68,7 @@
 }
 
 /*form select style*/
-.home-right{
+.home-right {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -58,7 +76,8 @@
 
     word-spacing: normal;
 }
-.encyclopedia{
+
+.encyclopedia {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -68,6 +87,7 @@
     font-family: Jost;
     box-sizing: border-box;
 }
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -83,10 +103,12 @@ select {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-.home-input:invalid{
+
+.home-input:invalid {
     box-shadow: 0 0 5px 1px red;
 }
-.home-input{
+
+.home-input {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid #000000;
@@ -94,7 +116,8 @@ select {
     box-shadow: 0 0 5px 1px darkslategrey;
 
 }
-.home-input[type=text]{
+
+.home-input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
@@ -111,4 +134,102 @@ select {
     background-color: #81ecec;
     /*border: 2px solid darkorange;*/
     box-shadow: 0 0 0 2px darkslategrey;
+}
+
+
+
+/*admin panel*/
+.dropdown {
+    margin:-1rem 60rem 0.2rem -8rem;
+    /*flex-wrap: wrap;*/
+    display: block;
+    padding: 0.5em 0.8em;
+    text-decoration: none;
+    color: #369;
+    background: #EEE;
+    border: 2px solid #CCC;
+    border-radius: 0.3em;
+    transition: all 0.3s ease-in;
+    position: relative;
+    border-bottom: 2px solid #369;
+    /*margin-bottom: 2em;*/
+
+}
+.main-nav ul {
+    padding: 0;
+}
+
+.main-nav li {
+    list-style: none outside;
+    position: relative;
+    display: block;
+}
+
+.main-nav > ul > li {
+    display: inline-block;
+    margin: 0 0.2em;
+}
+
+.main-nav a {
+    display: block;
+    padding: 0.5em 0.8em;
+    text-decoration: none;
+    color: #369;
+    background: #EEE;
+    border: 2px solid #CCC;
+    border-radius: 0.3em;
+    transition: all 0.3s ease-in;
+}
+
+.main-nav li:hover > a,
+.main-nav a:hover {
+    background: #369;
+    color: #FFF;
+    border-color: #147;
+}
+
+.main-nav li:hover > a {
+    opacity: 0.6;
+}
+
+.main-nav li:hover a:hover {
+    opacity: 1;
+}
+
+.main-nav ul ul {
+    display: none;
+}
+
+.main-nav ul ul li {
+    margin-bottom: 0.2em;
+}
+
+.main-nav li:hover > ul {
+    display: block;
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 4px 0;
+}
+
+.main-nav ul ul li:hover > ul {
+    padding: 0 4px;
+    left: initial;
+    top: 0;
+    right: 100%;
+}
+.dropdown.encyclopedia{
+    margin-right: unset;!important;
+    margin-left: 1px;!important;
+}
+.dropdown.about{
+    margin-right: unset;!important;
+
+    margin-left: auto;
+}
+.dropdown.education{
+    margin-right: unset;!important;
+
+    margin-left: auto;
 }

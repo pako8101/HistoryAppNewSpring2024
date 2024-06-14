@@ -112,14 +112,6 @@ body {
   justify-content: space-between;
 }
 
-.home-container01 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  word-spacing: -10px;
-  line-break: normal;
-  transition: width 0.4s ease-in-out;
-}
 
 .home-image {
   width: 24px;
@@ -615,11 +607,12 @@ body {
   cursor: pointer;
   height: auto;
   font-size: 13px;
-  text-align: left;
+
   transition: 0.3s;
   font-family: Jost;
   font-weight: 500;
   text-decoration: none;
+
 }
 
 .Heading-3 {

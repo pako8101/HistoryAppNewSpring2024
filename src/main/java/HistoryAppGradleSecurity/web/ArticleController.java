@@ -90,7 +90,7 @@ private final ArticleRepository articleRepository;
             redirectAttributes.addFlashAttribute("articleAddBindingModel",articleAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework" +
                     ".validation.BindingResult" +
-                    ".routeAddBindingModel", bindingResult);
+                    ".articleAddBindingModel", bindingResult);
             return "redirect:add";
         }
         ArticleServiceModel articleServiceModel = modelMapper.map(articleAddBindingModel, ArticleServiceModel.class);
