@@ -68,6 +68,10 @@
 <!--               title="Password must contain at least one number,-->
 <!--                          one alphabet, one symbol, and be at-->
 <!--                          least 5 characters long"/>-->
+        <label for="show-password" class="field__toggle">
+            <input type="checkbox" id="show-password" class="field__toggle-input" />
+            Show password
+        </label>
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="passwordError" class="invalid-feedback  form-text bg-danger rounded">
             Password length must be between 5 and 20 characters and passwords should match.</small>
@@ -78,6 +82,7 @@
                type="password"
                id="confirmPassword"
                name="confirmPassword"/>
+
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="confirmPasswordError" class="invalid-feedback  form-text bg-danger rounded">
             Password length must be between 5 and 20 characters and passwords should match.</small>
@@ -117,6 +122,44 @@
 <footer th:replace="fragments/commons::footer">
 
 </footer>
+<script type="text/javascript">
+
+    // Gather our DOM references.
+    var username = document.querySelector( "#username" );
+    var password = document.querySelector( "#password" );
+    var toggle = document.querySelector( "#show-password" );
+
+
+    // Set some default values just to make the demo easier to use.
+    username.value = "BenJamin2002";
+    password.value = "dontTazeMeBro!";
+
+    // NOTE: The "(input)" event doesn't work on checkboxes in Safari or IE. As such,
+    // I'm using the "(click)" event to make this works cross-browser.
+    toggle.addEventListener( "click", handleToggleClick, false );
+
+    // --------------------------------------------------------------------------- //
+    // --------------------------------------------------------------------------- //
+
+    // I handle the toggle click, changing the TYPE of password input.
+    function handleToggleClick( event ) {
+
+        if ( this.checked ) {
+
+            console.warn( "Change input 'type' to: text" );
+            password.type = "text";
+
+        } else {
+
+            console.warn( "Change input 'type' to: password" );
+            password.type = "password";
+
+        }
+
+    }
+
+</script>
+
 </body>
 </html>
 

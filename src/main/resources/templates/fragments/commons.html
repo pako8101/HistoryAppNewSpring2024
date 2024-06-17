@@ -43,6 +43,7 @@
                     </form>
 
                 </div>
+
                     <a th:href="@{/}" style="font-weight: bold;margin-left: 8rem"
                        class="navbar-logo-title">&copy;ANCIENT HISTORY PORTAL</a>
                                     <a th:href="@{/}" style="font-weight: bold;"
@@ -50,6 +51,7 @@
                     <br/>
                     <span style="font-size: small;margin-left:-2rem;text-align: center">LEARN ABOUT THE WORLD OF ANTIQUITY</span>
                     </span>
+
                 <div class="home-navbar1">
                     <th:block>
 
@@ -63,6 +65,7 @@
 
                                 <a sec:authorize="!isAuthenticated()"
                                    class="navbar-link active-table-tab"
+
                                    th:href="@{/users/subscribe}"
                                 >SUBSCRIBE</a>
                                 <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
@@ -78,10 +81,10 @@
                     <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
 
-                            <div class="home-left">
+                            <div class=" home-left">
                                 <!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
                                 <a style="padding: 7px 0 0 10px;" class="navbar-link" th:href="@{/users/profile}">PROFILE</a>
-                                <a class="navbar-link">
+                                <a class=" navbar-link">
                                     <form th:action="@{/users/logout}" method="post">
                                         <button type="submit" class="navbar-link">LOGOUT</button>
                                     </form>
