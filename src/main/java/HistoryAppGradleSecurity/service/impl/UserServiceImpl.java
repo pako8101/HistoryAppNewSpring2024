@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void subscribeUser(UserSubscribeBindingModel userSubscribeBindingModel,
                               Consumer<Authentication>successfulLoginProcessor) {
+
         UserEnt userEntity = new UserEnt().
                 setFullName(userSubscribeBindingModel.getFullName()).
                 setUsername(userSubscribeBindingModel.getUsername()).
