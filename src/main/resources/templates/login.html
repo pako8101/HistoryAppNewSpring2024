@@ -28,14 +28,15 @@
 
         <input
                 th:field="*{username}"
-                th:value="${username}"
-                th:errorclass="bg-danger"
+                th:errorclass="'is-invalid alert-danger'"
                 required
                 type="text"
                 id="username"
                 name="username"
                 placeholder="Enter your Username">
-        <small th:each="e :${#fields.errors('username')}" th:text="${e}" class="invalid-feedback">
+        <small class="invalid-feedback ">
+<!--                th:each="e :${#fields.errors('username')}" th:text="${e}" -->
+
             <span class="bg-danger">Username is not correct!</span>
         </small>
         <small th:if="${userExistsError}" id="usernameUniqueError"
@@ -46,15 +47,15 @@
 
         <input
                 th:field="*{password}"
-                th:value="${password}"
-                th:errorclass="bg-danger"
+                th:errorclass="'is-invalid alert-danger'"
                 required
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Enter your Password">
-        <small th:each="e :${#fields.errors('password')}" th:text="${e}"
-               class="invalid-feedback">
+        <small class="invalid-feedback">
+<!--                th:each="e :${#fields.errors('password')}" th:text="${e}"-->
+
             <span class="bg-danger">Password is not correct!</span>
         </small>
         <div style=" width: 350px;

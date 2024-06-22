@@ -21,7 +21,7 @@
         <label for="username">Username:</label>
         <input
                 th:field="*{username}"
-                th:errorclass="is-invalid"
+                th:errorclass="'is-invalid alert-danger'"
                 required minlength="3" maxlength="20"
                 type="text"
                 id="username"
@@ -37,7 +37,7 @@
         <label for="inputFullName">Full Name:</label>
         <input
                 th:field="*{fullName}"
-                th:errorclass="is-invalid"
+                th:errorclass="'is-invalid alert-danger'"
                 required minlength="3" maxlength="20"
                 type="text"
                 id="inputFullName"
@@ -49,7 +49,7 @@
         <label for="email">Email:</label>
         <input
                 th:field="*{email}"
-                th:errorclass="is-invalid"
+                th:errorclass="'is-invalid alert-danger'"
                 type="email"
                 id="email"
                 name="email"
@@ -57,10 +57,11 @@
         <small th:each="e :${#fields.errors('email')}" th:text="${e}"
                 id="emailError" class="invalid-feedback  form-text bg-danger
             rounded">Must be valid email</small>
+
         <label for="password">Password:</label>
         <input th:field="*{password}"
-               th:errorclass="is-invalid"
-               required minlength="5" maxlength="20"
+               th:errorclass="'is-invalid alert-danger'"
+               required minlength="3" maxlength="20"
                type="password"
                id="password"
                name="password"/>
@@ -74,26 +75,28 @@
         </label>
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="passwordError" class="invalid-feedback  form-text bg-danger rounded">
-            Password length must be between 5 and 20 characters and passwords should match.</small>
+            Password length must be between 3 and 20 characters and passwords should match.</small>
         <label for="confirmPassword">Re-type Password:</label>
         <input th:field="*{confirmPassword}"
-               required minlength="5" maxlength="20"
-               th:errorclass="is-invalid"
+               required minlength="3" maxlength="20"
+               th:errorclass="'is-invalid alert-danger'"
                type="password"
                id="confirmPassword"
                name="confirmPassword"/>
 
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="confirmPasswordError" class="invalid-feedback  form-text bg-danger rounded">
-            Password length must be between 5 and 20 characters and passwords should match.</small>
+            Password length must be between 3 and 20 characters and passwords should match.</small>
         <label for="age">Age:</label>
         <input th:field="*{age}"
                min="18" max="90"
+               th:errorclass="'is-invalid alert-danger'"
                type="number"
                id="age"
                name="age"
                required/>
-
+        <small th:each="e :${#fields.errors('age')}" th:text="${e}"
+                class="invalid-feedback text-danger">Age is invalid!</small>
         <label for="gender"
         >Gender:</label>
         <select

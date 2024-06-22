@@ -7,8 +7,8 @@ import jakarta.validation.constraints.*;
         second = "confirmPassword"
 )
 public class UserSubscribeBindingModel {
-    @Size(min = 3,max = 20)
-    @NotEmpty
+    @Size(min = 3,max = 20,message = "Username must be between 3 and 20 symbols!")
+    @NotNull(message = "Username must not be empty!")
     private String username;
     @NotEmpty
     @Size(min = 2)
