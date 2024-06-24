@@ -23,47 +23,59 @@
                     >
                         <fieldset>
                             <legend><span class="number">1</span> Author Info</legend>
-                            <input type="text" name="field1" placeholder="Your Name *">
+                            <input th:field="*{author}"
+                                   th:errorclass="'is-invalid bg-danger'"
+                                    type="text" name="field1"
+                                    placeholder="Your Name *">
+                            <small th:each="error :${#fields.errors('author')}"
+                                   th:text="${error}"
+                                   th:class="'invalid-feedback text-danger'" id="author"> Error message!</small>
                             <input type="email" name="field2" placeholder="Your Email *">
                             <textarea name="field3" placeholder="About yourself"></textarea>
-                            <label for="job">Interests:</label>
-                            <select id="job" name="field4">
-                                <optgroup label="PoliticAndEconomy">
-                                    <option value="egypt">Egypt</option>
-                                    <option value="rome">Rome Empire</option>
-                                    <option value="mesopotamia">Mesopotamia</option>
-                                    <option value="greece">Ancient Greece</option>
-                                    <option value="america">Central America</option>
-                                    <option value="andean">Andean</option>
-                                    <option value="stone">Stone Age</option>
-                                    <option value="other">Other</option>
-                                </optgroup>
-                                <optgroup label="CultureAndReligion">
-                                    <option value="egypt">Egypt</option>
-                                    <option value="rome">Rome Empire</option>
-                                    <option value="mesopotamia">Mesopotamia</option>
-                                    <option value="greece">Ancient Greece</option>
-                                    <option value="america">Central America</option>
-                                    <option value="andean">Andean</option>
-                                    <option value="stone">Stone Age</option>
-                                    <option value="other">Other</option>
+
+                            <label for="period">Period:</label>
+                            <select th:field="*{period}"
+                                    th:errorclass="'is-invalid bg-danger'"
+                                    id="period" name="field4">
+                                <optgroup label="period">
+                                    <option th:each="p:${T(HistoryAppGradleSecurity.model.enums.PeriodEnum).values()}"
+                                            th:value="${p}" th:text="${p}"
+                                            value="egypt">Egypt</option>
                                 </optgroup>
                             </select>
+                            <small th:each="error: ${#fields.errors('period')}"
+                                   th:text="${error}"
+                                   th:class="'invalid-feedback text-danger'"> error message</small>
+
+                            <select id="category" name="field4">
+                                <optgroup label="category">
+                                    <option th:each="c:${T(HistoryAppGradleSecurity.model.enums.CategoryNameEnum).values()}"
+                                            th:value="${c}" th:text="${c}"
+                                            value="egypt">Egypt</option>
+                                </optgroup>
+                            </select>
+                            <small th:each="error: ${#fields.errors('category')}"
+                                   th:text="${error}"
+                                   th:class="'invalid-feedback text-danger'"> error message</small>
                         </fieldset>
+
                         <fieldset>
                             <input th:field="*{title}"
                                    th:errorclass="'is-invalid bg-danger'"
                                    minlength="5"
                                     type="text" name="field1" placeholder="Article Title">
-                            <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
-                            class="invalid-feedback rounded" id="inputTitleError"> Title must be more then 5 letters!</small>
+                            <small th:each="error :${#fields.errors('title')}"
+                                   th:text="${error}"
+                                   th:class="'invalid-feedback text-danger'"  id="inputTitleError"> Title must be more then 5 letters!</small>
+
                             <legend><span class="number">2</span> Article Text</legend>
                             <textarea th:field="*{content}"
                                       th:errorclass="'is-invalid bg-danger'"
                                       minlength="10"
                                     class="article" name="field3" placeholder=" Your Article Content"></textarea>
-                            <small th:if="${#fields.hasErrors('content')}" th:errors="*{content}"
-                                   class="invalid-feedback rounded" id="inputContentError"> Content must be more then 10 letters!</small>
+                            <small th:each="error :${#fields.errors('content')}"
+                                   th:text="${error}"
+                                   th:class="'invalid-feedback text-danger'"  id="inputContentError"> Content must be more then 10 letters!</small>
                         </fieldset>
                         <input type="submit" value="Add article" />
                     </form>

@@ -11,16 +11,16 @@ public class UserSubscribeBindingModel {
     @NotNull(message = "Username must not be empty!")
     private String username;
     @NotEmpty
-    @Size(min = 2)
+    @Size(min = 2,max = 20,message = "Full name must be between 2 and 20 symbols!")
     private String fullName;
-    @Email
-    @NotEmpty
+    @Email(message = "Email must be valid format!")
+    @NotBlank(message = "Email must not be empty!")
     private String email;
-    @Size(min = 3,max = 20)
-    @NotNull
+    @Size(min = 3,max = 20,message = "Password must be between 3 and 20 symbols!")
+    @NotNull(message = "Password must not be empty!")
     private String password;
-    @Size(min = 3,max = 20)
-    @NotNull
+    @Size(min = 3,max = 20,message = "Password must be between 3 and 20 symbols!")
+    @NotNull(message = "Password must not be empty!")
     private String confirmPassword;
     @Min(value = 18,message = "Over 18 years! ")
     @Max(90)

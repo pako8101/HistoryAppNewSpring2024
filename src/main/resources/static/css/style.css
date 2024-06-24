@@ -478,7 +478,8 @@ body {
   justify-content: space-between;
 }
 .home-footer {
-  background-color: olivedrab;
+
+  background-color: #293744;
   flex: 0 0 auto;
   width: 100%;
   display: flex;
@@ -489,8 +490,11 @@ body {
   border-left-width: 0px;
   border-right-width: 0px;
   border-bottom-width: 0px;
+  vertical-align: top;
 }
 .home-footer1 {
+  color: palegoldenrod;
+  /*vertical-align: top;*/
   width: 100%;
   display: flex;
   max-width: 1328px;
@@ -501,29 +505,33 @@ body {
   justify-content: space-between;
 }
 .home-container09 {
+  color: palegoldenrod;
   display: flex;
   max-width: 1328px;
   align-items: flex-start;
   flex-direction: column;
 }
+
 .home-text33 {
-  color: #00000080;
+  color: palegoldenrod;
   margin-top: 24px;
 }
 .home-text36 {
-  color: #00000080;
+  color: palegoldenrod;
   margin-top: 32px;
 }
 .home-text37 {
-  color: #00000080;
+  color: palegoldenrod;
   margin-top: 12px;
 }
 .home-links-container {
+
   display: flex;
   grid-gap: 48px;
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-between;
+
 }
 .home-container10, .home-container11 {
   flex: 0 0 auto;
@@ -541,7 +549,7 @@ body {
   margin-bottom: 44px;
 }
 .home-text39, .home-text40, .home-text41, .home-text42, .home-text43, .home-text44, .home-text46, .home-text47, .home-text48, .home-text49, .home-text50, .home-text52, .home-text53, .home-text54, .home-text55{
-  color: #00000080;
+  color: #bfc3c7;
   text-decoration: none;
   margin-bottom: 16px;
 }

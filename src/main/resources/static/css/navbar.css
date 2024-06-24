@@ -286,3 +286,14 @@ select {
     from {background-color: lightseagreen;}
     to {background-color: moccasin;}
 }
+.mission {
+    color: #e0e0e0;
+    font-family: Karla,Arial,Helvetica,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    vertical-align: top;
+    /*margin-right: 60px;*/
+    display: inline-block;
+    margin: -5rem 60px 2rem auto;
+    width: 420px;
+}

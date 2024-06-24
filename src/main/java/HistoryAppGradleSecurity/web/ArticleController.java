@@ -70,10 +70,10 @@ private final ArticleRepository articleRepository;
 
     @GetMapping("/add")
     public String add() {
-//        if (loggedUser.getUsername() == null) {
-//            return "redirect:/users/login";
-//
-//        }
+        if (loggedUser.getUsername() == null) {
+            return "redirect:/users/login";
+
+        }
         return "add-article";
     }
 
@@ -82,8 +82,9 @@ private final ArticleRepository articleRepository;
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes,
     @AuthenticationPrincipal UserDetails principal){
-        if (!loggedUser.isLogged()){
+        if (loggedUser.getUsername() == null) {
             throw  new IllegalArgumentException();
+
         }
 
         if (bindingResult.hasErrors()){
@@ -103,5 +104,12 @@ private final ArticleRepository articleRepository;
 
 
 
+    }
+    @DeleteMapping("/articles/{id}")
+
+    public String deleteArticle(@PathVariable Long id){
+        articleService.delete(id);
+
+        return "redirect:/all";
     }
 }

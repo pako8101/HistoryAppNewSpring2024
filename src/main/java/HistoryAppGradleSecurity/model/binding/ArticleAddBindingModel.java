@@ -1,7 +1,9 @@
 package HistoryAppGradleSecurity.model.binding;
 
+import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,13 +14,35 @@ public class ArticleAddBindingModel {
     @Size(min = 3,max = 30, message = "Article title must be between 3 and 30 characters")
     @NotEmpty
     private String title;
+    @NotNull(message = "You have to write author name!")
+    private UserEnt author;
     @Size(min = 10,message = "Article content must be more then 10 characters!")
     private String content;
-    @NotNull
-    private PeriodEnum category;
+    @NotNull(message = "You have to choose from which period is article!")
+    private PeriodEnum period;
+    @NotNull(message = "You have to pick category!")
     private Set<CategoryNameEnum> categories;
 
     public ArticleAddBindingModel() {
+    }
+
+    public PeriodEnum getPeriod() {
+
+        return period;
+    }
+
+    public ArticleAddBindingModel setPeriod(PeriodEnum period) {
+        this.period = period;
+        return this;
+    }
+
+    public UserEnt getAuthor() {
+        return author;
+    }
+
+    public ArticleAddBindingModel setAuthor(UserEnt author) {
+        this.author = author;
+        return this;
     }
 
     public String getTitle() {
@@ -39,14 +63,6 @@ public class ArticleAddBindingModel {
         return this;
     }
 
-    public PeriodEnum getCategory() {
-        return category;
-    }
-
-    public ArticleAddBindingModel setCategory(PeriodEnum category) {
-        this.category = category;
-        return this;
-    }
 
     public Set<CategoryNameEnum> getCategories() {
         return categories;

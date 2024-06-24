@@ -10,7 +10,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "articles")
-public class Article extends BaseEntity{
+public class Article {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column(name = "title",nullable = false,unique = true)
     private String title;
     @Column(columnDefinition = "TEXT")
@@ -39,6 +42,15 @@ public class Article extends BaseEntity{
 
     public Article setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public Article setId(long id) {
+        this.id = id;
         return this;
     }
 

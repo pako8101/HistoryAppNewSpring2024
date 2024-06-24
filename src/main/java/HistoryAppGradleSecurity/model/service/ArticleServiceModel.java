@@ -15,10 +15,19 @@ public class ArticleServiceModel {
     private UserEnt author;
     private String description;
     private Set<Picture> pictures;
-
+    private PeriodEnum period;
     private Set<CategoryNameEnum>categories;
 
     public ArticleServiceModel() {
+    }
+
+    public PeriodEnum getPeriod() {
+        return period;
+    }
+
+    public ArticleServiceModel setPeriod(PeriodEnum period) {
+        this.period = period;
+        return this;
     }
 
     public String getDescription() {

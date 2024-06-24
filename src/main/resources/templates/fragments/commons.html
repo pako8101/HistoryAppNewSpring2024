@@ -182,7 +182,13 @@
             </header>
 
             <footer th:fragment="footer" class="home-footer1">
+
                 <div class="home-container09">
+                    <div
+                            class="mission center">
+                        <h1 >Our Mission</h1><br>
+                        Our mission is to engage people with cultural heritage and to improve history education worldwide.
+                    </div>
                     <h3 class="home-text32 Heading-3">ANCIENT WORLD</h3>
                     <span class="home-text33">
                 <span>5000 VELIKO TARNOVO</span>
@@ -196,27 +202,24 @@
                     <div class="home-container10">
                         <span class="home-text38">Categories</span>
                         <a href="#" class="home-text39">Collections</a>
-                        <a href="#" class="home-text40">Desks</a>
-                        <a href="#" class="home-text41">Articles</a>
-                        <a href="#" class="home-text42">Time Periods</a>
+                        <a th:href="@{/articles}" class="home-text41">Articles</a>
+
 
                     </div>
                     <div class="home-container11">
                         <span class="home-text45">Company</span>
-                        <a href="#" class="home-text46">Post</a>
-                        <a href="#" class="home-text48">Specials</a>
                         <a th:href="@{/about}" class="home-text49">About</a>
-                        <a href="#" class="home-text50">Blog</a>
+                        <a href="#" class="home-text50">Newsletter</a>
                     </div>
                     <div class="home-container12">
                         <span class="home-text51">Resources</span>
                         <a href="#" class="home-text52">Contact us</a>
-                        <a href="#" class="home-text53">Article</a>
+                        <a href="#" class="home-text42">Time Periods</a>
 
                     </div>
 
                 </div>
-                <a style="margin-top: 20%;margin-bottom:-5rem;position: relative;bottom: 18px;left: -55rem"> &copy;Kamenov Spring Team 2024. All rights reserved.</a>
+                <a style="margin-top: 20%;margin-bottom:-5rem;position: relative;bottom: 18px;left: -60rem"> &copy;Kamenov Spring Team 2024. All rights reserved.</a>
             </footer>
         </div>
 

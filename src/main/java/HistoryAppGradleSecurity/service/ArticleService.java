@@ -15,4 +15,6 @@ public interface ArticleService {
     ArticleDetailsViewModel findArticleBId(Long id);
 
     Article findArticleById(Long id);
+
+    void delete(Long id);
 }

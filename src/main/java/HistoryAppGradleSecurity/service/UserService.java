@@ -19,7 +19,7 @@ public interface UserService {
 
     boolean userNameExists(String username);
 
-    void registerAndLoginUser(UserServiceModel userServiceModel);
+//    void registerAndLoginUser(UserServiceModel userServiceModel);
 
 
     UserEnt findByName(String username);
