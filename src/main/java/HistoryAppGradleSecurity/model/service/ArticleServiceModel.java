@@ -10,10 +10,10 @@ import java.util.Set;
 public class ArticleServiceModel {
     private Long id;
 
-    private PeriodEnum category;
-    private String name;
-    private UserEnt author;
-    private String description;
+
+    private String title;
+    private String author;
+    private String content;
     private Set<Picture> pictures;
     private PeriodEnum period;
     private Set<CategoryNameEnum>categories;
@@ -30,12 +30,12 @@ public class ArticleServiceModel {
         return this;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public ArticleServiceModel setDescription(String description) {
-        this.description = description;
+    public ArticleServiceModel setContent(String content) {
+        this.content = content;
         return this;
     }
 
@@ -66,29 +66,21 @@ public class ArticleServiceModel {
         return this;
     }
 
-    public PeriodEnum getCategory() {
-        return category;
+
+    public String getTitle() {
+        return title;
     }
 
-    public ArticleServiceModel setCategory(PeriodEnum category) {
-        this.category = category;
+    public ArticleServiceModel setTitle(String title) {
+        this.title = title;
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public ArticleServiceModel setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public UserEnt getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public ArticleServiceModel setAuthor(UserEnt author) {
+    public ArticleServiceModel setAuthor(String author) {
         this.author = author;
         return this;
     }

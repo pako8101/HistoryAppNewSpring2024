@@ -54,7 +54,7 @@ public class ArticleServiceImpl implements ArticleService {
     public void addNewArticle(ArticleServiceModel articleServiceModel) {
         Article article = modelMapper.map(articleServiceModel,Article.class);
 
-        article.setAuthor(userService.findCurrentUserLoginEntity());
+        //article.setAuthor(userService.findCurrentUserLoginEntity());
 
         article.setCategories(articleServiceModel.getCategories()
                 .stream()

@@ -103,15 +103,29 @@ body {
   padding-top: 70px;
   flex-direction: column;
   background-color: lightslategray;
+  position: sticky;
 }
 
 .home-header {
-  padding-top: 24px;
+  padding-top: 20px;
   flex-direction: row;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
   justify-content: space-between;
-}
+  /*overflow: hidden;*/
+  background-color: #dfe7dd;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%;
+  z-index: 1000;!important;
+  margin: -1rem auto -1rem auto;
+font-size: medium;
 
+}
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
 
 .home-image {
   width: 24px;
@@ -605,6 +619,7 @@ body {
   padding-left: 24px;
   padding-right: 24px;
   flex-direction: column;
+  position: sticky;
 }
 .column {
   display: flex;

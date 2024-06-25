@@ -3,28 +3,132 @@
 
 <head th:replace="fragments/commons::head">
     <link rel="stylesheet" href="/css/reset-css.css">
+    <link rel="stylesheet" href="/css/add-article.css">
 </head>
 <body>
 <div class="wrapper">
     <!-- Navigation -->
     <header th:replace="fragments/commons::nav"></header>
-    <h3 class="mySticky bg-gray text-dark rounded">Articles count: <span th:text="${articles.size()}"></span></h3>
-    <section th:each="a : ${articles}" th:object="${a}" class="article">
-        <img th:src="*{pictureUrl}" alt="Title image">
-        <div>
-            <h2 th:text="*{title}">Your Article</h2>
-            <h2 th:text="*{title}">Your Article</h2>
-            <p th:text="*{content}"></p>
-            <a th:href="@{/articles/details/{id}(id=*{id})}" class="btn">Learn More</a>
-            <form
-                    th:action="@{/a/{id}(id=${a.id})}"
-                    th:method="DELETE"
-            >
-                <button type="submit" class="ml-3 text-danger" >Remove</button>
-            </form>
-        </div>
+    <h3 class="mySticky bg-gray text-dark rounded">Articles count: <span th:text="${articles.size()}"></span></h3><br>
 
-    </section>
+    <div class="image-wrapper">
+        <script>
+            jsQueue(()=>{
+                async_load_js('https://assets.pinterest.com/js/pinit.js')
+            });
+        </script>
+        <div class="pinterest_button">
+            <a class="PIN_1719262447206_button_pin PIN_1719262447206_beside PIN_1719262447206_save PIN_1719262447206_padded" href="https://www.pinterest.com/pin/create/button/?guid=J0kKMsdDEAYg-1&amp;url=https%3A%2F%2Fwww.worldhistory.org%2Fcollection%2F241%2Fghost-stories-of-the-plains-indians%2F&amp;media=https%3A%2F%2Fwww.worldhistory.org%2Fuploads%2Fimages%2F17917.jpg&amp;description=Ghost%20stories%20are%20among%20the%20oldest%20in%20recorded%20history%20and%20were%20as%20popular%20with%20the%20Plains%20Indians%20of%20North%20America%20as%20in%20any%20other%20ancient%20culture.%20The%20descendants%20of%20those%20nations%20still%20tell%20the%20same%20stories%20of%20ghostly%20apparitions%20in%20the%20present%20day%20%E2%80%93%20and%20their%20popularity%20has%20not%20diminished%20with..." data-pin-log="button_pinit" data-pin-id="https://www.worldhistory.org/collection/241/ghost-stories-of-the-plains-indians/" data-pin-href="https://www.pinterest.com/pin/create/button/?guid=J0kKMsdDEAYg-1&amp;url=https%3A%2F%2Fwww.worldhistory.org%2Fcollection%2F241%2Fghost-stories-of-the-plains-indians%2F&amp;media=https%3A%2F%2Fwww.worldhistory.org%2Fuploads%2Fimages%2F17917.jpg&amp;description=Ghost%20stories%20are%20among%20the%20oldest%20in%20recorded%20history%20and%20were%20as%20popular%20with%20the%20Plains%20Indians%20of%20North%20America%20as%20in%20any%20other%20ancient%20culture.%20The%20descendants%20of%20those%20nations%20still%20tell%20the%20same%20stories%20of%20ghostly%20apparitions%20in%20the%20present%20day%20%E2%80%93%20and%20their%20popularity%20has%20not%20diminished%20with..." data-pin-x="0"><span class="PIN_1719262447206_count" data-pin-href="https://www.pinterest.com/pin/create/button/?guid=J0kKMsdDEAYg-1&amp;url=https%3A%2F%2Fwww.worldhistory.org%2Fcollection%2F241%2Fghost-stories-of-the-plains-indians%2F&amp;media=https%3A%2F%2Fwww.worldhistory.org%2Fuploads%2Fimages%2F17917.jpg&amp;description=Ghost%20stories%20are%20among%20the%20oldest%20in%20recorded%20history%20and%20were%20as%20popular%20with%20the%20Plains%20Indians%20of%20North%20America%20as%20in%20any%20other%20ancient%20culture.%20The%20descendants%20of%20those%20nations%20still%20tell%20the%20same%20stories%20of%20ghostly%20apparitions%20in%20the%20present%20day%20%E2%80%93%20and%20their%20popularity%20has%20not%20diminished%20with..." data-pin-log="button_pinit" data-pin-x="0">0</span>Save</a>
+        </div>
+        <h2>Collection</h2>
+        <div class="clr"></div>
+        <div class="ci_info">
+            <div class="ci_author_image">
+                <img loading="lazy" alt="Joshua J. Mark" src="/uploads/profile_photos/150-JPryst.JPG" width="50" height="50">
+            </div>
+            <div class="ci_author trans block">
+                by <a href="/user/JPryst/" rel="author" title="User Page: Joshua J. Mark">Joshua J. Mark</a>
+                <br>
+                published on 16 June 2024
+            </div>
+        </div>
+        <div class="subscriptions_header">
+            <a href="/interestemails/?tags=Cheyenne+ghost+Native_Peoples_of_North_America+Pawnee+Plains_Indians+Sioux" class="topic_subscribe outline_button">Subscribe to topic</a>
+            <a href="/interestemails/?author=JPryst" class="outline_button" rel="nofollow">Subscribe to author</a>
+        </div>
+        <div class="text body">
+            <article>
+                <p><a href="/ghost/">Ghost</a> stories are among the oldest in recorded history and were as popular with the <a href="/Plains_Indians/">Plains Indians</a> of North America as in any other ancient <a href="/disambiguation/culture/">culture</a>. The descendants of those nations still tell the same stories of ghostly apparitions in the present day – and their popularity has not diminished with time.</p>
+                <p>The stories in this collection come from the <a href="/Cheyenne/">Cheyenne</a>, <a href="/Pawnee/">Pawnee</a>, and <a href="/Sioux/">Sioux</a> nations. The <a href="/article/2360/cheyenne-creation-story/">Cheyenne Creation Story</a>, <a href="/article/2279/lakota-sioux-creation-story/">Lakota Sioux Creation Story</a>, and the <a href="/article/2462/cheyenne-afterlife/">Cheyenne Afterlife</a> are included to give the tales an expanded context. These stories and the many others having nothing to do with ghosts or the afterlife stand as a refutation to the claim that the <a href="/Native_Peoples_of_North_America/">Native peoples of North America</a> had no <a href="/literature/">literature</a>. They actually had – and still have – a vast body of literary works with more produced by indigenous writers every year.</p> </article>
+        </div>
+        <div class="collection_contents">
+            <div class="collection_default ci_listing">
+                <h3>Articles &amp; Definitions</h3>
+                <div class="ci_related_content_wrapper">
+                    <a href="/article/2279/lakota-sioux-creation-story/" class="content_item   ci_type_2 " id="2-2279">
+                        <picture>
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/17900.jpg.webp?v=1714889704 360w, https://www.worldhistory.org/img/c/p/720x404/17900.jpg.webp?v=1714889704 720w" type="image/webp">
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/17900.jpg?v=1714889704 360w, https://www.worldhistory.org/img/c/p/720x404/17900.jpg?v=1714889704 720w" type="image/jpg">
+                            <img loading="lazy" src="https://www.worldhistory.org/img/c/p/360x202/17900.jpg?v=1714889704" width="360" height="202" alt="Lakota Sioux Creation Story" class="ci_image ">
+                        </picture>
+                        <div class="ci_preview_content">
+                            <div class="ci_header type__2">
+                                <div class="ci_type_name">
+                                    Article </div>
+                                <h3>Lakota Sioux Creation Story</h3>
+                            </div>
+                            <div class="ci_preview">
+                                The Lakota Sioux, like other tribal nations, had many versions of a... </div>
+                        </div>
+                    </a>
+                    <a href="/article/2360/cheyenne-creation-story/" class="content_item   ci_type_2 " id="2-2360">
+                        <picture>
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/18309.jpeg.webp?v=1706732226 360w, https://www.worldhistory.org/img/c/p/720x404/18309.jpeg.webp?v=1706732226 720w" type="image/webp">
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/18309.jpeg?v=1706732226 360w, https://www.worldhistory.org/img/c/p/720x404/18309.jpeg?v=1706732226 720w" type="image/jpeg">
+                            <img loading="lazy" src="https://www.worldhistory.org/img/c/p/360x202/18309.jpeg?v=1706732226" width="360" height="202" alt="Cheyenne Creation Story" class="ci_image ">
+                        </picture>
+                        <div class="ci_preview_content">
+                            <div class="ci_header type__2">
+                                <div class="ci_type_name">
+                                    Article </div>
+                                <h3>Cheyenne Creation Story</h3>
+                            </div>
+                            <div class="ci_preview">
+                                The Cheyenne Creation Story is the account of the beginning of the world... </div>
+                        </div>
+                    </a>
+                    <a href="/article/2288/a-teton-ghost-story/" class="content_item   ci_type_2 " id="2-2288">
+                        <picture>
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/17949.jpg.webp?v=1696180746 360w, https://www.worldhistory.org/img/c/p/720x404/17949.jpg.webp?v=1696180746 720w" type="image/webp">
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/17949.jpg?v=1696180746 360w, https://www.worldhistory.org/img/c/p/720x404/17949.jpg?v=1696180746 720w" type="image/jpg">
+                            <img loading="lazy" src="https://www.worldhistory.org/img/c/p/360x202/17949.jpg?v=1696180746" width="360" height="202" alt="A Teton Ghost Story" class="ci_image ">
+                        </picture>
+                        <div class="ci_preview_content">
+                            <div class="ci_header type__2">
+                                <div class="ci_type_name">
+                                    Article </div>
+                                <h3>A Teton Ghost Story</h3>
+                            </div>
+                            <div class="ci_preview">
+                                A Teton Ghost Story is a tale from the Native American Teton (Tetonwan... </div>
+                        </div>
+                    </a>
+                    <a href="/article/2292/the-resuscitation-of-the-only-daughter/" class="content_item   ci_type_2 " id="2-2292">
+                        <picture>
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/18007.jpg.webp?v=1697581084 360w, https://www.worldhistory.org/img/c/p/720x404/18007.jpg.webp?v=1697581084 720w" type="image/webp">
+                            <source srcset="https://www.worldhistory.org/img/c/p/360x202/18007.jpg?v=1697581084 360w, https://www.worldhistory.org/img/c/p/720x404/18007.jpg?v=1697581084 720w" type="image/jpg">
+                            <img loading="lazy" src="https://www.worldhistory.org/img/c/p/360x202/18007.jpg?v=1697581084" width="360" height="202" alt="The Resuscitation of the Only Daughter" class="ci_image ">
+                        </picture>
+                        <div class="ci_preview_content">
+                            <div class="ci_header type__2">
+                                <div class="ci_type_name">
+                                    Article </div>
+                                <h3>The Resuscitation of the Only Daughter</h3>
+                            </div>
+                            <div class="ci_preview">
+                                The Resuscitation of the Only Daughter is a Sioux story about a young... </div>
+                        </div>
+                    </a>
+
+
+
+    </div>
+<!--    <section th:each="a : ${articles}" th:object="${a}" class="article">-->
+<!--        <img th:src="*{pictureUrl}" alt="Title image">-->
+<!--        <div>-->
+<!--            <h2 th:text="*{title}">Your Article</h2>-->
+<!--            <h2 th:text="*{author}">Your Article</h2>-->
+<!--            <p th:text="*{content}"></p>-->
+<!--            <a th:href="@{/articles/details/{id}(id=*{id})}" class="btn">Learn More</a>-->
+<!--            <form-->
+<!--                    th:action="@{/a/{id}(id=${a.id})}"-->
+<!--                    th:method="DELETE"-->
+<!--            >-->
+<!--                <button type="submit" class="ml-3 text-danger" >Remove</button>-->
+<!--            </form>-->
+<!--        </div>-->
+
+<!--    </section>-->
 </div>
 
 <!-- Wrapper Ends -->

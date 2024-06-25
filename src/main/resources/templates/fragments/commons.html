@@ -26,14 +26,16 @@
 <div>
 
     <div class="home-container">
-        <div class="logged-user"><br>
-            Welcome,
-            <th:block sec:authentication="name"></th:block>
-            !
-        </div>
-        <div class="home-navbar">
-            <header th:fragment="nav" data-role="Header" class="home-header max-width-container">
 
+        <div class="home-navbar">
+            <header th:fragment="nav" data-role="Header" id="navbar"
+                    class="home-header max-width-container">
+
+                <div class="logged-user"><br>
+                    Welcome,
+                    <th:block sec:authentication="name"></th:block>
+                    !
+                </div>
  <span class="navbar-logo-title">
          <div class="home-container01">
                     <form action="https://www.google.com/search" method="get">
@@ -45,6 +47,7 @@
                 </div>
 
                     <a th:href="@{/}" style="font-weight: bold;margin-left: 8rem"
+                       id="logo"
                        class="navbar-logo-title">&copy;ANCIENT HISTORY PORTAL</a>
                                     <a th:href="@{/}" style="font-weight: bold;"
                                        class="navbar-logo-title"></a>
@@ -52,12 +55,10 @@
                     <span style="font-size: small;margin-left:-2rem;text-align: center">LEARN ABOUT THE WORLD OF ANTIQUITY</span>
                     </span>
 
-                <div class="home-navbar1">
-                    <th:block>
+                <div class="home-navbar1" id="home">
 
-
-                        <div class="home-middle">
-                            <div class="home-left">
+                        <div class="home-middle" >
+                            <div class="home-left" id="left">
                                 <a style="margin-left: 1rem" th:href="@{/}" class="navbar-link">HOME</a>
                                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}"
                                    class="navbar-link active">LOGIN</a>
@@ -179,7 +180,27 @@
 
                 </div>
 
+                <script>
+                    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+                    window.onscroll = function() {scrollFunction()};
+
+                    function scrollFunction() {
+                        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                            document.getElementById("navbar").style.padding = "10px 5px";
+                            document.getElementById("logo").style.fontSize = "10px";
+                            document.getElementById("home").style.fontSize = "10px";
+                            document.getElementById("left").style.fontSize = "10px";
+                        } else {
+                            document.getElementById("navbar").style.padding = "20px 6px";
+                            document.getElementById("logo").style.fontSize = "13px";
+                            document.getElementById("home").style.fontSize = "12px";
+                            document.getElementById("left").style.fontSize = "12px";
+                        }
+                    }
+                </script>
             </header>
+
+
 
             <footer th:fragment="footer" class="home-footer1">
 

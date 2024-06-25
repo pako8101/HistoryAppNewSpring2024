@@ -8,10 +8,18 @@
 </head>
 <header th:replace="fragments/commons::nav"></header>
 
-<div style="margin-left: 30rem" class="container-fluid">
-  <h5 class="text-center text-white mt-5">Upps, something went terribly wrong!</h5>
-  <h5 class="text-center text-white mt-5">We are veeeery sorry and we are working to resolve the problem.</h5>
-  <img th:src="@{/static/images/brokenCastle.jpg}" alt="Broken castle">
+<div style="margin-left: 30rem;
+color: darkmagenta;
+text-autospace: ideograph-space;
+font-weight: bold;
+font-size: larger;
+line-height: 1.5;
+" class="container-fluid">
+  <h5 class="text-center text-white mt-5">
+    Upps, something went terribly wrong!</h5>
+  <h5 class="text-center text-white mt-5">
+    We are veeeery sorry and we are working to resolve the problem.</h5>
+  <img style="width: 50%;height: auto" th:src="@{/images/brokenCastle.jpg}" alt="Broken castle">
 </div>
 
 <div>

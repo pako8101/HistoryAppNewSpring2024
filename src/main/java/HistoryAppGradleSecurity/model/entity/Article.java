@@ -18,8 +18,8 @@ public class Article {
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
-    @ManyToOne
-    private UserEnt author;
+    @Column(nullable = false)
+    private String author;
     @Enumerated(EnumType.STRING)
     private PeriodEnum period;
     @DateTimeFormat
@@ -63,11 +63,11 @@ public class Article {
         return this;
     }
 
-    public UserEnt getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public Article setAuthor(UserEnt author) {
+    public Article setAuthor(String author) {
         this.author = author;
         return this;
     }

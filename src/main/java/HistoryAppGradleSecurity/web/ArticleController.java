@@ -96,7 +96,7 @@ private final ArticleRepository articleRepository;
         }
         ArticleServiceModel articleServiceModel = modelMapper.map(articleAddBindingModel, ArticleServiceModel.class);
 
-        articleServiceModel.setName(principal.getUsername());
+        articleServiceModel.setTitle(principal.getUsername());
 
         articleService.addNewArticle(articleServiceModel);
 

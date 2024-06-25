@@ -8,22 +8,34 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ArticleAddBindingModel {
     @Size(min = 3,max = 30, message = "Article title must be between 3 and 30 characters")
-    @NotEmpty
+    @NotNull
     private String title;
     @NotNull(message = "You have to write author name!")
-    private UserEnt author;
+    @Size(min = 5, max = 30,message = "Author name length must be between 5 and 30 symbols!")
+    private String author;
     @Size(min = 10,message = "Article content must be more then 10 characters!")
     private String content;
     @NotNull(message = "You have to choose from which period is article!")
     private PeriodEnum period;
-    @NotNull(message = "You have to pick category!")
+    @NotNull
     private Set<CategoryNameEnum> categories;
 
     public ArticleAddBindingModel() {
+        this.categories = new HashSet<>();
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public ArticleAddBindingModel setAuthor(String author) {
+        this.author = author;
+        return this;
     }
 
     public PeriodEnum getPeriod() {
@@ -36,14 +48,6 @@ public class ArticleAddBindingModel {
         return this;
     }
 
-    public UserEnt getAuthor() {
-        return author;
-    }
-
-    public ArticleAddBindingModel setAuthor(UserEnt author) {
-        this.author = author;
-        return this;
-    }
 
     public String getTitle() {
         return title;

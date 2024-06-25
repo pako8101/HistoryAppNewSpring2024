@@ -4,6 +4,7 @@ import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ArticleViewModel {
@@ -11,13 +12,14 @@ public class ArticleViewModel {
     private  Long id;
 
     private String title;
-    private UserEnt author;
+    private String author;
 
     private String pictureUrl;
     private PeriodEnum period;
     private String content;
-    private Set<CategoryNameEnum> categories;
+
     public ArticleViewModel() {
+
     }
 
     public Long getId() {
@@ -38,20 +40,11 @@ public class ArticleViewModel {
         return this;
     }
 
-    public Set<CategoryNameEnum> getCategories() {
-        return categories;
-    }
-
-    public ArticleViewModel setCategories(Set<CategoryNameEnum> categories) {
-        this.categories = categories;
-        return this;
-    }
-
-    public UserEnt getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public ArticleViewModel setAuthor(UserEnt author) {
+    public ArticleViewModel setAuthor(String author) {
         this.author = author;
         return this;
     }
