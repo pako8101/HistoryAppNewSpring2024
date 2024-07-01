@@ -2,6 +2,7 @@ package HistoryAppGradleSecurity.web;
 
 
 import HistoryAppGradleSecurity.model.binding.ArticleAddBindingModel;
+import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -55,7 +57,13 @@ private final ArticleRepository articleRepository;
 
         return "articles";
     }
+    @PostMapping("/upload-picture")
+    public ModelAndView uploadPicture(@Valid
+                                      UploadPictureArticleBindingModel uploadPictureArticleBindingModel) {
+        articleService.uploadPicture(uploadPictureArticleBindingModel);
 
+        return new ModelAndView("redirect:/articles");
+    }
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         Article article = articleRepository.findById(id).orElse(null);

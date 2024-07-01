@@ -2,20 +2,23 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head">
-    <link rel="stylesheet" href="/css/reset-css.css">
+
 </head>
+<link rel="stylesheet" href="/css/reset-css.css">
+<link rel="stylesheet" href="/css/articles.css">
 <body>
+<header th:replace="fragments/commons::nav"></header>
 <div class="wrapper">
     <!-- Navigation -->
-    <header th:replace="fragments/commons::nav"></header>
 
-    <div class="details-main">
-        <section class="route-info text-center">
-            <h2  id="article-name">Article title: <span th:text="${article.title}"></span></h2>
-            <img th:src="${article.pictures}" alt="Title image">
+
+    <div class="details-header2" >
+        <section  class="route-info text-center">
+            <h2 class="site-title" id="article-name">Article title: <span th:text="${article.title}"></span></h2><br>
+            <img class="image-details2" th:src="${article.pictures}" alt="Title image"><br>
             <p>Author name: <span th:text="${article.author}" id="authorName"></span></p>
-            <p> <span th:text="${article.content}"  id="totalDistance"></span> km</p>
-            <h4 >Period: <span th:text="${article.period}"  ></span></h4>
+            <p> <span th:text="${article.content}"  id="content"></span></p>
+            <h4 class="period" >Period: <span th:text="${article.period}"  ></span></h4>
 
           </section>
         <section th:unless="${#lists.size(article.pictures) == 0}" class="gallery">
@@ -25,7 +28,7 @@
                  th:alt="${picture.getAlt()}"
                  height="100%">
         </section>
-        <form
+        <form class="button"
                 th:action="@{/articles/{id}(id=${article.getId()})}"
                 th:method="DELETE"
         >

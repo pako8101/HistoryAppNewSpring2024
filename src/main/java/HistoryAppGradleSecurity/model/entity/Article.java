@@ -24,6 +24,8 @@ public class Article {
     private PeriodEnum period;
     @DateTimeFormat
     private LocalDate created;
+    @Column(name = "image_url")
+    private String imageUrl;
     @OneToMany(mappedBy = "article",
             targetEntity = Picture.class,
             fetch = FetchType.EAGER)
@@ -34,6 +36,15 @@ public class Article {
     public Article() {
         this.pictures = new HashSet<>();
         this.categories = new HashSet<>();
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public Article setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
     }
 
     public String getTitle() {

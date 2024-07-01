@@ -7,9 +7,17 @@
     font-size: x-large;
     font-family: "Times New Roman";
     font-style: italic;
-    margin: 1rem 2rem 1rem 2rem;
+    margin: 4rem 3rem 2rem 3rem;
+
 
 }
 .about-language{
-    padding: 1rem 2rem 1rem 2rem;
+    padding: 2rem 4rem 2rem 4rem;
+
+}
+.wrapper{
+
+    border-radius: 8px;
+    border: #555555;
+
 }

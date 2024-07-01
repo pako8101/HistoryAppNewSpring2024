@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.service;
 
+import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -17,4 +18,6 @@ public interface ArticleService {
     Article findArticleById(Long id);
 
     void delete(Long id);
+
+    void uploadPicture(UploadPictureArticleBindingModel uploadPictureArticleBindingModel);
 }

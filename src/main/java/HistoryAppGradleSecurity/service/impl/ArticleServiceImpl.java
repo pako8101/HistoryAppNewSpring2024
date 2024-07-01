@@ -1,6 +1,8 @@
 package HistoryAppGradleSecurity.service.impl;
 
+import HistoryAppGradleSecurity.exception.ArticleNotFoundException;
 import HistoryAppGradleSecurity.exception.ObjectNotFoundException;
+import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -10,25 +12,35 @@ import HistoryAppGradleSecurity.repository.UserRepository;
 import HistoryAppGradleSecurity.service.ArticleService;
 import HistoryAppGradleSecurity.service.CategoryService;
 import HistoryAppGradleSecurity.service.UserService;
+import HistoryAppGradleSecurity.service.assists.PictureAssistService;
 import HistoryAppGradleSecurity.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 @Service
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final ModelMapper modelMapper;
     private final UserService userService;
+    private final PictureAssistService pictureAssistService;
     private final CategoryService categoryService;
+    private static final String BASE_IMAGES_PATH = ".\\src\\main\\resources\\static\\images\\";
     private final LoggedUser loggedUser;
     private final UserRepository userRepository;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper, UserService userService, CategoryService categoryService, LoggedUser loggedUser, UserRepository userRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper, UserService userService, PictureAssistService pictureAssistService, CategoryService categoryService, LoggedUser loggedUser, UserRepository userRepository) {
         this.articleRepository = articleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.pictureAssistService = pictureAssistService;
         this.categoryService = categoryService;
         this.loggedUser = loggedUser;
         this.userRepository = userRepository;
@@ -84,4 +96,58 @@ public class ArticleServiceImpl implements ArticleService {
                         articleRepository.findByIdAndAuthor(id, user))
                 .ifPresent(articleRepository::delete);
     }
+
+    @Override
+    public void uploadPicture(UploadPictureArticleBindingModel uploadPictureArticleBindingModel) {
+        MultipartFile pictureFile = uploadPictureArticleBindingModel.getPicture();
+        boolean isPrimary = uploadPictureArticleBindingModel.getPrimary();
+
+        Article article = articleRepository.findById(uploadPictureArticleBindingModel.getId())
+                .orElseThrow(() -> new ArticleNotFoundException("Article not found!"));
+
+        String picturePath = getPicturePath(pictureFile, article.getTitle(), isPrimary);
+
+        try {
+            File file = new File(BASE_IMAGES_PATH + picturePath);
+            file.getParentFile().mkdirs();
+            file.createNewFile();
+
+            OutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(pictureFile.getBytes());
+
+            if (isPrimary) {
+                article.setImageUrl(picturePath);
+                articleRepository.save(article);
+            } else {
+                pictureAssistService.create(article, picturePath);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getStackTrace());
+        }
+    }   private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {
+        String ext = getFileExtension(pictureFile.getOriginalFilename());
+
+        String pathPattern = "%s\\%s\\%s." + ext;
+
+        return String.format(pathPattern,
+                transformArticleName(routeName),
+                isPrimary ? "" : "gallery",
+                UUID.randomUUID());
+    }
+    private String getFileExtension(String fileName) {
+        String[] splitPictureName = fileName.split("\\.");
+        return splitPictureName[splitPictureName.length - 1];
+    }
+
+    private String getFilePath(String routeName) {
+        String pathPattern = "%s\\%s_%s.xml";
+        return String.format(pathPattern,
+                loggedUser.getUsername(),
+                transformArticleName(routeName),
+                UUID.randomUUID());
+    }
+  private String transformArticleName(String routeName) {
+    return routeName.toLowerCase()
+            .replaceAll("\\s+", "_");
+}
 }
