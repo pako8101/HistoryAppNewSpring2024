@@ -1,0 +1,59 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head">
+
+</head>
+<link rel="stylesheet" href="/css/maps.css">
+<link rel="stylesheet" href="/css/reset-css.css">
+<body>
+<header th:replace="fragments/commons::nav">
+</header>
+
+<div class="info">
+    <div></div>
+    <div class="wrapper">
+        <h1  class="title">Ancient History Maps</h1>
+        <div class="section-container column">
+            <div class="max-width-container">
+                <div class="section-heading-section-heading">
+                    <h1 style="font-size: 40px !important;"
+                            class="section-heading-text Heading-2">
+                        <span>Latest Maps</span>
+                    </h1>
+                    <span class="section-heading-text1">
+                <span>
+                  Start read over based on the categories you are interested in
+                </span>
+              </span>
+                </div>
+                <div class="home-cards-container">
+                    <div class="category-card-category-card">
+                        <img alt="image" src="/images/balkansRomeRule.png" class="category-card-image"/>
+                        <span class="category-card-text"><span>Roman Rule in the Balkans, c. 200 CE</span></span>
+                    </div>
+                    <div class="category-card-category-card">
+                        <img alt="image" src="/images/greek.jpg" class="category-card-image"/>
+                        <span class="category-card-text"><span>Ancient Greece</span></span>
+                    </div>
+                    <div class="category-card-category-card">
+                        <img alt="image" src="/images/rome.jpg" class="category-card-image"/>
+                        <span class="category-card-text"><span>Rome Empire</span></span>
+                    </div>
+                    <div class="category-card-category-card">
+                        <img alt="image" src="/images/Mesopotamian-innovations.jpg" class="category-card-image"/>
+                        <span class="category-card-text"><span>Mesopotamia</span></span>
+                    </div>
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+<!-- Wrapper Ends -->
+</body>
+<footer th:replace="fragments/commons::footer">
+
+</footer>
+</html>

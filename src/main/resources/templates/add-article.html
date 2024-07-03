@@ -30,9 +30,13 @@
                             <small th:each="error :${#fields.errors('author')}"
                                    th:text="${error}"
                                    th:class="'invalid-feedback text-danger'" id="author"> Error message!</small>
-                            <input type="email" name="field2" placeholder="Your Email *">
+
+
+
                             <textarea name="field3" placeholder="About yourself"></textarea>
 
+
+                            <legend><span class="number">2</span> Article Text</legend>
                             <label for="period">Period:</label>
                             <select th:field="*{period}"
                                     th:errorclass="'is-invalid bg-danger'"
@@ -48,30 +52,40 @@
                                    th:text="${error}"
                                    th:class="'invalid-feedback text-danger'"> error message</small>
 
-<!--                            <select id="category" name="field4">-->
-<!--                                <optgroup label="category">-->
-<!--                                    <option th:each="c:${T(HistoryAppGradleSecurity.model.enums.CategoryNameEnum).values()}"-->
-<!--                                            th:value="${c}" th:text="${c}"-->
-<!--                                            value="egypt">Egypt</option>-->
-<!--                                </optgroup>-->
-<!--                            </select>-->
-<!--                            <small th:each="error: ${#fields.errors('category')}"-->
-<!--                                   th:text="${error}"-->
-<!--                                   th:class="'invalid-feedback text-danger'"> error message</small>-->
+                            <!--                            <select id="category" name="field4">-->
+                            <!--                                <optgroup label="category">-->
+                            <!--                                    <option th:each="c:${T(HistoryAppGradleSecurity.model.enums.CategoryNameEnum).values()}"-->
+                            <!--                                            th:value="${c}" th:text="${c}"-->
+                            <!--                                            value="egypt">Egypt</option>-->
+                            <!--                                </optgroup>-->
+                            <!--                            </select>-->
+                            <div class="form-group p-3" style="margin-bottom: 1rem">
+                                <label class="p-2" for="categories">Categories:</label>
+                                <input th:each="category: ${T(HistoryAppGradleSecurity.model.enums.CategoryNameEnum).values()}" class="m-3"
+                                       th:field="*{categories}"
+                                       type="checkbox" name="categories" id="categories"
+                                       th:text="${#strings.toLowerCase(category)}"
+                                       th:value="${category}">
+                                <br>
+                                <!--                            <small th:each="error: ${#fields.errors('category')}"-->
+                                <!--                                   th:text="${error}"-->
+                                <!--                                   th:class="'invalid-feedback text-danger'"> error message</small>-->
+                            </div>
                         </fieldset>
 
-                        <fieldset>
-                            <input th:field="*{title}"
-                                   th:errorclass="'is-invalid bg-danger'"
-                                   minlength="5"
-                                    type="text" name="title"
-                                   placeholder="Article Title">
-                            <small th:each="error :${#fields.errors('title')}"
-                                   th:text="${error}"
-                                   th:class="'invalid-feedback text-danger'"  id="inputTitleError"> Title must be more then 5 letters!</small>
+            <fieldset>
+                <input th:field="*{title}"
+                       th:errorclass="'is-invalid bg-danger'"
+                       minlength="5"
+                       type="text" name="title"
+                       placeholder="Article Title">
+                <small th:each="error :${#fields.errors('title')}"
+                       th:text="${error}"
+                       th:class="'invalid-feedback text-danger'"  id="inputTitleError"> Title must be more then 5 letters!</small>
 
-                            <legend><span class="number">2</span> Article Text</legend>
-                            <textarea th:field="*{content}"
+
+
+                <textarea th:field="*{content}"
                                       th:errorclass="'is-invalid bg-danger'"
                                       minlength="10"
                                     class="article" name="article"

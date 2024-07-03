@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.model.binding;
 
+import HistoryAppGradleSecurity.model.entity.Picture;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
@@ -12,6 +13,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ArticleAddBindingModel {
+
+    private long id;
     @Size(min = 3,max = 30, message = "Article title must be between 3 and 30 characters")
     @NotNull
     private String title;
@@ -23,10 +26,30 @@ public class ArticleAddBindingModel {
     @NotNull(message = "You have to choose from which period is article!")
     private PeriodEnum period;
     @NotNull
+    private Set<Picture> pictures;
+    @NotNull
     private Set<CategoryNameEnum> categories;
 
     public ArticleAddBindingModel() {
         this.categories = new HashSet<>();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public ArticleAddBindingModel setId(long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public ArticleAddBindingModel setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+        return this;
     }
 
     public String getAuthor() {

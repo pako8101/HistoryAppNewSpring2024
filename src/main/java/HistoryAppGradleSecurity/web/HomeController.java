@@ -52,5 +52,8 @@ public class HomeController {
     public String moderators() {
         return "moderators";
     }
-
+    @GetMapping("/maps")
+    public String maps(){
+        return "maps";
+    }
 }
