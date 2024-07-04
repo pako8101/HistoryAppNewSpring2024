@@ -12,13 +12,13 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost" data-tag="font"/>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<!--    <link rel="stylesheet" href="/css/bootstrap.min.css"/>-->
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <link rel="stylesheet" href="/css/reset-css.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
     <script src="/js/jquery-3.5.1.slim.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+<!--    <script src="/js/bootstrap.min.js"></script>-->
 </head>
 
 <body>
@@ -37,14 +37,24 @@
                     !
                 </div>
  <span class="navbar-logo-title">
-         <div class="home-container01">
-                    <form action="https://www.google.com/search" method="get">
-                        <input type="text" name="s"
-                               id="search-input" placeholder="Search AH portal"
-                               class="home-input"/>
-                    </form>
 
-                </div>
+         <div class="home-container01">
+             <hr class="border-bottom w-50">
+    <div class="mt-5 col-sm-12 my-auto align-self-center">
+        <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
+               placeholder="Enter article title or author name" aria-label="Search">
+    </div>
+ </div>
+
+<!--                    <form  method="get">-->
+<!--                        <input type="search" -->
+<!--                               id="search-input" placeholder="Enter article title or author name"-->
+<!--                               aria-label="Search"-->
+<!--                               class="home-input"/>-->
+
+<!--                    </form>-->
+
+
 
                     <a th:href="@{/}" style="font-weight: bold;margin-left: 8rem"
                        id="logo"
@@ -73,7 +83,7 @@
                             </div>
                         </div>
 
-                    </th:block>
+
 
 
                     <!--                        <div class="home-container01">-->
@@ -242,8 +252,10 @@
                 </div>
                 <a style="margin-top: 20%;margin-bottom:-5rem;position: relative;bottom: 18px;left: -60rem"> &copy;Kamenov Spring Team 2024. All rights reserved.</a>
             </footer>
-        </div>
 
+        </div>
+        <script th:src="@{js/search-bar.js}"></script>
 
 </body>
+
 </html>

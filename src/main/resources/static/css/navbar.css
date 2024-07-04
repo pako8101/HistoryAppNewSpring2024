@@ -127,7 +127,7 @@ select {
 }
 
 .home-input {
-    width: 100%;
+    width: max-content;
     box-sizing: border-box;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -137,6 +137,7 @@ select {
 
 .home-input[type=text] {
     transition: width 0.4s ease-in-out;
+    text-justify: newspaper;
 }
 
 .input:invalid {
@@ -145,7 +146,7 @@ select {
 
 .home-input:active {
     width: 100%;
-    box-shadow: coral;
+    box-shadow: 0 0 5px 1px  coral;
 }
 
 .button:hover {

@@ -5,6 +5,7 @@ import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @SuperBuilder
@@ -14,7 +15,7 @@ public class ArticleDetailsViewModel {
 
     private String title;
     private UserEnt author;
-
+    private String created;
     private String content;
 
     private Set<PictureViewModel> pictures;
@@ -28,6 +29,15 @@ public class ArticleDetailsViewModel {
 
     public ArticleDetailsViewModel setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public ArticleDetailsViewModel setCreated(String created) {
+        this.created = created;
         return this;
     }
 

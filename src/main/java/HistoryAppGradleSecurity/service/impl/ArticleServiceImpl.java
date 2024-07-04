@@ -4,7 +4,9 @@ import HistoryAppGradleSecurity.exception.ArticleNotFoundException;
 import HistoryAppGradleSecurity.exception.ObjectNotFoundException;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
+import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
+import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
 import HistoryAppGradleSecurity.repository.ArticleRepository;
@@ -68,12 +70,12 @@ public class ArticleServiceImpl implements ArticleService {
 
         //article.setAuthor(userService.findCurrentUserLoginEntity());
 
-        article.setCategories(articleServiceModel.getCategories()
-                .stream()
-                .map(categoryService::findCategoryByName)
-                .collect(Collectors.toSet()));
+//        article.setCategories(articleServiceModel.getCategories()
+//                .stream()
+//                .map(categoryService::findCategoryByName)
+//                .collect(Collectors.toSet()));
 
-        articleRepository.saveAndFlush(article);
+        articleRepository.save(article);
     }
 
     @Override
@@ -88,7 +90,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findById(id)
                 .orElseThrow(ObjectNotFoundException::new);
     }
+    @Override
+    public ArticleDetailsViewModel getDetails(Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() ->
+                        new ArticleNotFoundException("Article with id: " + id + " was not found!"));
 
+        return modelMapper.map(article, ArticleDetailsViewModel.class);
+    }
     @Override
     public void delete(Long id) {
         userRepository.findById(loggedUser.get().getId())
@@ -124,7 +133,19 @@ public class ArticleServiceImpl implements ArticleService {
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
         }
-    }   private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {
+    }
+
+    @Override
+    public List<ArticleCategoryViewModel> getAllByCategory(CategoryNameEnum categoryName) {
+        List<Article> articles = articleRepository.findAllByCategories_Name(categoryName);
+        List<ArticleCategoryViewModel> viewArticles = articles.stream()
+                .map(a -> modelMapper.map(a, ArticleCategoryViewModel.class))
+                .toList();
+
+        return viewArticles;
+    }
+
+    private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {
         String ext = getFileExtension(pictureFile.getOriginalFilename());
 
         String pathPattern = "%s\\%s\\%s." + ext;

@@ -4,7 +4,9 @@ import HistoryAppGradleSecurity.model.entity.Picture;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
+import HistoryAppGradleSecurity.model.view.PictureViewModel;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public class ArticleServiceModel {
@@ -14,7 +16,9 @@ public class ArticleServiceModel {
     private String title;
     private String author;
     private String content;
-    private Set<Picture> pictures;
+    private String imageUrl;
+    private LocalDate created;
+    private Set<PictureViewModel> pictures;
     private PeriodEnum period;
     private Set<CategoryNameEnum>categories;
 
@@ -30,6 +34,33 @@ public class ArticleServiceModel {
         return this;
     }
 
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public ArticleServiceModel setCreated(LocalDate created) {
+        this.created = created;
+        return this;
+    }
+
+    public Set<PictureViewModel> getPictures() {
+        return pictures;
+    }
+
+    public ArticleServiceModel setPictures(Set<PictureViewModel> pictures) {
+        this.pictures = pictures;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public ArticleServiceModel setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
     public String getContent() {
         return content;
     }
@@ -39,14 +70,7 @@ public class ArticleServiceModel {
         return this;
     }
 
-    public Set<Picture> getPictures() {
-        return pictures;
-    }
 
-    public ArticleServiceModel setPictures(Set<Picture> pictures) {
-        this.pictures = pictures;
-        return this;
-    }
 
     public Set<CategoryNameEnum> getCategories() {
         return categories;

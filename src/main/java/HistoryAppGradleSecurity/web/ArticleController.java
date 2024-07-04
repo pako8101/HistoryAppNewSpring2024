@@ -4,7 +4,10 @@ package HistoryAppGradleSecurity.web;
 import HistoryAppGradleSecurity.model.binding.ArticleAddBindingModel;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
+import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
+import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
+import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
 import HistoryAppGradleSecurity.repository.ArticleRepository;
 import HistoryAppGradleSecurity.repository.UserRepository;
@@ -65,8 +68,9 @@ private final ArticleRepository articleRepository;
         return new ModelAndView("redirect:/articles");
     }
     @GetMapping("/details/{id}")
-    public String details(@PathVariable Long id, Model model) {
-        Article article = articleRepository.findById(id).orElse(null);
+    public String details(@PathVariable("id") Long id, Model model) {
+        ArticleDetailsViewModel article =
+                articleService.getDetails(id);
 
         if (article== null) throw  new NoSuchElementException();
 
@@ -104,7 +108,7 @@ private final ArticleRepository articleRepository;
         }
         ArticleServiceModel articleServiceModel = modelMapper.map(articleAddBindingModel, ArticleServiceModel.class);
 
-        articleServiceModel.setTitle(principal.getUsername());
+        articleServiceModel.setAuthor(principal.getUsername());
 
         articleService.addNewArticle(articleServiceModel);
 
@@ -119,5 +123,23 @@ private final ArticleRepository articleRepository;
         articleService.delete(id);
 
         return "redirect:/all";
+    }
+    @GetMapping("/{categoryName}")
+    public ModelAndView getByCategory(@PathVariable("categoryName") CategoryNameEnum categoryName) {
+        List<ArticleCategoryViewModel> routes = articleService.getAllByCategory(categoryName);
+
+        String view =
+                switch (categoryName) {
+                    case WAR -> "war";
+                    case POLITICAL -> "political";
+                    case CULTURAL -> "cultural";
+                    case ECONOMIC -> "economic";
+                };
+
+        ModelAndView modelAndView = new ModelAndView(view);
+
+        modelAndView.addObject("routes", routes);
+
+        return modelAndView;
     }
 }

@@ -31,9 +31,36 @@
                                    th:text="${error}"
                                    th:class="'invalid-feedback text-danger'" id="author"> Error message!</small>
 
-
-
-                            <textarea name="field3" placeholder="About yourself"></textarea>
+                            <div class="form-row m-5">
+                                <div class="col">
+                                    <label for="created">Date of creation</label>
+                                    <input th:field="*{created}"
+                                           th:errorclass="is-invalid"
+                                           id="created" name="created" type="date"
+                                           class="form-control" placeholder="Date of creation">
+                                    <small id="createdError"
+                                            th:each="error :${#fields.errors('created')}"
+                                           th:text="${error}"
+                                           th:class="'invalid-feedback text-danger'">
+                                        Date of creation cannot be in the future</small>
+                                </div>
+                            <div class="form-row ">
+                                <div class="col">
+                                    <label for="imageUrl">Image Url</label>
+                                    <input th:field="*{imageUrl}"
+                                           th:errorclass="'is-invalid bg-danger'"
+                                           name="imageUrl"
+                                           id="imageUrl" type="text"
+                                           class="form-control"
+                                           placeholder="Image Url">
+                                    <small id="imageUrlError"
+                                           th:each="error :${#fields.errors('imageUrl')}"
+                                           th:text="${error}"
+                                           th:class="'invalid-feedback text-danger'" >Image url must be more than 5
+                                        characters</small>
+                                </div>
+                            </div>
+<!--                            <textarea name="field3" placeholder="About yourself"></textarea>-->
 
 
                             <legend><span class="number">2</span> Article Text</legend>

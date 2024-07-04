@@ -24,7 +24,7 @@ public class Article {
     private PeriodEnum period;
     @DateTimeFormat
     private LocalDate created;
-    @Column(name = "image_url")
+    @Column(name = "image_url",nullable = false)
     private String imageUrl;
     @OneToMany(mappedBy = "article",
             targetEntity = Picture.class,

@@ -4,11 +4,9 @@ import HistoryAppGradleSecurity.model.entity.Picture;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,8 +23,12 @@ public class ArticleAddBindingModel {
     private String content;
     @NotNull(message = "You have to choose from which period is article!")
     private PeriodEnum period;
+    @NotNull(message = "Date of article creation cannot be empty!")
+    @PastOrPresent(message = "Article creation cannot be in future!")
+    private LocalDate created;
     @NotNull
-    private Set<Picture> pictures;
+    private String imageUrl;
+
     @NotNull
     private Set<CategoryNameEnum> categories;
 
@@ -43,14 +45,25 @@ public class ArticleAddBindingModel {
         return this;
     }
 
-    public Set<Picture> getPictures() {
-        return pictures;
+    public @NotNull LocalDate getCreated() {
+        return created;
     }
 
-    public ArticleAddBindingModel setPictures(Set<Picture> pictures) {
-        this.pictures = pictures;
+    public ArticleAddBindingModel setCreated(@NotNull LocalDate created) {
+        this.created = created;
         return this;
     }
+
+    public @NotNull String getImageUrl() {
+        return imageUrl;
+    }
+
+    public ArticleAddBindingModel setImageUrl(@NotNull String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+
 
     public String getAuthor() {
         return author;
