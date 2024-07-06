@@ -17,9 +17,9 @@ public class EmailScheduler {
     private JavaMailSender mailSender;
 
     @Value("${email_username}") private String sender;
-    @Scheduled(cron = "*/10 * * * * *")
 
-//    @Scheduled(fixedRate = 12 * 60 * 60 * 1000) // 12 часа в милисекунди
+
+   @Scheduled(fixedRate = 12 * 60 * 60 * 1000) // 12 часа в милисекунди
     public void sendScheduledEmails() {
         sendEmail("alexcheto2013@abv.bg","Scheduled Email",
                 "This is a scheduled email sent every 12 hours.");

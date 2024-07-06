@@ -11,16 +11,29 @@
 </header>
 
 <div class="info">
-    <div></div>
     <div class="wrapper">
-        <h1  class="title">Ancient History Maps</h1>
+        <h1 class="title">Ancient History Maps</h1>
         <div class="section-container column">
             <div class="max-width-container">
                 <div class="section-heading-section-heading">
-                    <h1 style="font-size: 40px !important;"
-                            class="section-heading-text Heading-2">
+                    <h1 style="font-size: 30px !important;margin-top: -3rem"
+                        class="section-heading-text Heading-2">
                         <span>Latest Maps</span>
                     </h1>
+
+                    <form class="searchMaps" method="get">
+                        <label class="titleSearch"> Search this category</label><br>
+                        <input type="search"
+                               id="search-input" placeholder="Enter map title or author name"
+                               aria-label="Search"
+                               class="home-input"/>
+                        <input type="submit" class="content_button inline"
+                               name="submit" value="Search"
+                               style="margin-top: 1px; background-color: #b0825c;
+border-radius: 4px"
+                               autocomplete="off">
+                    </form>
+                    <br>
                     <span class="section-heading-text1">
                 <span>
                   Start read over based on the categories you are interested in
@@ -29,29 +42,124 @@
                 </div>
                 <div class="home-cards-container">
                     <div class="category-card-category-card">
-                        <img alt="image" src="/images/balkansRomeRule.png" class="category-card-image"/>
-                        <span class="category-card-text"><span>Roman Rule in the Balkans, c. 200 CE</span></span>
+                        <img alt="image" th:src="@{/images/balkansRomeRule.png}"
+                             id="image"
+                             onclick="enlargeImg()"
+                             class="category-card-image"/>
+                        <span class="category-card-text"><span>Roman Rule in the Balkans,c.200 CE</span></span> <br>
+                        <div class="mybox">
+                            <div style="font-size: 12px">
+                                A map illustrating Roman rule in the Balkans around 200 CE,  <br>
+                                characterized by significant administrative,   <br>
+                                military, and cultural integration into the Empire. <br>
+                                <span id="span1">...</span>
+                                <span class="mybox1" id="mybox1id">
+                                     Economically, <br>
+                                    the region benefited from extensive trade networks. <br>
+                                    The spread of Roman law, language,<br>
+                                    and culture led to a significant degree of Romanization,<br>
+                                    though local customs and traditions persisted. <br>
+                                    Despite occasional internal strife and external threats, <br>
+                                    the Balkans experienced relative stability and prosperity under Roman rule.
+            </span>
+                            </div>
+                            <button id="mybuttonid"
+                                    class="buttonReadMore"
+                                    onclick="changeReadMore()">
+                                Read More
+                            </button>
+                        </div>
+
+                        <script src="/js/script.js"></script>
+
+
+                        <br /><br /><br />
+                        <!-- Button to reset the Image size -->
+                        <button  class="resetButton" onclick="resetImg()">Reset</button>
                     </div>
                     <div class="category-card-category-card">
-                        <img alt="image" src="/images/greek.jpg" class="category-card-image"/>
-                        <span class="category-card-text"><span>Ancient Greece</span></span>
+                        <img alt="image"
+                             th:src="@{/images/sumerianCivilization.png}"
+                             id="image1"
+                             onclick="enlargeImg1()"
+                             class="category-card-image"/>
+                        <span class="category-card-text"><span>Sumerian Civilization, c.4300 - 2335 BCE</span></span>
+
+
+                        <br /><br /><br />
+                        <!-- Button to reset the Image size -->
+                        <button  class="resetButton" onclick="resetImg1()">Reset</button>
                     </div>
                     <div class="category-card-category-card">
-                        <img alt="image" src="/images/rome.jpg" class="category-card-image"/>
-                        <span class="category-card-text"><span>Rome Empire</span></span>
+                        <img alt="image"
+                             th:src="@{/images/romeFall480ce.png}"
+                             id="image2"
+                             onclick="enlargeImg2()"
+                             class="category-card-image"/>
+                        <span class="category-card-text"><span>The Fall of the Western Roman Empire, c.480 CE</span></span>
+                        <br /><br /><br />
+                        <!-- Button to reset the Image size -->
+                        <button  class="resetButton" onclick="resetImg2()">Reset</button>
                     </div>
                     <div class="category-card-category-card">
-                        <img alt="image" src="/images/Mesopotamian-innovations.jpg" class="category-card-image"/>
-                        <span class="category-card-text"><span>Mesopotamia</span></span>
+                        <img alt="image"
+                             th:src="@{/images/herackleLabours.png}"
+                             id="image3"
+                             onclick="enlargeImg3()"
+                             class="category-card-image"/>
+                        <span class="category-card-text"><span>The Twelve Labours of Herakles</span></span>
+                        <br /><br /><br />
+                        <!-- Button to reset the Image size -->
+                        <button  class="resetButton" onclick="resetImg3()">Reset</button>
                     </div>
 
-    </div>
-    <div>
+                </div>
+                <div>
 
-    </div>
-</div>
+                </div>
+            </div>
+            <script>
+                // Get the img object using its Id
+                img = document.querySelector("#image");
+                img1 = document.querySelector("#image1");
+                img2 = document.querySelector("#image2");
+                img3 = document.querySelector("#image3");
 
-<!-- Wrapper Ends -->
+                        function enlargeImg() {
+                            img.style.transform = "scale(3.5)";
+                            img.style.transition = "transform 0.25s ease";
+                        }
+                    function resetImg() {
+                        img.style.transform = "scale(1)";
+                        img.style.transition = "transform 0.25s ease";
+                }
+                function enlargeImg1() {
+                            img1.style.transform = "scale(3.5)";
+                            img1.style.transition = "transform 0.25s ease";
+                        }
+                    function resetImg1() {
+                        img1.style.transform = "scale(1)";
+                        img1.style.transition = "transform 0.25s ease";
+                }
+                function enlargeImg2() {
+                            img2.style.transform = "scale(3.5)";
+                            img2.style.transition = "transform 0.25s ease";
+                        }
+                    function resetImg2() {
+                        img2.style.transform = "scale(1)";
+                        img2.style.transition = "transform 0.25s ease";
+                }
+                function enlargeImg3() {
+                            img3.style.transform = "scale(3.5)";
+                            img3.style.transition = "transform 0.25s ease";
+                        }
+                    function resetImg3() {
+                        img3.style.transform = "scale(1)";
+                        img3.style.transition = "transform 0.25s ease";
+                }
+            </script>
+
+            <!-- Wrapper Ends -->
 </body>
 <footer th:replace="fragments/commons::footer">
 

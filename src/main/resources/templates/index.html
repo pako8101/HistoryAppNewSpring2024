@@ -38,7 +38,46 @@
 
                     </div>
                 </div>
-                <img alt="image23271449" src="/images/greek.jpg" class="home-image5"/>
+
+                <div id="shiftExampleIndicators" class="shift slide " data-ride="shift">
+                    <ol class="shift-indicators">
+                        <li data-target="#shiftExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#shiftExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#shiftExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#shiftExampleIndicators" data-slide-to="3"></li>
+                    </ol>
+                <div class="shift-image-inner">
+                    <div class="shift-item active">
+                        <img class="home-image5" th:src="@{/images/greek.jpg}" alt="First slide">
+<!--                <img alt="image23271449" src="/images/greek.jpg" class="home-image5"/>-->
+                </div>
+                    <div class="shift-item ">
+                        <img class="home-image5" th:src="@{/images/changeImage1.png}" alt="Second slide">
+                        <!--                <img alt="image23271449" src="/images/greek.jpg" class="home-image5"/>-->
+                    </div>
+                    <div class="shift-item ">
+                        <img class="home-image5" th:src="@{/images/changeImage2.png}" alt="Third slide">
+                        <!--                <img alt="image23271449" src="/images/greek.jpg" class="home-image5"/>-->
+                    </div>
+                    <div class="shift-item ">
+                        <img class="home-image5" th:src="@{/images/sphinks2.jpg}" alt="Fourth slide">
+                        <!--                <img alt="image23271449" src="/images/greek.jpg" class="home-image5"/>-->
+                    </div>
+                    </div>
+                    <a class="shift-control-prev" href="#shiftExampleIndicators" role="button" data-slide="prev">
+                        <span class="shift-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="shift-control-next" href="#shiftExampleIndicators" role="button" data-slide="next">
+                        <span class="shift-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    <hr class="border-bottom w-50">
+                    <div class="mt-5 col-sm-12 my-auto align-self-center">
+                        <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
+                               placeholder="Enter article title or author name" aria-label="Search">
+                    </div>
+            </div>
             </div>
         </div>
     </div>
