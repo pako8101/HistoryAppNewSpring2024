@@ -3,7 +3,6 @@ package HistoryAppGradleSecurity.web;
 
 import HistoryAppGradleSecurity.model.binding.ArticleAddBindingModel;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
-import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
@@ -117,16 +116,16 @@ private final ArticleRepository articleRepository;
 
 
     }
-    @DeleteMapping("/articles/{id}")
 
+    @DeleteMapping("/{id}")
     public String deleteArticle(@PathVariable Long id){
         articleService.delete(id);
+        return "redirect:/articles/all";
 
-        return "redirect:/all";
     }
     @GetMapping("/{categoryName}")
     public ModelAndView getByCategory(@PathVariable("categoryName") CategoryNameEnum categoryName) {
-        List<ArticleCategoryViewModel> routes = articleService.getAllByCategory(categoryName);
+        List<ArticleCategoryViewModel> articles = articleService.getAllByCategory(categoryName);
 
         String view =
                 switch (categoryName) {
@@ -138,7 +137,7 @@ private final ArticleRepository articleRepository;
 
         ModelAndView modelAndView = new ModelAndView(view);
 
-        modelAndView.addObject("routes", routes);
+        modelAndView.addObject("articles", articles);
 
         return modelAndView;
     }

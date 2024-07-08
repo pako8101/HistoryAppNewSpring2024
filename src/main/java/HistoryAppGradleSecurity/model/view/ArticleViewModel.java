@@ -4,7 +4,7 @@ import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 
 public class ArticleViewModel {
 
-    private  Long id;
+    private  long id;
 
     private String title;
     private String author;
@@ -17,7 +17,9 @@ public class ArticleViewModel {
 
     }
 
-    public ArticleViewModel(Long id, String title, String author, String pictureUrl, PeriodEnum period, String content) {
+    public ArticleViewModel(long id, String title,
+                            String author, String pictureUrl,
+                            PeriodEnum period, String content) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -26,11 +28,11 @@ public class ArticleViewModel {
         this.content = content;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public ArticleViewModel setId(Long id) {
+    public ArticleViewModel setId(long id) {
         this.id = id;
         return this;
     }

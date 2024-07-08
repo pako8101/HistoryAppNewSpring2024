@@ -18,6 +18,7 @@ import HistoryAppGradleSecurity.service.assists.PictureAssistService;
 import HistoryAppGradleSecurity.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -25,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 @Service
@@ -38,7 +40,13 @@ public class ArticleServiceImpl implements ArticleService {
     private final LoggedUser loggedUser;
     private final UserRepository userRepository;
 
-    public ArticleServiceImpl(ArticleRepository articleRepository, ModelMapper modelMapper, UserService userService, PictureAssistService pictureAssistService, CategoryService categoryService, LoggedUser loggedUser, UserRepository userRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository,
+                              ModelMapper modelMapper,
+                              UserService userService,
+                              PictureAssistService pictureAssistService,
+                              CategoryService categoryService,
+                              LoggedUser loggedUser,
+                              UserRepository userRepository) {
         this.articleRepository = articleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
@@ -47,6 +55,8 @@ public class ArticleServiceImpl implements ArticleService {
         this.loggedUser = loggedUser;
         this.userRepository = userRepository;
     }
+
+
 
     @Override
     public List<ArticleViewModel> findAllArticlesView() {
@@ -70,10 +80,10 @@ public class ArticleServiceImpl implements ArticleService {
 
         //article.setAuthor(userService.findCurrentUserLoginEntity());
 
-//        article.setCategories(articleServiceModel.getCategories()
-//                .stream()
-//                .map(categoryService::findCategoryByName)
-//                .collect(Collectors.toSet()));
+        article.setCategories(articleServiceModel.getCategories()
+                .stream()
+                .map(categoryService::findCategoryByName)
+                .collect(Collectors.toSet()));
 
         articleRepository.save(article);
     }
@@ -99,11 +109,17 @@ public class ArticleServiceImpl implements ArticleService {
         return modelMapper.map(article, ArticleDetailsViewModel.class);
     }
     @Override
+    @Transactional
     public void delete(Long id) {
-        userRepository.findById(loggedUser.get().getId())
-                .flatMap(user ->
-                        articleRepository.findByIdAndAuthor(id, user))
-                .ifPresent(articleRepository::delete);
+       if (loggedUser.isAdmin()){
+           articleRepository.deleteById(id);
+
+       }
+
+
+
+
+
     }
 
     @Override
@@ -143,6 +159,17 @@ public class ArticleServiceImpl implements ArticleService {
                 .toList();
 
         return viewArticles;
+    }
+
+    @Override
+    public Optional<ArticleViewModel> findLatestArticle() {
+        return articleRepository.
+                findTopByOrderByCreatedOnDesc().
+                map(ae -> {
+                    ArticleViewModel avm = modelMapper.map(ae, ArticleViewModel.class);
+                    avm.setAuthor(ae.getAuthor());
+                    return avm;
+                });
     }
 
     private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {

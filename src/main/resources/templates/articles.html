@@ -22,9 +22,9 @@
 
         </div>
         <!--        aticle main-->
-        <h3 class="mySticky bg-gray text-dark rounded">Articles count: <span th:text="${articles.size()}"></span></h3><br>
+        <h3 class="mySticky bg-gray text-dark rounded">Articles count: <span th:text="${articles.size()}"></span></h3><br><br>
        <th:block th:each="a: ${articles}">
-           <img th:src="${a.pictureUrl}" alt="Title image"><br>
+           <img th:src="${a.pictureUrl}" alt="Title image"><br><br>
         <header class="site-header">
             <p  class="site-title">
                 <a th:text="${a.title}" ></a>
@@ -44,11 +44,11 @@
                     <h2 >Ancient Period: <span th:text="${a.period}"></span></h2>
                 </header><br>
                 <section class="post-content">
-                    <p><span th:text="${a.content}"></span></p>
-                    <a th:href="@{/articles/details/{id}(id=${a.id})}" class="btn">Learn More</a>
+                    <p><span th:text="${a.content}"></span></p><br><br>
+                    <a th:href="@{/articles/details/{id}(id=${a.id})}" class="btn">Learn More</a><br>
                 </section> <br>
                 <footer class="post-footer">
-                    <p>Published by, <span th:text="${a.author}"></span></p>
+                    <p>Published by, <span th:text="${a.author}"></span></p><br><br>
                 </footer>
             </article>
 
@@ -58,7 +58,9 @@
 
         </aside>
        </th:block>
+
     </div>
+
     </div>
 </body>
 <footer th:replace="fragments/commons::footer">

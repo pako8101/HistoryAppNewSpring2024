@@ -163,8 +163,9 @@ margin-bottom: -3rem;
     padding: 0.3em 0.6em;
     border-radius: 0.3em;
     border: 1px solid #000;
-    position: fixed;
-margin: 2rem auto auto 1rem;
+    position: absolute;
+margin: -2.7rem auto auto 11rem;
+
 }
 
 .button.primary {

@@ -1,7 +1,5 @@
 package HistoryAppGradleSecurity.model.service;
 
-import HistoryAppGradleSecurity.model.entity.Picture;
-import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.model.view.PictureViewModel;
@@ -10,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 public class ArticleServiceModel {
-    private Long id;
+    private long id;
 
 
     private String title;
@@ -81,15 +79,14 @@ public class ArticleServiceModel {
         return this;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public ArticleServiceModel setId(Long id) {
+    public ArticleServiceModel setId(long id) {
         this.id = id;
         return this;
     }
-
 
     public String getTitle() {
         return title;

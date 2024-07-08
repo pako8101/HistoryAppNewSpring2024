@@ -21,6 +21,38 @@
     /*text-decoration: none;*/
 
 }
+
+/*left navbar*/
+.navbar-link a:hover > ul {
+    padding: 0 4px;
+    left: initial;
+    top: 0;
+    right: 100%;
+}
+.navbar-link{
+    margin-right: unset;!important;
+    margin-left: 1px;!important;
+}
+
+.navbar-link:hover{
+    transform: translateY(-50%);
+    color: seagreen;
+    /*box-shadow: #b0825c;*/
+    border-color: darkseagreen;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 1, 0.2);
+    /*transform: rotateY(150deg);*/
+    animation-name: example;
+    animation-duration: 5s;
+}
+@keyframes example {
+    from {background-color: lightcoral;}
+    to {background-color: yellow;}
+}
+
+/*--------*/
+
 .home-navbar1 {
     width: 100%;
     display: flex;

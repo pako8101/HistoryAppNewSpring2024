@@ -1,16 +1,14 @@
 package HistoryAppGradleSecurity.model.view;
 
-import HistoryAppGradleSecurity.model.entity.Picture;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 @SuperBuilder
 public class ArticleDetailsViewModel {
-    private Long id;
+    private long id;
     private PeriodEnum period;
 
     private String title;
@@ -23,11 +21,11 @@ public class ArticleDetailsViewModel {
     public ArticleDetailsViewModel() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public ArticleDetailsViewModel setId(Long id) {
+    public ArticleDetailsViewModel setId(long id) {
         this.id = id;
         return this;
     }

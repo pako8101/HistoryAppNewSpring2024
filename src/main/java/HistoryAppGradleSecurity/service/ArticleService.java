@@ -9,6 +9,7 @@ import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ArticleService {
     List<ArticleViewModel> findAllArticlesView();
@@ -26,4 +27,6 @@ public interface ArticleService {
     void uploadPicture(UploadPictureArticleBindingModel uploadPictureArticleBindingModel);
 
     List<ArticleCategoryViewModel> getAllByCategory(CategoryNameEnum categoryName);
+
+    Optional<ArticleViewModel> findLatestArticle();
 }

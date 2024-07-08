@@ -15,4 +15,6 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
     List<Article> findAllByCategories_Name(CategoryNameEnum categoryName);
 
     Optional<Article> findByIdAndAuthor(Long id, UserEnt user);
+
+    Optional<Article> findTopByOrderByCreatedOnDesc();
 }
