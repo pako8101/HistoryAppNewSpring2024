@@ -1,11 +1,6 @@
 package HistoryAppGradleSecurity.model.view;
 
-import HistoryAppGradleSecurity.model.entity.UserEnt;
-import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class ArticleViewModel {
 
@@ -20,6 +15,15 @@ public class ArticleViewModel {
 
     public ArticleViewModel() {
 
+    }
+
+    public ArticleViewModel(Long id, String title, String author, String pictureUrl, PeriodEnum period, String content) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pictureUrl = pictureUrl;
+        this.period = period;
+        this.content = content;
     }
 
     public Long getId() {

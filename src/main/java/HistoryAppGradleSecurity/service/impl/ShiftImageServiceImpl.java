@@ -54,7 +54,7 @@ public class ShiftImageServiceImpl implements ShiftImageService {
 
     @Scheduled(cron = "${shift.refresh-cron}")
     public void refresh() {
-        LOGGER.info("Shuffling images...");
+        LOGGER.info("Changing images...");
         changeImageService.change(images);
     }
 }

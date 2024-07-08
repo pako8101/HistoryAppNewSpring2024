@@ -31,7 +31,7 @@ public class HomeController {
         model.addAttribute("firstImg", shiftImageService.firstImage());
         model.addAttribute("secondImg", shiftImageService.secondImage());
         model.addAttribute("thirdImg", shiftImageService.thirdImage());
-        model.addAttribute("thirdImg", shiftImageService.fourthImage());
+        model.addAttribute("fourthImg", shiftImageService.fourthImage());
 
         model.addAttribute("pictures",pictureService.findAllUrls());
 

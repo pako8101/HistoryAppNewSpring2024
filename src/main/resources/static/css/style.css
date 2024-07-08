@@ -304,15 +304,21 @@ font-size: medium;
   align-items: center;
   flex-direction: row;
 }
+
 .home-image5 {
   width: 100%;
+  height: 100%;
   position: relative;
   max-width: 579px;
   box-sizing: border-box;
   max-height: 579px;
   object-fit: cover;
   border-color: transparent;
+  margin-top: 5rem;
+  padding-top: 0.5rem;
 }
+
+
 .home-cards-container {
   flex: 0 0 auto;
   width: 100%;
@@ -610,6 +616,7 @@ font-size: medium;
   align-items: center;
   padding-top: 80px;
   justify-content: center;
+  margin-top: -2rem;
 }
 .max-width-container {
   width: 100%;
