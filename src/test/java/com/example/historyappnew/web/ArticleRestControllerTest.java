@@ -16,21 +16,21 @@ import org.springframework.test.web.servlet.MockMvc;
 public class ArticleRestControllerTest {
     @Autowired
     private MockMvc mockMvc;
-//    @Autowired
-//    private UserRepository userRepository;
-//    @Autowired
-//    private ArticleRepository articleRepository;
-//    @Autowired
-//    private LogRepository logRepository;
-//
-//    private ArticleTestData articleTestData;
-//    @BeforeEach
-//    public void setUp(){
-//        articleTestData = new ArticleTestData(
-//                userRepository,
-//                articleRepository,
-//                logRepository
-//        );
-//        articleTestData.init();
-//    }
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private ArticleRepository articleRepository;
+    @Autowired
+    private LogRepository logRepository;
+
+    private ArticleTestData articleTestData;
+    @BeforeEach
+    public void setUp(){
+        articleTestData = new ArticleTestData(
+                userRepository,
+                articleRepository,
+                logRepository
+        );
+        articleTestData.init();
+    }
 }

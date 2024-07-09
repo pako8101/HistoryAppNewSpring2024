@@ -9,7 +9,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -26,11 +25,11 @@ public class ApplicationUserDetailsService implements UserDetailsService {
         return
                 userRepository.
                         findUserEntByUsername(username).
-                        map(this::map).
+                        map(ApplicationUserDetailsService::map).
                         orElseThrow(() -> new UsernameNotFoundException("User with name " + username + " not found!"));
     }
 
-    private  UserDetails map(UserEnt userEntity) {
+    private static   UserDetails map(UserEnt userEntity) {
 
         return new AppUserDetails(
                 userEntity.getUsername(),
@@ -42,15 +41,15 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     }
 
 
-    private List<GrantedAuthority> extractAuthorities(UserEnt userEntity) {
+    private static List<GrantedAuthority> extractAuthorities(UserEnt userEntity) {
         return userEntity.
                 getRoles().
                 stream().
-                map(this::mapRole).
+                map(ApplicationUserDetailsService::mapRole).
                 toList();
     }
 
-    private  GrantedAuthority mapRole(UserRoleEnt userRoleEntity) {
+    private static GrantedAuthority mapRole(UserRoleEnt userRoleEntity) {
         return new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name());
     }
 }
