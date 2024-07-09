@@ -63,4 +63,8 @@ public class HomeController {
     public String maps(){
         return "maps";
     }
+    @GetMapping("/time-line")
+    public String timeLine(){
+        return "time-line";
+    }
 }

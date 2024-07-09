@@ -16,5 +16,7 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 
     Optional<Article> findByIdAndAuthor(Long id, UserEnt user);
 
-    Optional<Article> findTopByOrderByCreatedOnDesc();
+    Optional<Article> findTopByOrderByCreatedDesc();
+
+   // findTopByOrderByCreatedOnDesc
 }

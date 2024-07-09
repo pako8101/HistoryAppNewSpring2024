@@ -164,7 +164,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Optional<ArticleViewModel> findLatestArticle() {
         return articleRepository.
-                findTopByOrderByCreatedOnDesc().
+                findTopByOrderByCreatedDesc().
                 map(ae -> {
                     ArticleViewModel avm = modelMapper.map(ae, ArticleViewModel.class);
                     avm.setAuthor(ae.getAuthor());
