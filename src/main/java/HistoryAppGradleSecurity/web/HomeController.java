@@ -67,4 +67,8 @@ public class HomeController {
     public String timeLine(){
         return "time-line";
     }
+    @GetMapping("/translations")
+    public String translations(){
+        return "translations";
+    }
 }

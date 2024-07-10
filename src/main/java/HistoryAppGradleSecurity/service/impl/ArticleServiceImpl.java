@@ -92,13 +92,13 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDetailsViewModel findArticleBId(Long id) {
         return articleRepository.findById(id)
                 .map(article -> modelMapper.map(article, ArticleDetailsViewModel.class))
-                .orElseThrow(ObjectNotFoundException::new);
+                .orElseThrow(()-> new ObjectNotFoundException("No such article with id " + id,id));
     }
 
     @Override
     public Article findArticleById(Long id) {
         return articleRepository.findById(id)
-                .orElseThrow(ObjectNotFoundException::new);
+                .orElseThrow(()-> new ObjectNotFoundException("No such article with id " + id,id));
     }
     @Override
     public ArticleDetailsViewModel getDetails(Long id) {

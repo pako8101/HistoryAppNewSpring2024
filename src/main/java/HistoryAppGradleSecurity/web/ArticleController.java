@@ -141,4 +141,12 @@ private final ArticleRepository articleRepository;
 
         return modelAndView;
     }
+//      @ResponseStatus(code = HttpStatus.NOT_FOUND)
+//  @ExceptionHandler(ObjectNotFoundException.class)
+//  public ModelAndView handleObjectNotFound(ObjectNotFoundException onfe) {
+//    ModelAndView modelAndView = new ModelAndView("article-not-found");
+//    modelAndView.addObject("articleId", onfe.getId());
+//
+//    return modelAndView;
+//  }
 }
