@@ -8,12 +8,13 @@
     color: rgba(0, 0, 0, 1);
     cursor: pointer;
     height: auto;
-    font-size: 14px;
+    font-size: 18px;
     color: #369;
     background: #EEE;
     border: 2px solid #CCC;
     border-bottom: 2px solid #369;
     border-radius: 0.3em;
+    padding: 4px;
 /*color: #314584;*/
     transition: 0.3s;
     font-family: Jost;
@@ -47,7 +48,7 @@
     animation-duration: 5s;
 }
 @keyframes example {
-    from {background-color: lightcoral;}
+    from {background-color: #499eff;}
     to {background-color: yellow;}
 }
 
@@ -178,7 +179,7 @@ select {
 
 .home-input:active {
     width: 100%;
-    box-shadow: 0 0 5px 1px  coral;
+    box-shadow: 0 0 5px 1px  #499eff;
 }
 
 .button:hover {
@@ -322,7 +323,7 @@ select {
     animation-duration: 5s;
 }
 @keyframes example {
-    from {background-color: lightcoral;}
+    from {background-color: #499eff;}
     to {background-color: yellow;}
 }
 .navbar-logo-title:hover{

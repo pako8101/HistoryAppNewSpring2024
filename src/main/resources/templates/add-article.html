@@ -29,7 +29,8 @@
                                     placeholder="Your Name *">
                             <small th:each="error :${#fields.errors('author')}"
                                    th:text="${error}"
-                                   th:class="'invalid-feedback text-danger'" id="author"> Error message!</small>
+                                   th:class="'invalid-feedback text-danger'"
+                                   id="author"> Error message!</small>
 
                             <div class="form-row m-5">
                                 <div class="col">

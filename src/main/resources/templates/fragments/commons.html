@@ -44,11 +44,11 @@
         <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
                placeholder="Enter article title or author name" aria-label="Search">
     </div>
-             <li style="margin-left: -7rem" class="nav-item">
+             <li style="margin-left: -9rem" class="nav-item">
          <form th:method="get">
 <label class="text-white" style="font-size: small"
-       for="lang">Language</label>
-<!--       th:text="#{nav_bar_language}"-->
+       for="lang" th:text="#{nav_bar_language}">Language</label>
+<!--       -->
 
 
              <select style="background-color: #e4f0f4;
@@ -87,15 +87,17 @@ border-color: #4e555b"
 
                         <div class="home-middle" >
                             <div class="home-left" id="left">
-                                <a style="margin-left: 1rem" th:href="@{/}" class="navbar-link">HOME</a>
+                                <a style="margin-left: 1rem"
+                                   th:href="@{/}" th:text="#{nav_bar_home}" class="navbar-link">HOME</a>
                                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}"
+                                   th:text="#{nav_bar_login}"
                                    class="navbar-link active" >LOGIN</a>
 
                                 <!--                                   th:classappend="${activeLink == 'login'}? 'active'"-->
 
                                 <a sec:authorize="!isAuthenticated()"
                                    class="navbar-link active-table-tab"
-
+                                   th:text="#{nav_bar_subscribe}"
                                    th:href="@{/users/subscribe}"
                                 >SUBSCRIBE</a>
                                 <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
@@ -113,10 +115,13 @@ border-color: #4e555b"
 
                             <div class=" home-left">
                                 <!--                                <a th:href="@{/}" class="navbar-link">HOME</a>-->
-                                <a style="padding: 7px 0 0 10px;" class="navbar-link" th:href="@{/users/profile}">PROFILE</a>
+                                <a style="padding: 7px 0 0 10px;" class="navbar-link" th:href="@{/users/profile}"
+                                   th:text="#{nav_bar_profile}"
+                                >PROFILE</a>
                                 <a class=" navbar-link">
                                     <form th:action="@{/users/logout}" method="post">
-                                        <button type="submit" class="navbar-link">LOGOUT</button>
+                                        <button  th:text="#{nav_bar_logout}"
+                                                type="submit" class="navbar-link">LOGOUT</button>
                                     </form>
                                 </a>
                                 <!--                                <a class="navbar-link"-->
@@ -124,7 +129,7 @@ border-color: #4e555b"
                                 <!--                                   th:action="@{/users/logout}">LOGOUT</a>-->
 
                                 <a class="navbar-link" th:href="@{/articles/add}"
-
+                                   th:text="#{nav_bar_add_articles}"
                                 >ADD ARTICLE</a><br>
                                 <!--                                <span> <a href="/">ADMIN</a></span>-->
                             </div>
@@ -143,7 +148,7 @@ border-color: #4e555b"
                                         <a>ABOUT:</a>
                                         <ul>
                                             <li>
-                                            <li><a th:href="@{/about}">About</a></li>
+                                            <li><a th:href="@{/about}" th:text="#{nav_bar_about}">About</a></li>
                                             <li><a>Our Team</a></li>
                                             <li><a>Annual Reports</a></li>
                                             <li><a>Memberships</a></li>
@@ -174,8 +179,8 @@ border-color: #4e555b"
                                         <a>ENCYCLOPEDIA:</a>
                                         <ul>
                                             <li>
-                                            <li><a th:href="@{/}">Index</a></li>
-                                            <li ><a th:href="@{/maps}" >Maps</a></li>
+                                            <li><a th:text="#{nav_bar_home}" th:href="@{/}">Index</a></li>
+                                            <li ><a th:text="#{nav_bar_maps}" th:href="@{/maps}" >Maps</a></li>
                                             <li><a th:href="@{/time-line}"  >Timeline</a></li>
                                             <li><a  th:href="@{/translations}" >Translations</a></li>
                                         </ul>
@@ -197,8 +202,10 @@ border-color: #4e555b"
                                     <li>
 
                                     <li><a th:href="@{/statistic}">Statistics</a></li>
-                                    <li><a th:href="@{/articles/add}">Add article</a></li>
-                                    <li><a th:href="@{/articles/all}">All Articles</a></li>
+                                    <li><a th:text="#{nav_bar_add_articles}"
+                                            th:href="@{/articles/add}">Add article</a></li>
+                                    <li><a th:text="#{nav_bar_all_articles}"
+                                            th:href="@{/articles/all}">All Articles</a></li>
 
 
                                 </ul>

@@ -14,9 +14,9 @@
 </header>
 <body>
 <div class="main">
-    <h1>ANCIENT HISTORY PORTAL</h1><br>
+    <h1>ANCIENT HISTORY PORTAL</h1>
     <h3>Enter your subscription details please</h3><br>
-    <h2>Subscription Form</h2>
+<!--    <h2>Subscription Form</h2>-->
     <form th:object="${userSubscribeBindingModel}"
           th:action="@{/users/subscribe}"
           th:method="POST">
@@ -27,6 +27,7 @@
                 required minlength="3" maxlength="20"
                 type="text"
                 id="username"
+                placeholder="Username"
                 name="username"/>
         <small th:if="${userExistsError}" id="usernameUniqueError"
                class=" bg-danger rounded">Username is already occupied</small>
@@ -43,6 +44,7 @@
                 required minlength="3" maxlength="20"
                 type="text"
                 id="inputFullName"
+                placeholder="Your full name"
                 name="fullName"/>
         <small th:each="e :${#fields.errors('fullName')}" th:text="${e}"
                 id="fullNameError" class="invalid-feedback
@@ -55,6 +57,7 @@
                 type="email"
                 id="email"
                 name="email"
+                placeholder="Your email"
                 required/>
         <small th:each="e :${#fields.errors('email')}" th:text="${e}"
                 id="emailError" class="invalid-feedback  form-text bg-danger
@@ -66,7 +69,8 @@
                required minlength="3" maxlength="20"
                type="password"
                id="password"
-               name="password"/>
+               name="password"
+               placeholder="Password" />
 <!--               pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"-->
 <!--               title="Password must contain at least one number,-->
 <!--                          one alphabet, one symbol, and be at-->
@@ -84,7 +88,9 @@
                th:errorclass="'is-invalid alert-danger'"
                type="password"
                id="confirmPassword"
-               name="confirmPassword"/>
+               name="confirmPassword"
+               placeholder="Confirm password"
+        />
 
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="confirmPasswordError" class="invalid-feedback  form-text bg-danger rounded">

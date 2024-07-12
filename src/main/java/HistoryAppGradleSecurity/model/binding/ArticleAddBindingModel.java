@@ -1,10 +1,10 @@
 package HistoryAppGradleSecurity.model.binding;
 
-import HistoryAppGradleSecurity.model.entity.Picture;
-import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -19,7 +19,8 @@ public class ArticleAddBindingModel {
     @NotNull(message = "You have to write author name!")
     @Size(min = 5, max = 30,message = "Author name length must be between 5 and 30 symbols!")
     private String author;
-    @Size(min = 10,message = "Article content must be more then 10 characters!")
+    @NotNull(message = "{add.article.content.message}")
+    @Size(min = 10,message = "{add.article.content.message}")
     private String content;
     @NotNull(message = "You have to choose from which period is article!")
     private PeriodEnum period;

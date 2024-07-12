@@ -24,9 +24,14 @@ padding-top: 2rem;
 
 }
 
-.main h2,h1,h3 {
+.main h2,h1 {
+
+    font-weight: bolder;
     color: #4caf50;
     margin-bottom: 20px;
+    text-align: center;
+
+
 }
 
 label {
