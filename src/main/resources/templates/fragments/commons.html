@@ -44,6 +44,25 @@
         <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
                placeholder="Enter article title or author name" aria-label="Search">
     </div>
+             <li style="margin-left: -7rem" class="nav-item">
+         <form th:method="get">
+<label class="text-white" style="font-size: small"
+       for="lang">Language</label>
+<!--       th:text="#{nav_bar_language}"-->
+
+
+             <select style="background-color: #e4f0f4;
+border-color: #4e555b"
+                     id="lang"
+                     name="lang"
+                     onchange = "this.form.submit()">
+
+                 <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                 <option value="bg_BG"  th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+             </select>
+
+         </form>
+     </li>
  </div>
 
 <!--                    <form  method="get">-->
@@ -53,7 +72,6 @@
 <!--                               class="home-input"/>-->
 
 <!--                    </form>-->
-
 
 
                     <a th:href="@{/}" style="font-weight: bold;margin-left: 8rem"
@@ -71,7 +89,8 @@
                             <div class="home-left" id="left">
                                 <a style="margin-left: 1rem" th:href="@{/}" class="navbar-link">HOME</a>
                                 <a sec:authorize="!isAuthenticated()" th:href="@{/users/login}"
-                                   class="navbar-link active">LOGIN</a>
+                                   class="navbar-link active" >LOGIN</a>
+
                                 <!--                                   th:classappend="${activeLink == 'login'}? 'active'"-->
 
                                 <a sec:authorize="!isAuthenticated()"

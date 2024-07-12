@@ -104,7 +104,7 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDetailsViewModel getDetails(Long id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() ->
-                        new ArticleNotFoundException("Article with id: " + id + " was not found!"));
+                        new ArticleNotFoundException("Article with id: " + id + " not found!"));
 
         return modelMapper.map(article, ArticleDetailsViewModel.class);
     }
@@ -113,12 +113,7 @@ public class ArticleServiceImpl implements ArticleService {
     public void delete(Long id) {
        if (loggedUser.isAdmin()){
            articleRepository.deleteById(id);
-
        }
-
-
-
-
 
     }
 
