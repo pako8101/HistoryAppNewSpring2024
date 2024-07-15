@@ -2,9 +2,6 @@ package HistoryAppGradleSecurity.service.impl;
 
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
-import HistoryAppGradleSecurity.model.entity.UserRoleEnt;
-import HistoryAppGradleSecurity.model.enums.UserRoleEnum;
-import HistoryAppGradleSecurity.model.service.UserServiceModel;
 import HistoryAppGradleSecurity.model.view.UserViewModel;
 import HistoryAppGradleSecurity.repository.UserRepository;
 import HistoryAppGradleSecurity.repository.UserRoleRepository;
@@ -13,15 +10,11 @@ import HistoryAppGradleSecurity.session.LoggedUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,6 +33,7 @@ public class UserServiceImpl implements UserService {
         this.modelMapper = modelMapper;
         this.userRoleRepository = userRoleRepository;
     }
+
 
 
     @Override

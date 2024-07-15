@@ -31,6 +31,7 @@ public class UserSubscribeBindingModel {
     public UserSubscribeBindingModel() {
     }
 
+
     public int getAge() {
         return age;
     }

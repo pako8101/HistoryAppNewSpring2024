@@ -74,10 +74,10 @@ public class ArticleControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post(ARTICLE_CONTROLLER_PREFIX + "/add")
                         .param("name", "test article").
                         param("period", PeriodEnum.ANDEAN_REGION.name()).
-                        param("imageUrl", "http://example.com/image.png").
+                        param("imageUrl", "example.com/image.png").
                         param("description", "Description test").
                         param("releaseDate", "2023-01-01").
-                        param("author", "vivo").
+                        param("author", "pako").
                         with(csrf())).
                 andExpect(status().is3xxRedirection());
 
