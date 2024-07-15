@@ -1,10 +1,10 @@
-package com.example.historyappnew;
+package com.example.HistoryAppGradleSecurity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HistoryAppNewApplicationTests {
+class HistoryAppGradleSecurityTests {
 
 	@Test
 	void contextLoads() {

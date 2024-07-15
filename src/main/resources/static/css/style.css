@@ -603,6 +603,10 @@ font-size: medium;
   padding-bottom: 12px;
   text-decoration: none;
 }
+.button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
 .input {
   color: #ffffff;
   cursor: auto;

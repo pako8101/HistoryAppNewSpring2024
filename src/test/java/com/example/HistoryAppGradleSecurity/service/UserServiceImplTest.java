@@ -1,4 +1,4 @@
-package com.example.historyappnew.service;
+package com.example.HistoryAppGradleSecurity.service;
 
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
@@ -67,7 +67,7 @@ private UserSubscribeBindingModel bindingModelToTest;
 
 
     @Test
-    void testUserRegistration() {
+    void testUserSubscribe() {
         // Arrange
 
         bindingModelToTest = new UserSubscribeBindingModel();
