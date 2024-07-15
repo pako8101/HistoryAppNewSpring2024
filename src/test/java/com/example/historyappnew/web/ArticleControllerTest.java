@@ -1,10 +1,12 @@
 package com.example.historyappnew.web;
 
 import HistoryAppGradleSecurity.HistoryAppGradleSecurityApplication;
+import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.repository.ArticleRepository;
 import HistoryAppGradleSecurity.repository.LogRepository;
 import HistoryAppGradleSecurity.repository.UserRepository;
+import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +16,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.Optional;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -71,17 +76,34 @@ public class ArticleControllerTest {
     @Test
     @WithMockUser(value = "pako", roles = {"USER", "ADMIN"})
     void addArticle() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post(ARTICLE_CONTROLLER_PREFIX + "/add")
-                        .param("name", "test article").
+      MvcResult result= mockMvc.perform(MockMvcRequestBuilders.post(ARTICLE_CONTROLLER_PREFIX + "/add")
+                        .param("title", "test article").
                         param("period", PeriodEnum.ANDEAN_REGION.name()).
                         param("imageUrl", "example.com/image.png").
                         param("description", "Description test").
                         param("releaseDate", "2023-01-01").
                         param("author", "pako").
                         with(csrf())).
-                andExpect(status().is3xxRedirection());
-
+                andExpect(status().isCreated()).
+                andExpect(status().is3xxRedirection())
+                .andReturn();
+String body = result.getResponse().getContentAsString();
+int id = JsonPath.read(body,"$.id");
+        Optional<Article>createArticleOpt =
+articleRepository.findById((long)id);
+        Assertions.assertTrue(createArticleOpt.isPresent());
         Assertions.assertEquals(3, articleRepository.count());
+Article addArticle = createArticleOpt.get();
+Assertions.assertEquals("Test content", addArticle.getContent());
+Assertions.assertEquals("Test title", addArticle.getTitle());
+Assertions.assertEquals("pako", addArticle.getAuthor());
+Assertions.assertEquals(PeriodEnum.ANCIENT_GREECE, addArticle.getPeriod());
+
+
     }
 
+
 }
+//private Article createArticle(){
+//
+//}
