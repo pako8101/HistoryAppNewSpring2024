@@ -1,4 +1,4 @@
-package com.example.HistoryAppGradleSecurity.web;
+package history.web;
 
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.entity.UserEnt;

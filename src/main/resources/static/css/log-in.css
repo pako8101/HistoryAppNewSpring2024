@@ -13,6 +13,11 @@ body {
     margin: 0;
     /*margin-top: -5rem;*/
 }
+.main {
+    padding: 16px;
+    margin-top: 80px;
+    height: 1500px; /* Used in this example to enable scrolling */
+}
 html{
 
 }
@@ -25,6 +30,7 @@ html{
     transition: transform 0.2s;
     width: 300px;
     text-align: center;
+
 }
 
 h1 {

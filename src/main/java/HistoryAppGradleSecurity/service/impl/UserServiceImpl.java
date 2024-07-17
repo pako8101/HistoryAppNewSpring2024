@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.service.impl;
 
+import HistoryAppGradleSecurity.emailScheduler.EmailScheduler;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.view.UserViewModel;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Consumer;
+
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
@@ -23,14 +25,18 @@ public class UserServiceImpl implements UserService {
     private final UserDetailsService userDetailsService;
     private final LoggedUser loggedUser;
     private final ModelMapper modelMapper;
-
+    private final EmailScheduler emailScheduler;
     private final UserRoleRepository userRoleRepository;
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, UserDetailsService userDetailsService, LoggedUser loggedUser, ModelMapper modelMapper, UserRoleRepository userRoleRepository) {
+
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                           UserDetailsService userDetailsService, LoggedUser loggedUser, ModelMapper modelMapper,
+                           EmailScheduler emailScheduler, UserRoleRepository userRoleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.loggedUser = loggedUser;
         this.modelMapper = modelMapper;
+        this.emailScheduler = emailScheduler;
         this.userRoleRepository = userRoleRepository;
     }
 
@@ -38,13 +44,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void subscribeUser(UserSubscribeBindingModel userSubscribeBindingModel,
-                              Consumer<Authentication>successfulLoginProcessor) {
+                              Consumer<Authentication> successfulLoginProcessor
+    ) {
+
+//        userRepository.save(map(userSubscribeBindingModel));
+//    }
+//
+//    private UserEnt map(UserSubscribeBindingModel userSubscribeBindingModel) {
+//        UserEnt mappedEntity = modelMapper.map(userSubscribeBindingModel, UserEnt.class);
+//
+//        mappedEntity.setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword()));
+//
+//        return mappedEntity;
+//    }
 
         UserEnt userEntity = new UserEnt().
                 setFullName(userSubscribeBindingModel.getFullName()).
-                setUsername(userSubscribeBindingModel.getUsername()).
+//                setAge(userSubscribeBindingModel.getAge()).
                 setEmail(userSubscribeBindingModel.getEmail()).
-                setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword()));
+                setUsername(userSubscribeBindingModel.getUsername()).
+                setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword())
+                );
 
         userRepository.save(userEntity);
 
@@ -57,6 +77,8 @@ public class UserServiceImpl implements UserService {
         );
 
         successfulLoginProcessor.accept(authentication);
+
+        emailScheduler.sendSubscriptionEmails();
     }
 
     @Override
@@ -108,6 +130,12 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(IllegalArgumentException::new);
     }
 
+    @Override
+    public UserEnt findUserByMail(String email) {
+        return userRepository.findByEmail(email)
+                .map(userEnt -> modelMapper.map(userEnt, UserEnt.class))
+                .orElseThrow(IllegalArgumentException::new);
+    }
 
 
     @Override

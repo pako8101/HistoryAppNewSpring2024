@@ -19,12 +19,26 @@ public class EmailScheduler {
     @Value("${email_username}") private String sender;
 
 
-   @Scheduled(fixedRate = 12 * 60 * 60 * 1000) // 12 часа в милисекунди
+
+
+    @Scheduled(fixedRate = 12 * 60 * 60 * 1000) // 12 часа в милисекунди
     public void sendScheduledEmails() {
-        sendEmail("alexcheto2013@abv.bg","Scheduled Email",
+        sendEmail(String.valueOf("pako810129@gmail.com"),
+                "Scheduled Email",
                 "This is a scheduled email sent every 12 hours.");
 
     }
+//    userService
+//            .findUserByMail(new UserSubscribeBindingModel().getEmail())
+    public void sendSubscriptionEmails() {
+        sendEmail(String.valueOf("pako810129@gmail.com"),
+                "Registration Confirmation",
+                "Thank you for registering in Ancient History Chanel"
+                );
+
+    }
+
+
     private String sendEmail(String to,String subject,String text) {
      try {
         SimpleMailMessage message =

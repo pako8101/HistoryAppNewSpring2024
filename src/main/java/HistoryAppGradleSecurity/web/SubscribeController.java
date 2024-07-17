@@ -2,7 +2,6 @@ package HistoryAppGradleSecurity.web;
 
 import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
-import HistoryAppGradleSecurity.model.service.UserServiceModel;
 import HistoryAppGradleSecurity.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

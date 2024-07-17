@@ -1,4 +1,4 @@
-package com.example.HistoryAppGradleSecurity.service;
+package history.service;
 
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
@@ -61,7 +61,7 @@ private UserSubscribeBindingModel bindingModelToTest;
                 new LoggedUser(userRepositorytoMock)
                 ,
                 new ModelMapper()
-               ,null
+               ,null,null
         );
     }
 
@@ -87,7 +87,9 @@ private UserSubscribeBindingModel bindingModelToTest;
 when(userDetailsService.loadUserByUsername(bindingModelToTest.getUsername()))
         .thenReturn(isNotNull());
         // ACT
-        toTest.subscribeUser(bindingModelToTest,successfulLoginProcessor);
+        toTest.subscribeUser(bindingModelToTest,
+                successfulLoginProcessor
+        );
 
         // Assert
         verify(userRepositorytoMock).save(userEntityCaptor.capture());

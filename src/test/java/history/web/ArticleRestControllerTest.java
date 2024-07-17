@@ -1,4 +1,4 @@
-package com.example.HistoryAppGradleSecurity.web;
+package history.web;
 
 import HistoryAppGradleSecurity.repository.ArticleRepository;
 import HistoryAppGradleSecurity.repository.LogRepository;
