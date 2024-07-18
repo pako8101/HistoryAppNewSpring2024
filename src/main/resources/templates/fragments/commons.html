@@ -150,9 +150,9 @@ border-color: #4e555b"
                                         <ul>
                                             <li>
                                             <li><a th:href="@{/about}" th:text="#{nav_bar_about}">About</a></li>
-                                            <li><a>Our Team</a></li>
-                                            <li><a>Annual Reports</a></li>
-                                            <li><a>Memberships</a></li>
+                                            <li><a th:text="#{nav_bar_ourTeam}">Our Team</a></li>
+                                            <li><a th:text="#{nav_bar_annualReports}">Annual Reports</a></li>
+                                            <li><a th:text="#{nav_bar_memberships}">Memberships</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -165,9 +165,9 @@ border-color: #4e555b"
                                         <a th:text="#{nav_bar_education}">EDUCATION:</a>
                                         <ul>
                                             <li>
-                                            <li><a th:href="@{/about}">Teaching Materials</a></li>
-                                            <li><a>Collections</a></li>
-                                            <li><a>School Subscriptions</a></li>
+                                            <li><a th:text="#{nav_bar_materials}" th:href="@{/about}">Teaching Materials</a></li>
+                                            <li><a th:text="#{nav_bar_collections}">Collections</a></li>
+                                            <li><a th:text="#{nav_bar_subscriptions}">School Subscriptions</a></li>
                                         </ul>
                                     </li>
                                 </ul>

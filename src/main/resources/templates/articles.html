@@ -5,11 +5,11 @@
 <head th:replace="fragments/commons::head">
 
 </head>
-<header th:replace="fragments/commons::nav"></header>
+
 <body>
 <div class="wrapper">
     <!-- Navigation -->
-
+    <header th:replace="fragments/commons::nav"></header>
 
 
     <div class="site compact" id="articlesList">
@@ -22,7 +22,8 @@
 
         </div>
         <!--        aticle main-->
-        <h3 class="mySticky bg-gray text-dark rounded">Articles count: <span th:text="${articles.size()}"></span></h3><br><br>
+        <h3 class="mySticky bg-gray text-dark rounded"
+            > <span th:text="#{nav_bar_articles_count}">Articles count:</span>  <span th:text="${articles.size()}"></span></h3><br><br>
        <th:block th:each="a: ${articles}">
            <img th:src="${a.pictureUrl}" alt="Title image"><br><br>
         <header class="site-header">
@@ -41,7 +42,7 @@
 
             <article class="post">
                 <header class="post-header">
-                    <h2 >Ancient Period: <span th:text="${a.period}"></span></h2>
+                    <h2 > <span th:text="#{nav_bar_articles_period}">Ancient Period:</span>  <span th:text="${a.period}"></span></h2>
                 </header><br>
                 <section class="post-content">
                     <p><span th:text="${a.content}"></span></p><br><br>

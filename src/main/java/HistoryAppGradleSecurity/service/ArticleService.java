@@ -3,6 +3,7 @@ package HistoryAppGradleSecurity.service;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
+import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -29,4 +30,6 @@ public interface ArticleService {
     List<ArticleCategoryViewModel> getAllByCategory(CategoryNameEnum categoryName);
 
     Optional<ArticleViewModel> findLatestArticle();
+
+    List<Article> getArticleByPeriod(PeriodEnum period);
 }

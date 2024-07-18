@@ -3,6 +3,7 @@ package HistoryAppGradleSecurity.repository;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
+import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,7 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 
     Optional<Article> findTopByOrderByCreatedDesc();
 
-   // findTopByOrderByCreatedOnDesc
+    List<Article> findAllByPeriod_Name(PeriodEnum period_name);
+
+    // findTopByOrderByCreatedOnDesc
 }

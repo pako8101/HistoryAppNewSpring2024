@@ -24,10 +24,15 @@ public class SubscribeControllerIT {
 
     @Autowired
     private MockMvc mvc;
-@Autowired
+
     private UserRepository userRepository;
-@Autowired
+
     private PasswordEncoder passwordEncoder;
+
+    public SubscribeControllerIT(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Test
 void testSubscribe() throws Exception {

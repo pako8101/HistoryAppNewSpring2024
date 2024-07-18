@@ -5,6 +5,7 @@ import HistoryAppGradleSecurity.exception.ObjectNotFoundException;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
+import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -165,6 +166,15 @@ public class ArticleServiceImpl implements ArticleService {
                     avm.setAuthor(ae.getAuthor());
                     return avm;
                 });
+    }
+
+    @Override
+    public List<Article> getArticleByPeriod(PeriodEnum period) {
+        List<Article> allByPeriodName = articleRepository.findAllByPeriod_Name(period);
+
+        return allByPeriodName.stream()
+                .map(article -> modelMapper.map(article, Article.class))
+                .toList();
     }
 
     private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {
