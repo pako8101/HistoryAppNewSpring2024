@@ -71,4 +71,5 @@ public class HomeController {
     public String translations(){
         return "translations";
     }
+
 }

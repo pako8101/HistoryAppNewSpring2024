@@ -4,7 +4,6 @@ package HistoryAppGradleSecurity.web;
 import HistoryAppGradleSecurity.model.binding.ArticleAddBindingModel;
 import HistoryAppGradleSecurity.model.binding.UploadPictureArticleBindingModel;
 import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
-import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.model.service.ArticleServiceModel;
 import HistoryAppGradleSecurity.model.view.ArticleCategoryViewModel;
 import HistoryAppGradleSecurity.model.view.ArticleDetailsViewModel;
@@ -143,25 +142,8 @@ private final ArticleRepository articleRepository;
         return modelAndView;
     }
 
-    @GetMapping("/article/{period}")
-    public ModelAndView getArticlesByPeriod(@PathVariable PeriodEnum period) {
-        String view = "";
-        switch (period){
-            case EGYPT -> view ="egypt";
-            case ANCIENT_GREECE -> view ="greece";
-            case ROME_EMPIRE -> view ="rome";
-            case STONE_AGE -> view ="stone";
-            case MESOPOTAMIA -> view ="mesopotamia";
-            case CENTRAL_AMERICA -> view ="america";
-            case ANDEAN_REGION -> view ="andean";
-        }
 
-        ModelAndView modelAndView = new ModelAndView(view);
 
-        modelAndView.addObject("articles", articleService.getArticleByPeriod(period));
-
-        return modelAndView;
-    }
 
 
 //      @ResponseStatus(code = HttpStatus.NOT_FOUND)

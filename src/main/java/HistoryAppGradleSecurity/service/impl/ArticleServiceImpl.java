@@ -170,7 +170,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> getArticleByPeriod(PeriodEnum period) {
-        List<Article> allByPeriodName = articleRepository.findAllByPeriod_Name(period);
+        List<Article> allByPeriodName = articleRepository
+                .findAllByPeriod(period);
 
         return allByPeriodName.stream()
                 .map(article -> modelMapper.map(article, Article.class))

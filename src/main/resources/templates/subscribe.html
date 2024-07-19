@@ -2,17 +2,13 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
-
 <head th:replace="fragments/commons::head">
-
 </head>
 <link rel="stylesheet" href="/css/subscribe.css">
 <link rel="stylesheet" href="/css/reset-css.css">
 <!-- Navigation -->
-<header th:replace="fragments/commons::nav">
-
-</header>
 <body>
+<header th:replace="fragments/commons::nav"></header><br>
 <div class="main">
     <h1>ANCIENT HISTORY PORTAL</h1>
     <h3>Enter your subscription details please</h3><br>
@@ -21,8 +17,7 @@
           th:action="@{/users/subscribe}"
           th:method="POST">
         <label for="username"
-               th:text="#{nav_bar_login_username}"
-        >Username:</label>
+               th:text="#{nav_bar_login_username}">Username:</label>
         <input
                 th:field="*{username}"
                 th:errorclass="'is-invalid alert-danger'"
@@ -80,11 +75,10 @@
 <!--               title="Password must contain at least one number,-->
 <!--                          one alphabet, one symbol, and be at-->
 <!--                          least 5 characters long"/>-->
-        <label for="show-password" class="field__toggle"
-               >
-            <input type="checkbox" id="show-password" class="field__toggle-input" th:text="#{nav_bar_showPass}"/>
-
-        </label>
+        <label for="show-password" class="field__toggle">
+            <input type="checkbox" id="show-password"
+                   class="field__toggle-input" th:text="#{nav_bar_showPass}"/>
+        </label><br>
         <small th:each="e :${#fields.errors('password')}" th:text="${e}"
                 id="passwordError" class="invalid-feedback  form-text bg-danger rounded">
             Password length must be between 3 and 20 characters and passwords should match.</small>
@@ -113,9 +107,8 @@
                required/><br>
         <small th:each="e :${#fields.errors('age')}" th:text="${e}"
                 class="invalid-feedback text-danger">Age is invalid!</small>
-        <label for="gender"
-               th:text="#{nav_bar_gender}"
-        >Gender:</label>
+         <label for="gender"
+               th:text="#{nav_bar_gender}">Gender:</label>
         <select
                 id="gender"
                 name="gender"

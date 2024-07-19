@@ -19,7 +19,7 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
 
     Optional<Article> findTopByOrderByCreatedDesc();
 
-    List<Article> findAllByPeriod_Name(PeriodEnum period_name);
+    List<Article> findAllByPeriod(PeriodEnum period);
 
     // findTopByOrderByCreatedOnDesc
 }

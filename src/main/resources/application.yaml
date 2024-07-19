@@ -63,7 +63,7 @@ logging:
     org.springframework.security: TRACE
 
 shift:
-  images: greek.jpeg, changeImage1.png, changeImage2.jpg, sphinks2.jpg
+  ancient_images: greek.jpeg, changeImage1.png, changeImage2.jpg, sphinks2.jpg
   refresh-cron: "0 */10 * * * *"
 
 

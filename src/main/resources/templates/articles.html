@@ -1,17 +1,16 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head">
+</head>
 <link rel="stylesheet" href="/css/articles.css">
 <link rel="stylesheet" href="/css/reset-css.css">
-<head th:replace="fragments/commons::head">
 
-</head>
-
+<!-- Navigation -->
 <body>
+
 <div class="wrapper">
-    <!-- Navigation -->
     <header th:replace="fragments/commons::nav"></header>
-
-
     <div class="site compact" id="articlesList">
 <!--        picture-->
         <div class="slide">
