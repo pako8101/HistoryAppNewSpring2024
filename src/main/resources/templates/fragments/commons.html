@@ -68,23 +68,28 @@
                 <div class="home-navbar1" id="home">
                     <div class="home-middle">
                         <div class="home-left" id="left">
-                            <a class="navbar-link">
-                                <form th:href="@{/}">
-                                    <button class="navbar-link"
-                                            th:text="#{nav_bar_home}" >
-                                        HOME
+                                <form class="navbar-link" >
+                                    <button class="navbar-link">
+                                        <a th:href="@{/}"
+                                                th:text="#{nav_bar_home}">HOME</a>
                                     </button>
                                 </form>
 
-                            </a>
-
                             <th:block sec:authorize="!isAuthenticated()">
-                                <a th:href="@{/users/login}"
-                                   th:text="#{nav_bar_login}"
-                                   class="navbar-link active">LOGIN</a>
-                                <a class="navbar-link active-table-tab"
-                                   th:text="#{nav_bar_subscribe}"
-                                   th:href="@{/users/subscribe}">SUBSCRIBE</a>
+                                    <form  class="navbar-link active">
+                                        <button class="navbar-link">
+                                            <a th:href="@{/users/login}"
+                                                    th:text="#{nav_bar_login}">LOGIN</a>
+                                        </button>
+                                    </form>
+
+                                    <form class="navbar-link active-table-tab">
+                                        <button class="navbar-link">
+                                            <a th:text="#{nav_bar_subscribe}"
+                                                    th:href="@{/users/subscribe}">SUBSCRIBE</a>
+                                        </button>
+                                    </form>
+
                             </th:block>
                             <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
                         </div>
@@ -92,34 +97,28 @@
                     <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
                             <div class=" home-left">
-
-                                <a class="navbar-link">
-                                    <form th:href="@{/users/profile}">
-                                        <button class="navbar-link"
-                                                th:text="#{nav_bar_profile}">
-                                            PROFILE
+                                    <form class="navbar-link">
+                                        <button class="navbar-link">
+                                            <a th:href="@{/users/profile}"
+                                                    th:text="#{nav_bar_profile}">PROFILE</a>
                                         </button>
                                     </form>
 
-                                </a>
-
-
-                                <a class=" navbar-link">
-                                    <form th:action="@{/users/logout}" method="post">
-                                        <button th:text="#{nav_bar_logout}"
-                                                type="submit" class="navbar-link">LOGOUT
+                                    <form class=" navbar-link"
+                                            th:action="@{/users/logout}" method="post">
+                                        <button
+                                                type="submit" class="navbar-link">
+                                            <a th:text="#{nav_bar_logout}">LOGOUT</a>
                                         </button>
                                     </form>
-                                </a>
 
-                                <a class="navbar-link">
-                                    <form th:href="@{/articles/add}">
-                                    <button class="navbar-link"
-                                            th:text="#{nav_bar_add_articles}">
-                                        ADD ARTICLE
+                                    <form class="navbar-link">
+                                    <button class="navbar-link">
+                                      <a th:href="@{/articles/add}"
+                                              th:text="#{nav_bar_add_articles}">ADD ARTICLE</a>
                                     </button>
                                 </form>
-                                    </a><br>
+                                <br>
                             </div>
                         </div>
                     </th:block>

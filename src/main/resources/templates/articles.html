@@ -21,8 +21,8 @@
 
         </div>
         <!--        aticle main-->
-        <h3 class="mySticky bg-gray text-dark rounded"
-            > <span th:text="#{nav_bar_articles_count}">Articles count:</span>  <span th:text="${articles.size()}"></span></h3><br><br>
+        <h3 class="mySticky bg-gray text-dark rounded">
+            <span th:text="#{nav_bar_articles_count}">Articles count:</span>  <span th:text="${articles.size()}"></span></h3><br><br>
        <th:block th:each="a: ${articles}">
            <img th:src="${a.pictureUrl}" alt="Title image"><br><br>
         <header class="site-header">

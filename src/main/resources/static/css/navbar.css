@@ -49,7 +49,7 @@
 }
 @keyframes example {
     from {background-color: #499eff;}
-    to {background-color: yellow;}
+    to {background-color: indianred;}
 }
 
 /*--------*/
@@ -311,7 +311,7 @@ select {
     margin-left: auto;
 }
 .navbar-link:hover{
-    transform: translateY(-50%);
+    transform: translateY(-15%);
        color: seagreen;
     /*box-shadow: #b0825c;*/
     border-color: darkseagreen;
@@ -324,7 +324,7 @@ select {
 }
 @keyframes example {
     from {background-color: #499eff;}
-    to {background-color: yellow;}
+    to {background-color: indianred;}
 }
 .navbar-logo-title:hover{
     animation-name: titleAnime;
@@ -353,4 +353,7 @@ select {
     font-family: Karla,Arial,Helvetica,sans-serif;
     color: teal;
     font-weight: bolder;
+}
+.logged-user:hover{
+    transform: translate(-10%);
 }

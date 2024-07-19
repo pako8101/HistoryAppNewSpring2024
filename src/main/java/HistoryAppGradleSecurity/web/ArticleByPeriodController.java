@@ -1,11 +1,14 @@
 package HistoryAppGradleSecurity.web;
 
+import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.service.ArticleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class ArticleByPeriodController {
@@ -14,9 +17,14 @@ public class ArticleByPeriodController {
     public ArticleByPeriodController(ArticleService articleService) {
         this.articleService = articleService;
     }
+//    @ModelAttribute("articlesByPeriod")
+//    public ArticleAddBindingModel articleAddBindingModel() {
+//        return new ArticleAddBindingModel();
+//    }
 
     @GetMapping("/articles/{period}")
-    public ModelAndView getArticlesByPeriod(@PathVariable PeriodEnum period) {
+    public ModelAndView getArticlesByPeriod(@PathVariable ("period") PeriodEnum period) {
+        List<Article> articlesByPeriod = articleService.getArticleByPeriod(period);
         String view = "";
         switch (period){
             case EGYPT -> view ="egypt";
@@ -30,8 +38,7 @@ public class ArticleByPeriodController {
 
         ModelAndView modelAndView = new ModelAndView(view);
 
-        modelAndView.addObject("articles",
-                articleService.getArticleByPeriod(period));
+        modelAndView.addObject("articlesByPeriod",articlesByPeriod);
 
         return modelAndView;
     }
