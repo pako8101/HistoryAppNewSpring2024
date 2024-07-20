@@ -31,5 +31,5 @@ public interface ArticleService {
 
     Optional<ArticleViewModel> findLatestArticle();
 
-    List<Article> getArticleByPeriod(PeriodEnum period);
+    List<ArticleViewModel> getArticleByPeriod(PeriodEnum period);
 }

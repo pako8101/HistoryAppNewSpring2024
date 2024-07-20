@@ -1,7 +1,7 @@
 package HistoryAppGradleSecurity.web;
 
-import HistoryAppGradleSecurity.model.entity.Article;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
+import HistoryAppGradleSecurity.model.view.ArticleViewModel;
 import HistoryAppGradleSecurity.service.ArticleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +24,14 @@ public class ArticleByPeriodController {
 
     @GetMapping("/articles/{period}")
     public ModelAndView getArticlesByPeriod(@PathVariable ("period") PeriodEnum period) {
-        List<Article> articlesByPeriod = articleService.getArticleByPeriod(period);
+        List<ArticleViewModel> articlesByPeriod = articleService
+                .getArticleByPeriod(period);
         String view = "";
         switch (period){
             case EGYPT -> view ="egypt";
             case ANCIENT_GREECE -> view ="greece";
             case ROME_EMPIRE -> view ="rome";
-            case STONE_AGE -> view ="stone";
+            case STONE_AGE -> view ="stoneAge";
             case MESOPOTAMIA -> view ="mesopotamia";
             case CENTRAL_AMERICA -> view ="america";
             case ANDEAN_REGION -> view ="andean";
@@ -39,7 +40,8 @@ public class ArticleByPeriodController {
         ModelAndView modelAndView = new ModelAndView(view);
 
         modelAndView.addObject("articlesByPeriod",articlesByPeriod);
-
+modelAndView.addObject("period", period);
+modelAndView.addObject("articlesByPeriods/stoneAge");
         return modelAndView;
     }
 
@@ -47,6 +49,25 @@ public class ArticleByPeriodController {
     public String stone(){
         return "articlesByPeriods/stoneAge";
     }
+
+//    public String stone(@PathVariable ("period") PeriodEnum period, Model model) {
+//        List<ArticleViewModel> articlesByPeriod = articleService
+//                .getArticleByPeriod(period);
+//        if (articlesByPeriod== null) throw  new NoSuchElementException();
+//        String view = "";
+//        switch (period){
+//            case EGYPT -> view ="egypt";
+//            case ANCIENT_GREECE -> view ="greece";
+//            case ROME_EMPIRE -> view ="rome";
+//            case STONE_AGE -> view ="stone";
+//            case MESOPOTAMIA -> view ="mesopotamia";
+//            case CENTRAL_AMERICA -> view ="america";
+//            case ANDEAN_REGION -> view ="andean";
+//        }
+//        model.addAttribute(view);
+//        model.addAttribute("articlesByPeriodStone",articlesByPeriod)  ;
+
+
     @GetMapping("/articlesByPeriods/andian")
     public String andian(){
         return "articlesByPeriods/andian";
