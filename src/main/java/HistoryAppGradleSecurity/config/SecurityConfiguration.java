@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
+
                                         .permitAll().
                                         requestMatchers("/",
                                                 "/about",
@@ -56,6 +57,8 @@ public class SecurityConfiguration {
                                         requestMatchers("/pages/admins").hasRole(UserRoleEnum.ADMIN.name()).
                                         requestMatchers("/pages/all").hasRole(UserRoleEnum.USER.name()).
                                         anyRequest().authenticated()
+
+
 //                                       requestMatchers("/**").authenticated()
                 )
                 .formLogin(
@@ -68,12 +71,15 @@ public class SecurityConfiguration {
                                                 UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                                         defaultSuccessUrl("/", true).
                                         failureForwardUrl("/users/login-error")
+
                 )
                 .logout((logout) ->
                         logout.logoutUrl("/users/logout").
                                 logoutSuccessUrl("/").//go to homepage after logout
                                 invalidateHttpSession(true)
                                 .deleteCookies("JSESSIONID")
+
+
                 )
                 .rememberMe(httpSecurityRememberMeConfigurer -> {
                     httpSecurityRememberMeConfigurer.key(rememberMeKey)
@@ -87,7 +93,11 @@ public class SecurityConfiguration {
                         securityContext -> securityContext.
                                 securityContextRepository(securityContextRepository)
 
-                );
+                )
+                .sessionManagement((session) -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                )
+        ;
 
         return http.build();
     }
