@@ -2,21 +2,16 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/commons::head">
-
 </head>
 <link rel="stylesheet" href="/css/statistic.css">
 <link rel="stylesheet" href="/css/reset-css.css">
 
 <body>
-<header th:replace="fragments/commons::nav">
-</header>
-
+<header th:replace="fragments/commons::nav"></header>
 <div class="info">
-    <div></div>
+    
     <div >
-        <h1 style="font-size: xxx-large;
-        font-family: "Libre Baskerville", "Palatino Linotype", "Book Antiqua", Palatino, serif"
-        class="title">Ancient History Board</h1><br><br>
+        <h1 class="title"> Ancient History Board </h1> <br> <br>
 
         <main class="p-5 align-content-center bg-blur">
 
@@ -106,10 +101,10 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="l : ${logs}" th:object="${l}">
-                                    <td th:text="*{id}"></td>
-                                    <td th:text="*{dateTime}"></td>
+                                    <td th:text="*{id}"><a ></a></td>
+                                    <td th:text="*{dateTime}"><a></a></td>
                                     <td th:text="*{action}"></td>
-                                    <td th:text="*{article}"></td>
+                                    <td th:text="*{article}"><a></a></td>
                                     <td th:text="*{user}"></td>
                                 </tr>
                                 </tbody>

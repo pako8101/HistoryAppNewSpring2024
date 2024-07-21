@@ -35,9 +35,9 @@ const displayArticles = (articles) => {
                     <div class="text-center">
                         <p class="card-text border-bottom ">Name: ${a.title}</p>
                         <p class="card-text border-bottom ">Author: ${a.author}</p>
-                        <p class="card-text border-bottom ">Title: ${a.genre}</p>
-                        <p class="card-text border-bottom ">Content: ${a.price}</p>
-                        <p class="card-text border-bottom">Period: ${a.releaseDate}</p>
+                       <p class="card-text border-bottom ">Title: </p>
+                        <p class="card-text border-bottom ">Content: </p>
+                        <p class="card-text border-bottom">Period: </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
 

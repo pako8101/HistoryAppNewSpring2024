@@ -40,8 +40,7 @@ public class ArticleByPeriodController {
         ModelAndView modelAndView = new ModelAndView(view);
 
         modelAndView.addObject("articlesByPeriod",articlesByPeriod);
-modelAndView.addObject("period", period);
-modelAndView.addObject("articlesByPeriods/stoneAge");
+
         return modelAndView;
     }
 

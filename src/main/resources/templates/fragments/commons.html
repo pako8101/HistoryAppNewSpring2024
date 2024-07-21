@@ -35,11 +35,13 @@
                 <div class="navbar-logo-title">
                     <div class="home-container01">
                         <hr class="border-bottom w-50">
-                        <div class="mt-5 col-sm-12 my-auto align-self-center">
+                        <div style="border-radius: 4px"
+                             class="mt-5 col-sm-12 my-auto align-self-center">
                             <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
-                                   placeholder="Enter article title or author" aria-label="Search">
+                                   placeholder="Search articles" aria-label="Search">
                         </div>
-                        <li style="margin-left: -9rem" class="nav-item">
+
+                        <div style="  margin-top: -1rem;  margin-left: 1.2rem" class="nav-item">
                             <form th:method="get">
                                 <label class="text-white" style="font-size: small"
                                        for="lang" th:text="#{nav_bar_language}">Language</label>
@@ -55,8 +57,9 @@
                                 </select>
 
                             </form>
-                        </li>
+                        </div>
                     </div>
+
                     <a th:href="@{/}" style="font-weight: bold;margin-left: 8rem"
                        id="logo"
                        class="navbar-logo-title">&copy;ANCIENT HISTORY PORTAL</a>
@@ -89,11 +92,11 @@
                                                     th:href="@{/users/subscribe}">SUBSCRIBE</a>
                                         </button>
                                     </form>
-
                             </th:block>
-                            <!--                                <a sec:authorize="isAuthenticated()"  class="navbar-link" th:href="@{/articles/add}">ADD ARTICLE</a>-->
+
                         </div>
                     </div>
+
                     <th:block sec:authorize="isAuthenticated()">
                         <div class="home-middle">
                             <div class=" home-left">
@@ -182,7 +185,7 @@
                     <nav class="main-nav">
                         <ul>
                             <li>
-                                <a href="#">Admin Panel</a>
+                                <a href="/">Admin Panel</a>
                                 <ul>
                                     <li>
 

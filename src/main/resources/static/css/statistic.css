@@ -8,7 +8,7 @@
     font-family: "Libre Baskerville", "Palatino Linotype", "Book Antiqua", Palatino, sans-serif"
 }
 .info{
-    background-color: antiquewhite;
+    background-color: #b1c703;
     display: flex;
     align-items: center;
     text-align: center;
@@ -62,7 +62,7 @@ thead{
     --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
     text-align: left;
-    color: pink!important;
+    color: #db4f2e!important;
     border-spacing: 0;
     border-collapse: collapse;
     box-sizing: border-box;
