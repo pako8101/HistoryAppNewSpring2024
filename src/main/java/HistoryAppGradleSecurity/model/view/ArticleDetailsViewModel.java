@@ -1,6 +1,7 @@
 package HistoryAppGradleSecurity.model.view;
 
 import HistoryAppGradleSecurity.model.entity.UserEnt;
+import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import lombok.experimental.SuperBuilder;
 
@@ -10,7 +11,7 @@ import java.util.Set;
 public class ArticleDetailsViewModel {
     private long id;
     private PeriodEnum period;
-
+private CategoryNameEnum category;
     private String title;
     private UserEnt author;
     private String created;
@@ -19,6 +20,15 @@ public class ArticleDetailsViewModel {
     private Set<PictureViewModel> pictures;
 
     public ArticleDetailsViewModel() {
+    }
+
+    public CategoryNameEnum getCategory() {
+        return category;
+    }
+
+    public ArticleDetailsViewModel setCategory(CategoryNameEnum category) {
+        this.category = category;
+        return this;
     }
 
     public long getId() {

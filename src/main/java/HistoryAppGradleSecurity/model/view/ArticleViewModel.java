@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.model.view;
 
+import HistoryAppGradleSecurity.model.enums.CategoryNameEnum;
 import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 
 public class ArticleViewModel {
@@ -11,6 +12,7 @@ public class ArticleViewModel {
 
     private String pictureUrl;
     private PeriodEnum period;
+    private CategoryNameEnum category;
     private String content;
 
     public ArticleViewModel() {
@@ -26,6 +28,15 @@ public class ArticleViewModel {
         this.pictureUrl = pictureUrl;
         this.period = period;
         this.content = content;
+    }
+
+    public CategoryNameEnum getCategory() {
+        return category;
+    }
+
+    public ArticleViewModel setCategory(CategoryNameEnum category) {
+        this.category = category;
+        return this;
     }
 
     public long getId() {

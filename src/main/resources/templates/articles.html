@@ -41,7 +41,8 @@
 
             <article class="post">
                 <header class="post-header">
-                    <h2 > <span th:text="#{nav_bar_articles_period}">Ancient Period:</span>  <span th:text="${a.period}"></span></h2>
+                    <h2 > <span th:text="#{nav_bar_articles_period}">Ancient Period:</span>  <span th:text="${a.period}"></span></h2><br>
+                    <h2 > <span >Category:</span>  <span th:text="${a.category}"></span></h2>
                 </header><br>
                 <section class="post-content">
                     <p><span th:text="${a.content}"></span></p><br><br>

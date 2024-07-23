@@ -17,7 +17,7 @@ public class ArticleAddBindingModel {
     @NotNull
     private String title;
     @NotNull(message = "You have to write author name!")
-    @Size(min = 5, max = 30,message = "Author name length must be between 5 and 30 symbols!")
+    @Size(min = 2, max = 30,message = "Author name length must be between 2 and 30 symbols!")
     private String author;
     @NotNull(message = "{add.article.content.message}")
     @Size(min = 10,message = "{add.article.content.message}")

@@ -16,17 +16,17 @@
         <section  class="route-info text-center">
             <h2 class="site-title" id="article-name">Article title: <span th:text="${article.title}"></span></h2><br>
             <img class="image-details2" th:src="${article.pictures}" alt="Title image"><br>
-            <p>Author name: <span th:text="${article.author}" id="authorName"></span></p>
-            <p> <span th:text="${article.content}"  id="content"></span></p>
-            <h4 class="period" >Period: <span th:text="${article.period}"  ></span></h4>
-
+            <p>Author name: <span th:text="${article.author}" id="authorName"></span></p><br>
+            <p>Content: <span th:text="${article.content}"  id="content"></span></p>
+            <h3 class="period" >Period: <span th:text="${article.period}"  ></span></h3><br>
+            <h2 class="category"> <span >Category:</span>  <span th:text="${article.category}"></span></h2><br><br>
           </section>
         <section th:unless="${#lists.size(article.pictures) == 0}" class="gallery">
             <img class="rounded"
                  th:each="picture : ${article.pictures}"
                  th:src="${#strings.contains(picture.src, 'cloudinary') ? picture.src : '\images\' + picture.src}"
                  th:alt="${picture.getAlt()}"
-                 height="100%">
+                 height="50%">
         </section>
 
             </div>

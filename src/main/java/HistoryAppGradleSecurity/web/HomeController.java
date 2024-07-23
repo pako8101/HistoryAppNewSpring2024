@@ -71,5 +71,9 @@ public class HomeController {
     public String translations(){
         return "translations";
     }
+    @GetMapping("/teachingMaterials")
+    public String teachingMaterials(){
+        return "teachingMaterials";
+    }
 
 }

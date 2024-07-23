@@ -111,5 +111,31 @@
 .article{
     height: 88vh;
 }
-
-
+/*validation*/
+input:valid{
+    border: springgreen;
+}
+textarea:valid{
+    border: springgreen;
+}
+textarea:invalid{
+    border: dashed deepskyblue 2px ;
+}
+input:invalid{
+    border: dashed darkorange 2px ;
+}
+textarea:invalid:required{
+    background-image: linear-gradient(to right,darkseagreen,lightcoral);
+}
+input:invalid:required{
+    background-image: linear-gradient(to right,darkseagreen,lightcoral);
+}
+/*input {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    margin-bottom: 15px;*/
+/*    padding: 10px;*/
+/*    box-sizing: border-box;*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 5px;*/
+/*}*/

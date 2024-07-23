@@ -22,11 +22,15 @@
                           enctype="multipart/form-data"
                     >
                         <fieldset>
-                            <legend><span class="number">1</span> Author Info</legend>
-                            <input th:field="*{author}"
-                                   th:errorclass="'is-invalid bg-danger'"
-                                    type="text" name="author"
-                                    placeholder="Your Name *">
+                            <legend th:text="#{nav_bar_login_author_info}"><span class="number">1</span> Author Info</legend>
+                            <label th:text="#{nav_bar_login_author_name}"> </label>
+                                <input th:field="*{author}"
+                                       th:errorclass="'is-invalid bg-danger'"
+                                        type="text"
+                                       required
+                                       name="author"
+                                        placeholder="Your Name *">
+
                             <small th:each="error :${#fields.errors('author')}"
                                    th:text="${error}"
                                    th:class="'invalid-feedback text-danger'"
@@ -34,9 +38,12 @@
 
                             <div class="form-row m-5">
                                 <div class="col">
-                                    <label for="created">Date of creation</label>
+                                    <label for="created" th:text="#{nav_bar_login_art_date}"
+                                           th:min="2010-01-01"
+                                    >Date of creation</label>
                                     <input th:field="*{created}"
                                            th:errorclass="is-invalid"
+                                           required
                                            id="created" name="created" type="date"
                                            class="form-control" placeholder="Date of creation">
                                     <small id="createdError"
@@ -47,10 +54,11 @@
                                 </div>
                             <div class="form-row ">
                                 <div class="col">
-                                    <label for="imageUrl">Image Url</label>
+                                    <label for="imageUrl" th:text="#{nav_bar_login_art_img}">Image Url</label>
                                     <input th:field="*{imageUrl}"
                                            th:errorclass="'is-invalid bg-danger'"
                                            name="imageUrl"
+                                           required
                                            id="imageUrl" type="text"
                                            class="form-control"
                                            placeholder="Image Url">
@@ -62,18 +70,19 @@
                                 </div>
                             </div>
 <!--                            <textarea name="field3" placeholder="About yourself"></textarea>-->
+                                <fieldset>
 
-
-                            <legend><span class="number">2</span> Article Text</legend>
-                            <label for="period">Period:</label>
+                            <legend th:text="#{nav_bar_login_art_text}"><span class="number">2</span> Article Text</legend>
+                            <label for="period" th:text="#{nav_bar_articles_period}">Period:</label>
                             <select th:field="*{period}"
                                     th:errorclass="'is-invalid bg-danger'"
+                                    required
                                     id="period" name="period">
-                                <optgroup label="period">
-                                    <option value="">Select period</option>
+                                <optgroup label="">
+                                    <option th:text="#{nav_bar_login_art_select_period}" value="period">Select period</option>
                                     <option th:each="p:${T(HistoryAppGradleSecurity.model.enums.PeriodEnum).values()}"
                                             th:value="${p}" th:text="${p}"
-                                            value="egypt">Egypt</option>
+                                            value="egypt"></option>
                                 </optgroup>
                             </select>
                             <small th:each="error: ${#fields.errors('period')}"
@@ -88,7 +97,7 @@
                             <!--                                </optgroup>-->
                             <!--                            </select>-->
                             <div class="form-group p-3" style="margin-bottom: 1rem">
-                                <label class="p-2" for="categories">Categories:</label>
+                                <label class="p-2" for="categories" th:text="#{nav_bar_login_art_category}">Categories:</label>
                                 <input th:each="category: ${T(HistoryAppGradleSecurity.model.enums.CategoryNameEnum).values()}" class="m-3"
                                        th:field="*{categories}"
                                        type="checkbox" name="categories" id="categories"
@@ -101,10 +110,11 @@
                             </div>
                         </fieldset>
 
-            <fieldset>
+            <fieldset> <label th:text="#{nav_bar_login_art_title}"></label>
                 <input th:field="*{title}"
                        th:errorclass="'is-invalid bg-danger'"
                        minlength="5"
+                       required
                        type="text" name="title"
                        placeholder="Article Title">
                 <small th:each="error :${#fields.errors('title')}"
@@ -112,23 +122,24 @@
                        th:class="'invalid-feedback text-danger'"  id="inputTitleError"> Title must be more then 5 letters!</small>
 
 
-
-                <textarea th:field="*{content}"
-                                      th:errorclass="'is-invalid bg-danger'"
-                                      minlength="10"
-                                    class="article" name="article"
-                                      placeholder=" Your Article Content"></textarea>
-                            <small th:each="error :${#fields.errors('content')}"
+                <label >
+                    <label th:text="#{nav_bar_login_art_content}" ></label>
+<textarea th:field="*{content}"
+                      th:errorclass="'is-invalid bg-danger'"
+          required
+                    class="article" name="article"
+                      placeholder=" Your Article Content"></textarea>
+                </label>
+                <small th:each="error :${#fields.errors('content')}"
                                    th:text="${error}"
                                    th:class="'invalid-feedback text-danger'"
                                    id="inputContentError"> Content must be more then 10 letters!</small>
                         </fieldset>
                         <input type="submit" value="Add article" />
+
                     </form>
+
                 </div>
-
-
-
 
 
     <footer th:replace="fragments/commons::footer">

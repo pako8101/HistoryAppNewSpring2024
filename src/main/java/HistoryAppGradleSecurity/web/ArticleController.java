@@ -106,7 +106,7 @@ private final ArticleRepository articleRepository;
             return "redirect:add";
         }
         ArticleServiceModel articleServiceModel = modelMapper.map(articleAddBindingModel, ArticleServiceModel.class);
-
+articleServiceModel.setCategories(articleAddBindingModel.getCategories());
         articleServiceModel.setAuthor(principal.getUsername());
 
         articleService.addNewArticle(articleServiceModel);

@@ -50,10 +50,13 @@ p, ul, ol {
 }
 
 .site-title {
-    margin: 0;
+    margin: 2rem auto 1rem 0;
     padding: 0;
     max-width: 50%;
     line-height: 1;
+}
+.category{
+    padding-bottom: 2rem;
 }
 
 .site-title a {
@@ -127,7 +130,7 @@ margin-bottom: -3rem;
     margin: 2rem 0 0 10rem;
     box-sizing: border-box;
     border: none;
-    position: relative;
+    position: absolute;
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
@@ -141,7 +144,9 @@ margin-bottom: -3rem;
     aspect-ratio: 1/1;
     overflow: hidden;
     border-radius: 0.5em;
-    max-height: 17em;
+    max-height: 20em;
+    padding-bottom: 8rem;
+    margin-bottom: 2rem;
 }
 
 .image-details2 {
