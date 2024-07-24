@@ -34,14 +34,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http,
-                                           SecurityContextRepository securityContextRepository) throws Exception {
+                                           SecurityContextRepository securityContextRepository
+    ,JwtAuthFilter jwtAuthFilter) throws Exception {
 
         http
                 .authorizeHttpRequests(
                         authorizeHttpRequests ->
                                 authorizeHttpRequests.
                                         requestMatchers(PathRequest.toStaticResources().atCommonLocations())
-
                                         .permitAll().
                                         requestMatchers("/",
                                                 "/about",
@@ -97,6 +97,7 @@ public class SecurityConfiguration {
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 )
+                .addFilterBefore(jwtAuthFilter,UsernamePasswordAuthenticationFilter.class)
         ;
 
         return http.build();

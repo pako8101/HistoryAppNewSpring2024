@@ -28,8 +28,7 @@ public class EmailScheduler {
                 "This is a scheduled email sent every 12 hours.");
 
     }
-//    userService
-//            .findUserByMail(new UserSubscribeBindingModel().getEmail())
+
     public void sendSubscriptionEmails() {
         sendEmail(String.valueOf("pako810129@ahoo.co.uk"),
                 "Registration Confirmation",
