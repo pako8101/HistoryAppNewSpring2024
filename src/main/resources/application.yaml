@@ -67,5 +67,8 @@ shift:
   refresh-cron: "0 */10 * * * *"
 
 recaptcha:
-  secret = ${secret_key}:
+   secret: ${secret_key}
 
+
+jwt:
+  secret: ${jwt.secret}

@@ -92,7 +92,7 @@ public class SubscribeController {
             securityContextRepository.saveContext(context, request, response);
         });
 
-        return "redirect:/login";
+        return "redirect:/users/login";
     }
 
 }
