@@ -3,6 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 <head th:replace="fragments/commons::head">
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 </head>
 <link rel="stylesheet" href="/css/subscribe.css">
 <link rel="stylesheet" href="/css/reset-css.css">
@@ -123,6 +124,13 @@
                 Other
             </option>
         </select>
+
+        <!--        recaptcha-->
+
+
+<!--        <div class="g-recaptcha"-->
+<!--             th:attr="data-sitekey=${@captchaSettings.getSite()}"></div>-->
+
 <!--        personal_info_agreement-->
         <div class="form-group row">
             <div class="col-sm-12">
@@ -132,9 +140,11 @@
                                         &nbsp;<b>By submitting this form, I accept that the information entered may be
                         processed by Ancient HP within corporate purposes only and be kept for 3 years for future articles.</b>
                                     </span>
+
                 </div>
             </div>
         </div>
+
 
         <button type="submit"
                 th:text="#{nav_bar_submit}">

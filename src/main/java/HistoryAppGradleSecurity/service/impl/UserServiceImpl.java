@@ -58,13 +58,16 @@ public class UserServiceImpl implements UserService {
 //        return mappedEntity;
 //    }
 
-        UserEnt userEntity = new UserEnt().
-                setFullName(userSubscribeBindingModel.getFullName()).
-//                setAge(userSubscribeBindingModel.getAge()).
-                setEmail(userSubscribeBindingModel.getEmail()).
-                setUsername(userSubscribeBindingModel.getUsername()).
-                setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword())
-                );
+        UserEnt userEntity = modelMapper.map(userSubscribeBindingModel, UserEnt.class);
+        userEntity.setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword()));
+//                new UserEnt().
+//
+//                setFullName(userSubscribeBindingModel.getFullName()).
+////               setAge(userSubscribeBindingModel.getAge()).
+//                setEmail(userSubscribeBindingModel.getEmail()).
+//                setUsername(userSubscribeBindingModel.getUsername()).
+//                setPassword(passwordEncoder.encode(userSubscribeBindingModel.getPassword())
+//                );
 
         userRepository.save(userEntity);
 

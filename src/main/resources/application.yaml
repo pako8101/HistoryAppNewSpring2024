@@ -66,5 +66,6 @@ shift:
   ancient_images: greek.jpeg, changeImage1.png, changeImage2.jpg, sphinks2.jpg
   refresh-cron: "0 */10 * * * *"
 
-
+recaptcha:
+  secret = ${secret_key}:
 

@@ -2,11 +2,13 @@ package HistoryAppGradleSecurity.web;
 
 import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
+import HistoryAppGradleSecurity.service.ICaptchaService;
 import HistoryAppGradleSecurity.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolderStrategy;
@@ -27,7 +29,8 @@ public class SubscribeController {
 
     private final UserService userService;
     private final SecurityContextRepository securityContextRepository;
-
+    @Autowired
+    private ICaptchaService captchaService;
     private final ModelMapper modelMapper;
 
     public SubscribeController(UserService userService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
@@ -56,13 +59,20 @@ public class SubscribeController {
     }
 
 
-
     @PostMapping("/subscribe")
     public String subscribeConfirm(@Valid UserSubscribeBindingModel userSubscribeBindingModel,
                                    HttpServletRequest request,
-                                   HttpServletResponse response,BindingResult bindingResult,RedirectAttributes redirectAttributes) {
+                                   HttpServletResponse response, BindingResult bindingResult,
+                                   RedirectAttributes redirectAttributes) {
 
-                if (bindingResult.hasErrors() || !userSubscribeBindingModel.getPassword()
+//        String captchaResponse = request.getParameter("g-recaptcha-response");
+//        if (!captchaService.verifyCaptcha(captchaResponse)) {
+//            bindingResult.reject("captcha.error");
+////    return "Captcha verification failed";
+//        }
+
+
+        if (bindingResult.hasErrors() || !userSubscribeBindingModel.getPassword()
                 .equals(userSubscribeBindingModel.getConfirmPassword())) {
             redirectAttributes.addFlashAttribute("subscribeBindingModel", userSubscribeBindingModel);
             redirectAttributes.addFlashAttribute(
