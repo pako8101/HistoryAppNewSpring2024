@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 <head th:replace="fragments/commons::head">
-    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+<!--    <script src='https://www.google.com/recaptcha/api.js' ></script>-->
 </head>
 <link rel="stylesheet" href="/css/subscribe.css">
 <link rel="stylesheet" href="/css/reset-css.css">
@@ -108,6 +108,8 @@
                required/><br>
         <small th:each="e :${#fields.errors('age')}" th:text="${e}"
                 class="invalid-feedback text-danger">Age is invalid!</small>
+<!--        <form><div class="g-recaptcha"-->
+<!--                   th:attr="data-sitekey=${@captchaSettings.getSite()}"></div></form>-->
          <label for="gender"
                th:text="#{nav_bar_gender}">Gender:</label>
         <select
@@ -128,10 +130,7 @@
         <!--        recaptcha-->
 
 
-<!--        <div class="g-recaptcha"-->
-<!--             th:attr="data-sitekey=${@captchaSettings.getSite()}"></div>-->
 
-<!--        personal_info_agreement-->
         <div class="form-group row">
             <div class="col-sm-12">
                 <div class="col-sm-12">
@@ -144,6 +143,8 @@
                 </div>
             </div>
         </div>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <div class="g-recaptcha" th:data-sitekey="${recaptchaSiteKey}"></div><br><br>
 
 
         <button type="submit"

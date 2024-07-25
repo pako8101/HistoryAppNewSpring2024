@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.context.SecurityContextHolderStrategy;
@@ -32,6 +33,8 @@ public class SubscribeController {
     @Autowired
     private ICaptchaService captchaService;
     private final ModelMapper modelMapper;
+    @Value("${site_key}")
+    private String recaptchaSiteKey;
 
     public SubscribeController(UserService userService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
         this.userService = userService;
@@ -55,6 +58,7 @@ public class SubscribeController {
         if (!model.containsAttribute("userSubscribeBindingModel")) {
             model.addAttribute("userSubscribeBindingModel", new UserSubscribeBindingModel());
         }
+        model.addAttribute("recaptchaSiteKey", recaptchaSiteKey);
         return "subscribe";
     }
 
@@ -65,11 +69,11 @@ public class SubscribeController {
                                    HttpServletResponse response, BindingResult bindingResult,
                                    RedirectAttributes redirectAttributes) {
 
-//        String captchaResponse = request.getParameter("g-recaptcha-response");
-//        if (!captchaService.verifyCaptcha(captchaResponse)) {
-//            bindingResult.reject("captcha.error");
-////    return "Captcha verification failed";
-//        }
+        String captchaResponse = request.getParameter("g-recaptcha-response");
+        if (!captchaService.verifyCaptcha(captchaResponse)) {
+            bindingResult.reject("captcha.error");
+//    return "Captcha verification failed";
+        }
 
 
         if (bindingResult.hasErrors() || !userSubscribeBindingModel.getPassword()
@@ -92,7 +96,7 @@ public class SubscribeController {
             securityContextRepository.saveContext(context, request, response);
         });
 
-        return "redirect:/users/login";
+        return "redirect:/";
     }
 
 }

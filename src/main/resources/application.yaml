@@ -67,8 +67,14 @@ shift:
   refresh-cron: "0 */10 * * * *"
 
 recaptcha:
-   secret: ${secret_key}
+secret: ${secret_key}
+site: ${site_key}
 
 
 jwt:
   secret: ${jwt.secret}
+  expiration: ${jwt.expiration:58000}
+
+articles:
+  api:
+    baseUrl: "http//localhost:1032"

@@ -6,6 +6,7 @@
 </head>
 <link rel="stylesheet" href="/css/reset-css.css">
 <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/navbar.css">
 
 
 <body>
@@ -131,51 +132,57 @@
         <div class="home-cards-container">
             <div class="category-card-category-card">
                 <img alt="image" src="/images/egypt.jpg" class="category-card-image"/>
-                <span class="category-card-text"><span>
+                <span class="category-card-text"><span >
                         <a th:href="@{/articlesByPeriods/egypt}" th:text="#{nav_bar_login_art_egypt}">Egypt</a> </span></span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="/images/greek.jpg" class="category-card-image"/>
                 <span class="category-card-text"><span>
-                        <a th:href="@{/articlesByPeriods/greece}">Ancient Greece</a> </span></span>
+                        <a th:href="@{/articlesByPeriods/greece}" th:text="#{nav_bar_login_art_greece}">Ancient Greece</a> </span></span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="/images/rome.jpg" class="category-card-image"/>
                 <span class="category-card-text"><span>
-                        <a th:href="@{/articlesByPeriods/rome}">Rome Empire</a> </span></span>
+                        <a th:href="@{/articlesByPeriods/rome}" th:text="#{nav_bar_login_art_rome}">Rome Empire</a> </span></span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="/images/Mesopotamian-innovations.jpg" class="category-card-image"/>
                 <span class="category-card-text"><span>
-                        <a th:href="@{/articlesByPeriods/mesopotamia}">Mesopotamia</a> </span></span>
+                        <a th:href="@{/articlesByPeriods/mesopotamia}" th:text="#{nav_bar_login_art_mesopotamia}">Mesopotamia</a> </span></span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="/images/incas.jpg" class="category-card-image"/>
                 <span class="category-card-text"><span>
-                        <a th:href="@{/articlesByPeriods/america}">North & Central America</a> </span></span>
+                        <a th:href="@{/articlesByPeriods/america}" th:text="#{nav_bar_login_art_america}">North & Central America</a> </span></span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="/images/atzetecs.jpg" class="category-card-image"/>
                 <span class="category-card-text">
-                  <span><a th:href="@{/articlesByPeriods/andian}">Andean Region</a> </span>
+                  <span><a th:href="@{/articlesByPeriods/andian}" th:text="#{nav_bar_login_art_ands}">Andean Region</a> </span>
                 </span>
             </div>
             <div class="category-card-category-card">
                 <img alt="image" src="./images/pic8.jpg" class="category-card-image"/>
                 <a class="category-card-text">
-                    <h5><a class="article" th:href="@{/articlesByPeriods/stoneAge}">Stone Age</a></h5>
+                    <h5><a class="article" th:href="@{/articlesByPeriods/stoneAge}" th:text="#{nav_bar_login_art_stone}">Stone Age</a></h5>
                 </a>
             </div>
         </div>
     </div>
     <div class="home-banner">
         <div class="home-container05">
-            <h3 class="home-text19 Heading-3">Ancient World</h3>
-            <h4 class="home-text20"><a class="article" th:href="@{/articles/all}">Articles</a></h4>
+            <h3 class="home-text19 Heading-3">Ancient World</h3><br>
+            <h4 class="home-text20"><a class="article"
+                                       id="articlesList" th:href="@{/articles/all}"
+                                       th:text="#{nav_bar_all_articles}">Articles</a></h4>
             <br>
 
-
         </div>
+    </div>
+    <div style="border-radius: 4px"
+         class="mt-5 col-sm-12 my-auto align-self-center">
+        <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
+               placeholder="Enter article name" aria-label="Search">
     </div>
     <div class="home-container06 max-width-container">
         <div class="home-container07">
