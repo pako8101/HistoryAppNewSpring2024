@@ -143,9 +143,9 @@
                 </div>
             </div>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <div class="g-recaptcha" th:data-sitekey="${recaptchaSiteKey}"></div><br><br>
-
+        <script src="https://www.google.com/recaptcha/api.js" ></script>
+        <div class="g-recaptcha" th:data-sitekey="6LcSUBgqAAAAAL2IhcdzErjCgaYW_EoWnUjhDbUQ"></div><br>
+        <p style="color: red" th:text="${message}"></p><br>
 
         <button type="submit"
                 th:text="#{nav_bar_submit}">

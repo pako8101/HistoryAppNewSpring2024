@@ -17,10 +17,7 @@ import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -64,15 +61,22 @@ public class SubscribeController {
 
 
     @PostMapping("/subscribe")
-    public String subscribeConfirm(@Valid UserSubscribeBindingModel userSubscribeBindingModel,
+    public String subscribeConfirm(@RequestParam("g-recaptcha-response") String captchaResponse,
+                                   @Valid UserSubscribeBindingModel userSubscribeBindingModel,
                                    HttpServletRequest request,
-                                   HttpServletResponse response, BindingResult bindingResult,
+                                   HttpServletResponse response,
+                                    Model model,
+                                    BindingResult bindingResult,
                                    RedirectAttributes redirectAttributes) {
 
-        String captchaResponse = request.getParameter("g-recaptcha-response");
+
+//        String captchaResponse = request.getParameter("g-recaptcha-response");
+        System.out.println("Captcha Response: " + captchaResponse);
         if (!captchaService.verifyCaptcha(captchaResponse)) {
-            bindingResult.reject("captcha.error");
-//    return "Captcha verification failed";
+            model.addAttribute("message",
+                    "Captcha verification failed");
+            return "subscribe";
+
         }
 
 
@@ -96,6 +100,7 @@ public class SubscribeController {
             securityContextRepository.saveContext(context, request, response);
         });
 
+        model.addAttribute("message", "Registration successful");
         return "redirect:/";
     }
 
