@@ -12,6 +12,10 @@ body {
 padding-top: 0.2rem;
 
 }
+
+.rc-anchor-error-message {
+    margin-left: -3rem;
+}
 .form-group{
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -33,7 +37,7 @@ padding-top: 0.2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     padding: 20px;
     width: 300px;
-margin-top: 12rem;
+margin-top: 3rem;
 
 
 }

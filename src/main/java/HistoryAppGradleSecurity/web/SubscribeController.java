@@ -1,5 +1,6 @@
 package HistoryAppGradleSecurity.web;
 
+import HistoryAppGradleSecurity.model.binding.ReCaptchaResponseDTO;
 import HistoryAppGradleSecurity.model.binding.UserLoginBindingModel;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.service.ICaptchaService;
@@ -33,10 +34,14 @@ public class SubscribeController {
     @Value("${site_key}")
     private String recaptchaSiteKey;
 
-    public SubscribeController(UserService userService, SecurityContextRepository securityContextRepository, ModelMapper modelMapper) {
+
+    public SubscribeController(UserService userService,
+                               SecurityContextRepository securityContextRepository,
+                               ModelMapper modelMapper) {
         this.userService = userService;
         this.securityContextRepository = securityContextRepository;
         this.modelMapper = modelMapper;
+
     }
 
 
@@ -70,14 +75,23 @@ public class SubscribeController {
                                    RedirectAttributes redirectAttributes) {
 
 
-//        String captchaResponse = request.getParameter("g-recaptcha-response");
-        System.out.println("Captcha Response: " + captchaResponse);
-        if (!captchaService.verifyCaptcha(captchaResponse)) {
-            model.addAttribute("message",
-                    "Captcha verification failed");
-            return "subscribe";
+            boolean isBot = !captchaService
+                    .verify(captchaResponse)
+                    .map(ReCaptchaResponseDTO::isSuccess)
+                    .orElse(false);
 
-        }
+            if (isBot) {
+                return "redirect:/";
+            }
+
+//        String captchaResponse = request.getParameter("g-recaptcha-response");
+//        System.out.println("Captcha Response: " + captchaResponse);
+//        if (!captchaService.verifyCaptcha(captchaResponse)) {
+//            model.addAttribute("message",
+//                    "Captcha verification failed");
+//            return "subscribe";
+//
+//        }
 
 
         if (bindingResult.hasErrors() || !userSubscribeBindingModel.getPassword()

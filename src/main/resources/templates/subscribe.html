@@ -3,8 +3,10 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
 >
 <head th:replace="fragments/commons::head">
+
 <!--    <script src='https://www.google.com/recaptcha/api.js' ></script>-->
 </head>
+
 <link rel="stylesheet" href="/css/subscribe.css">
 <link rel="stylesheet" href="/css/reset-css.css">
 <!-- Navigation -->
@@ -14,9 +16,12 @@
     <h1>ANCIENT HISTORY PORTAL</h1>
     <h3>Enter your subscription details please</h3><br>
 <!--    <h2>Subscription Form</h2>-->
-    <form th:object="${userSubscribeBindingModel}"
+
+    <form  id="registration-form"
+            th:object="${userSubscribeBindingModel}"
           th:action="@{/users/subscribe}"
-          th:method="POST">
+          th:method="POST"
+           >
         <label for="username"
                th:text="#{nav_bar_login_username}">Username:</label>
         <input
@@ -127,10 +132,6 @@
             </option>
         </select>
 
-        <!--        recaptcha-->
-
-
-
         <div class="form-group row">
             <div class="col-sm-12">
                 <div class="col-sm-12">
@@ -143,22 +144,61 @@
                 </div>
             </div>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js" ></script>
-        <div class="g-recaptcha" th:data-sitekey="6LcSUBgqAAAAAL2IhcdzErjCgaYW_EoWnUjhDbUQ"></div><br>
-        <p style="color: red" th:text="${message}"></p><br>
 
-        <button type="submit"
-                th:text="#{nav_bar_submit}">
-            Submit
-        </button>
+        <div class="row">
+            <div class="col col-md-4">
+                <div class="button-holder d-flex">
+                    <button class="g-recaptcha btn btn-info btn-lg"
+                            th:attr="data-sitekey=${@captchaSettings.getSite()}"
+                            data-callback='onSubmit'
+                            data-action='submit'
+                            type="submit"
+                            id="onSubmit"
+                    >Submit</button>
+                </div>
+            </div>
+        </div>
     </form>
+    <!-- EO: Registration form end-->
 </div>
 
+<!-- ReCaptcha -->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+    function onSubmit(token) {
+        document.getElementById("registration-form").submit();
+    }
+</script>
 
+
+<!--        <button  class="g-recaptcha btn btn-info btn-lg"-->
+<!--                 th:attr="data-sitekey=${@recaptchaSiteKey}"-->
+<!--                 data-callback='onSubmit'-->
+<!--                 data-action='submit'-->
+<!--                type="submit"-->
+<!--                id="onSubmit"-->
+<!--                th:text="#{nav_bar_submit}">-->
+<!--            Submit-->
+<!--        </button>-->
+
+<!--        &lt;!&ndash;        recaptcha&ndash;&gt;-->
+
+
+<!--    </form>-->
+
+<!--</div>-->
+<!--<script src="https://www.google.com/recaptcha/api.js"></script>-->
+<!--<script>-->
+<!--    function onSubmit(token) {-->
+<!--        document.getElementById("registration-form").submit();-->
+<!--    }-->
+<!--</script>-->
 
 <footer th:replace="fragments/commons::footer">
 
 </footer>
+
+
 <script type="text/javascript">
 
 
