@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/navbar.css">
 
-
 <body>
 <header th:replace="/fragments/commons::nav">
 </header>
@@ -104,13 +103,18 @@
         </div>
     </div>
 </div>
-
+<h1>Watch this YouTube video</h1>
+<div style="text-align:center;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{videoId}"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+</div>
 
 <!--    <h1 class="text-light border-left pl-2">Welcome to</h1>-->
 <!--    <h1 class="text-light border-left pl-2">Ancient History Portal!</h1>-->
 <!--    <div class="d-flex justify-content-center">-->
 <!--        <div class="my-index-div w-50">-->
-<!--            <iframe class="w-100 h-100" src="https://www.youtube.com/watch?v=VANTQdAm5eA" title="YouTube video"-->
+<!--            <iframe class="w-100 h-100" src="https://www.youtube.com/watch?v=8AgeNvHZ_ks" title="YouTube video"-->
 <!--                    allowfullscreen></iframe>-->
 <!--        </div>-->
 <!--    </div>-->
@@ -180,7 +184,7 @@
         </div>
     </div><br><br>
 
-    <div style="border-radius: 4px;border: #040505;border-style: solid"
+    <div style="border-radius: 4px;border: solid #040505;"
          class="mt-5 col-sm-12 my-auto align-self-center">
         <input id="searchInput" class="form-control mr-sm-2 w-50" type="search"
                placeholder="Enter article name" aria-label="Search">
