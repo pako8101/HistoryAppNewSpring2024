@@ -60,19 +60,25 @@ body {
 }
 .blog-post-card-blog-post-card {
   width: 100%;
-  display: flex;
+  /*display: flex;*/
   position: relative;
   max-width: 400px;
   align-self: stretch;
   transition: 0.3s;
   flex-direction: column;
   justify-content: space-between;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  /*width: 120px;*/
 }
+
 .blog-post-card-image {
   flex: 1;
   width: 100%;
   object-fit: cover;
   height: 100%;
+  max-height: 20%;
 }
 .blog-post-card-container {
   width: 100%;
@@ -683,7 +689,9 @@ margin-bottom: -5px;
 }
 
 
-
+#more {display: none;}
+#more1 {display: none;}
+#more2 {display: none;}
 
 
 

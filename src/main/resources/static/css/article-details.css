@@ -20,11 +20,13 @@ img {
     height: auto;
 }
 h3,h2,p,h1{
-    text-shadow: 2px 2px 5px red;
+    text-shadow: 2px 2px 5px #117a8b;
 }
 .container {
     max-width: 1200px;
     margin: 2rem 1rem 1rem 2rem;
+
+
 }
 
 .section-header {
@@ -40,6 +42,10 @@ h3,h2,p,h1{
     display: flex;
     gap: 1.5em;
 
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .section-content article,
@@ -50,7 +56,14 @@ h3,h2,p,h1{
 
 .section-content article {
     flex: 1 1 30%;
-    background: #819DAF;
+    background-image: url("static/images/tutmos.jpg");
+    height: 500px;
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /*background: #819DAF;*/
     color: #000;
 }
 
@@ -59,6 +72,9 @@ h3,h2,p,h1{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: normal;
 }
 
 .section-content article .entry-content p {
@@ -72,8 +88,11 @@ h3,h2,p,h1{
     background: #327DC4;
     border: 1px solid #323CC4;
     outline: 1px solid #fff;
-    padding: 0.5em 1em;
+    padding: 0.5em 1em 1em;
     border-radius: 2em;
+
 }
 
-
+.entry-content{
+    margin-bottom: 1rem;
+}
