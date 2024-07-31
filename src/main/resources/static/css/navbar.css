@@ -349,6 +349,9 @@ select {
     margin: -5rem 60px 2rem auto;
     width: 420px;
 }
+#admin{
+    margin-left: inherit;
+}
 .logged-user{
     margin: -1.5rem -0.3rem 20px auto;
     display: block;

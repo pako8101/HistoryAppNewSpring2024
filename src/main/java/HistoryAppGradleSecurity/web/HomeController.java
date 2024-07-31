@@ -76,4 +76,9 @@ public class HomeController {
         return "teachingMaterials";
     }
 
+    @GetMapping("/school-subscriptions")
+    public String schoolSubscriptions(){
+        return "school-subscriptions";
+    }
+
 }

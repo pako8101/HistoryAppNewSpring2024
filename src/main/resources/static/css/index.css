@@ -15,3 +15,17 @@
     position: fixed;
     top: 35%;
 }
+
+.videoLink{
+
+    font-family: "Arial Black";
+    font-weight: bold;
+    font-style: italic;
+    font-size: x-large;
+    text-shadow: 2px 2px 5px lightseagreen;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 60px;
+
+}

@@ -152,7 +152,7 @@
                                             <li><a th:text="#{nav_bar_materials}" th:href="@{/teachingMaterials}">Teaching
                                                 Materials</a></li>
                                             <li><a th:text="#{nav_bar_collections}">Collections</a></li>
-                                            <li><a th:text="#{nav_bar_subscriptions}">School Subscriptions</a></li>
+                                            <li><a th:text="#{nav_bar_subscriptions}" th:href="@{/school-subscriptions}">School Subscriptions</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -181,7 +181,7 @@
                     </div>
 
                 </div>
-                <div sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
+                <div id="admin" sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                     <nav class="main-nav">
                         <ul>
                             <li>
@@ -270,7 +270,7 @@
                 <a style="margin-top: 20%;margin-bottom:-5rem;position: relative;bottom: 18px;left: -60rem"> &copy;Kamenov
                     Spring Team 2024. All rights reserved.</a>
             </footer>
-            <script th:src="@{js/search-bar.js}"></script>
+            <script th:src="@{resources/static/js/search-bar.js}"></script>
         </div>
     </div>
 </div>
