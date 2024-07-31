@@ -78,6 +78,11 @@ thead{
     max-width: 100%;
     margin-bottom: 1rem;
     background-color: transparent;
+
+
+}
+td{
+    padding-left: 80px;
 }
 .row {
     display: -webkit-box;

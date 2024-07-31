@@ -32,4 +32,6 @@ public interface ArticleService {
     Optional<ArticleViewModel> findLatestArticle();
 
     List<ArticleViewModel> getArticleByPeriod(PeriodEnum period);
+
+    void deleteOldArticles();
 }

@@ -101,6 +101,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="l : ${logs}" th:object="${l}">
+
                                     <td th:text="*{id}"><a ></a></td>
                                     <td th:text="*{dateTime}"><a></a></td>
                                     <td th:text="*{action}"></td>

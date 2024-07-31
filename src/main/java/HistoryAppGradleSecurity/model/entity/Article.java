@@ -24,6 +24,9 @@ public class Article {
     private PeriodEnum period;
     @DateTimeFormat
     private LocalDate created;
+//@NotNull
+//@Column
+//    private Instant established = Instant.now();
     @Column(name = "image_url",nullable = false)
     private String imageUrl;
     @OneToMany(mappedBy = "article",
@@ -46,6 +49,15 @@ public class Article {
         this.imageUrl = imageUrl;
         return this;
     }
+
+//    public Instant getEstablished() {
+//        return established;
+//    }
+//
+//    public Article setEstablished( Instant established) {
+//        this.established = established;
+//        return this;
+//    }
 
     public String getTitle() {
         return title;

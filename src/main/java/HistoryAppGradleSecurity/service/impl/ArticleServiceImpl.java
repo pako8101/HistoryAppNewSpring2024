@@ -18,6 +18,9 @@ import HistoryAppGradleSecurity.service.UserService;
 import HistoryAppGradleSecurity.service.assists.PictureAssistService;
 import HistoryAppGradleSecurity.session.LoggedUser;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +29,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,12 +39,14 @@ import java.util.stream.Collectors;
 public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final ModelMapper modelMapper;
+    private final Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
     private final UserService userService;
     private final PictureAssistService pictureAssistService;
     private final CategoryService categoryService;
     private static final String BASE_IMAGES_PATH = ".\\src\\main\\resources\\static\\images\\";
     private final LoggedUser loggedUser;
     private final UserRepository userRepository;
+    private final Period deletePeriod;
 
     public ArticleServiceImpl(ArticleRepository articleRepository,
                               ModelMapper modelMapper,
@@ -47,7 +54,8 @@ public class ArticleServiceImpl implements ArticleService {
                               PictureAssistService pictureAssistService,
                               CategoryService categoryService,
                               LoggedUser loggedUser,
-                              UserRepository userRepository) {
+                              UserRepository userRepository,
+                              @Value("${article.deletion}")Period deletePeriod ) {
         this.articleRepository = articleRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
@@ -55,6 +63,8 @@ public class ArticleServiceImpl implements ArticleService {
         this.categoryService = categoryService;
         this.loggedUser = loggedUser;
         this.userRepository = userRepository;
+
+        this.deletePeriod = deletePeriod;
     }
 
 
@@ -176,6 +186,16 @@ public class ArticleServiceImpl implements ArticleService {
         return allByPeriodName.stream()
                 .map(article -> modelMapper.map(article, ArticleViewModel.class))
                 .toList();
+    }
+
+    @Override
+    public void deleteOldArticles() {
+//        Instant now = Instant.now();
+        LocalDate deleteBefore = LocalDate.now().minus(deletePeriod);
+    LOGGER.info("Delete all articles before " + deleteBefore);
+    articleRepository.deleteOldArticles(deleteBefore);
+LOGGER.info("Old articles will be deleted");
+
     }
 
     private String getPicturePath(MultipartFile pictureFile, String routeName, boolean isPrimary) {

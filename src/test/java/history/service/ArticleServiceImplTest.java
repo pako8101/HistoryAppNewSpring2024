@@ -6,6 +6,7 @@ import HistoryAppGradleSecurity.model.enums.PeriodEnum;
 import HistoryAppGradleSecurity.model.view.ArticleViewModel;
 import HistoryAppGradleSecurity.repository.ArticleRepository;
 import HistoryAppGradleSecurity.repository.UserRepository;
+import HistoryAppGradleSecurity.service.ArticleService;
 import HistoryAppGradleSecurity.service.CategoryService;
 import HistoryAppGradleSecurity.service.UserService;
 import HistoryAppGradleSecurity.service.assists.PictureAssistService;
@@ -18,9 +19,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
+import org.slf4j.LoggerFactory;
 
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import static org.mockito.Mockito.when;
 
@@ -41,9 +45,15 @@ public class ArticleServiceImplTest {
 
     @Mock
     ArticleRepository mockArticleRepository;
+    @Mock
+     Logger LOGGER = (Logger) LoggerFactory.getLogger(ArticleService.class);
+    @Mock
+     Period deletePeriod;
 
     @Mock
     UserRepository mockUserRepository;
+
+
 
 
     @BeforeEach
@@ -58,6 +68,7 @@ public class ArticleServiceImplTest {
         testArticleEntity1.setPeriod(PeriodEnum.ANCIENT_GREECE);
         testArticleEntity1.setContent("content 1");
         testArticleEntity1.setAuthor(testUser1.getUsername());
+//        testArticleEntity1.setEstablished(Instant.now());
 
         testUser2 = new UserEnt();
         testUser2.setUsername("user 2");
@@ -68,11 +79,11 @@ public class ArticleServiceImplTest {
         testArticleEntity2.setPeriod(PeriodEnum.BLUR_PERIOD);
         testArticleEntity2.setContent("content 2");
         testArticleEntity2.setAuthor(testUser2.getUsername());
-
+//        testArticleEntity2.setEstablished(Instant.now());
 
         serviceToTest = new ArticleServiceImpl(mockArticleRepository,new ModelMapper(),userService
                 ,pictureAssistService,categoryService
-                ,loggedUser,mockUserRepository
+                ,loggedUser,mockUserRepository,deletePeriod
 
                 );
     }

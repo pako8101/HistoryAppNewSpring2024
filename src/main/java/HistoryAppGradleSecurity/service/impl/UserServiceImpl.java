@@ -1,6 +1,6 @@
 package HistoryAppGradleSecurity.service.impl;
 
-import HistoryAppGradleSecurity.emailScheduler.EmailScheduler;
+import HistoryAppGradleSecurity.schedulers.EmailScheduler;
 import HistoryAppGradleSecurity.model.binding.UserSubscribeBindingModel;
 import HistoryAppGradleSecurity.model.entity.UserEnt;
 import HistoryAppGradleSecurity.model.view.UserViewModel;
