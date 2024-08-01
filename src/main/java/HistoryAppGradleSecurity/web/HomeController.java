@@ -81,4 +81,14 @@ public class HomeController {
         return "school-subscriptions";
     }
 
+    @GetMapping("/our-team")
+    public String ourTeam(){
+        return "our-team";
+    }
+
+    @GetMapping("/membership")
+    public String membership(){
+        return "membership";
+    }
+
 }
