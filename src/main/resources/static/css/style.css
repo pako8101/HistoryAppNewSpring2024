@@ -30,7 +30,8 @@ body {
   color: #00000099;
   text-align: center;
   line-height: 24px;
-  margin-top: -1rem;
+  margin-top: -0.55rem;
+  font-family: 'Droid Serif', serif;
 }
 .category-card-category-card {
   flex: 0 0 auto;
@@ -737,7 +738,7 @@ font-size: medium;
   vertical-align: top;
 }
 .home-footer1 {
-  color: palegoldenrod;
+  color: salmon;
   /*vertical-align: top;*/
   width: 100%;
   display: flex;
@@ -747,26 +748,32 @@ font-size: medium;
   flex-direction: row;
   padding-bottom: 96px;
   justify-content: space-between;
+  margin-left: 0.5rem;
 }
 .home-container09 {
-  color: palegoldenrod;
+  color: darkslategray;
   display: flex;
   max-width: 1328px;
   align-items: flex-start;
   flex-direction: column;
+  margin-left: 1rem;
 }
 
 .home-text33 {
-  color: palegoldenrod;
+  color: steelblue;
   margin-top: 24px;
+  margin-left: 1rem;
+
 }
 .home-text36 {
-  color: palegoldenrod;
+  color: peru;
   margin-top: 32px;
+  margin-left: 1rem;
 }
 .home-text37 {
-  color: palegoldenrod;
+  color: orchid;
   margin-top: 12px;
+  margin-left: 1rem;
 }
 .home-links-container {
 

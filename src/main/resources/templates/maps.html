@@ -30,7 +30,7 @@
 border-radius: 4px"
                                autocomplete="off">
                     </form>
-                    <br>
+                    <br><br>
                     <span class="section-heading-text1">
                 <span>
                   Start read over based on the categories you are interested in
@@ -101,7 +101,56 @@ border-radius: 4px"
                              onclick="enlargeImg1()"
                              class="category-card-image"/>
                         <span class="category-card-text"><span>Sumerian Civilization, c.4300 - 2335 BCE</span></span>
+                        <div class="mybox">
+                            <div>
+                                A map illustrating the emergence of the Sumerian civilization <br>
+                                around 6000 BCE from a collection of city-states on the <br>
+                                floodplains of southern Mesopotamia, <br>
+                                along the Tigris and Euphrates Rivers in the area that was <br>
+                                to later become the Akkadian Empire and then Babylonia. <br>
+                                <span id="span2">...</span>
+                                <span  class="mybox2" id="mybox2id">
+                                    Sumer was first settled between 4500 and 4000 BCE by a non-Semitic people <br>
+                                    who did not speak the Sumerian language. <br>
+                                    These people now are called proto-Euphrateans or Ubaidians, <br>
+                                    for the village Al-ʿUbayd, where their remains were first discovered. <br>
+                                    The Ubaidians were the first civilizing force in Sumer, <br>
+                                    draining the marshes for agriculture, <br>
+                                    developing trade, and establishing industries, including weaving, <br>
+                                    leatherwork, metalwork, masonry, and pottery. <br>
+                                    After the Ubaidian immigration to Mesopotamia, <br>
+                                    various Semitic peoples infiltrated their territory, <br>
+                                    adding their cultures to the Ubaidian culture and creating <br>
+                                    a high pre-Sumerian civilization.<br>
+            </span>
+                            </div>
+                            <button style="margin-bottom: 1rem" id="mybutton2id"
+                                    class="buttonReadMore"
+                                    onclick="changeReadMore()">
+                                Read More
+                            </button>
+                            <script>
+                                function changeReadMore() {
+                                    const mycontent =
+                                        document.getElementById('mybox2id');
+                                    const mybutton =
+                                        document.getElementById('mybutton2id');
+                                    // document.getElementsByClassName('buttonReadMore');
+                                    const span1 = document.getElementById("span2")
 
+                                    if (span1.style.display === 'none'
+                                        || span1.style.display === '') {
+                                        span1.style.display = 'inline';
+                                        mycontent.style.display = "none";
+                                        mybutton.innerHTML = 'Read More';
+                                    } else {
+                                        mycontent.style.display = 'inline';
+                                        mybutton.innerHTML = 'Read Less';
+                                        span1.style.display = "none";
+                                    }
+                                }
+                            </script>
+                        </div>
 
                         <br /><br /><br />
                         <!-- Button to reset the Image size -->
@@ -115,6 +164,49 @@ border-radius: 4px"
                              onclick="enlargeImg2()"
                              class="category-card-image"/>
                         <span class="category-card-text"><span>The Fall of the Western Roman Empire, c.480 CE</span></span>
+                        <div class="mybox">
+                            <div>
+                                A map illustrating Roman rule in the Balkans around 200 CE,  <br>
+                                characterized by significant administrative,   <br>
+                                military, and cultural integration into the Empire. <br>
+                                <span id="span3">...</span>
+                                <span  class="mybox3" id="mybox3id">
+                                     Economically, <br>
+                                    the region benefited from extensive trade networks. <br>
+                                    The spread of Roman law, language,<br>
+                                    and culture led to a significant degree of Romanization,<br>
+                                    though local customs and traditions persisted. <br>
+                                    Despite occasional internal strife and external threats, <br>
+                                    the Balkans experienced relative stability and prosperity under Roman rule.
+            </span>
+                            </div>
+                            <button style="margin-bottom: 1rem" id="mybutton3id"
+                                    class="buttonReadMore"
+                                    onclick="changeReadMore()">
+                                Read More
+                            </button>
+                            <script>
+                                function changeReadMore() {
+                                    const mycontent =
+                                        document.getElementById('mybox3id');
+                                    const mybutton =
+                                        document.getElementById('mybutton3id');
+                                    // document.getElementsByClassName('buttonReadMore');
+                                    const span1 = document.getElementById("span3")
+
+                                    if (span1.style.display === 'none'
+                                        || span1.style.display === '') {
+                                        span1.style.display = 'inline';
+                                        mycontent.style.display = "none";
+                                        mybutton.innerHTML = 'Read More';
+                                    } else {
+                                        mycontent.style.display = 'inline';
+                                        mybutton.innerHTML = 'Read Less';
+                                        span1.style.display = "none";
+                                    }
+                                }
+                            </script>
+                        </div>
                         <br /><br /><br />
                         <!-- Button to reset the Image size -->
                         <button  class="resetButton" onclick="resetImg2()">Reset Image</button>
