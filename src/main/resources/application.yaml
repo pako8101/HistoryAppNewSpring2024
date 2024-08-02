@@ -78,6 +78,8 @@ jwt:
 
 article.deletion: P300D
 
+log:
+  deletion: P30D
 
 articles:
   api:

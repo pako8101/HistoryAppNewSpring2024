@@ -9,4 +9,6 @@ public interface LogService {
     void createLog(String action,Long articleId);
 
     List<LogServiceModel> findAllLogs();
+
+    void deleteOldLogs();
 }

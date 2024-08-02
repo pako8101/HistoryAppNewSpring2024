@@ -4,7 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,8 +20,20 @@ public class LogEntity extends BaseEntity{
     private String action;
     @Column(name = "date_time",nullable = false)
     private LocalDateTime dateTime;
+@NotNull
+@Column
+    private Instant appearanceTime;
 
     public LogEntity() {
+    }
+
+    public @NotNull Instant getAppearanceTime() {
+        return appearanceTime;
+    }
+
+    public LogEntity setAppearanceTime(@NotNull Instant appearanceTime) {
+        this.appearanceTime = appearanceTime;
+        return this;
     }
 
     public UserEnt getUserEnt() {
