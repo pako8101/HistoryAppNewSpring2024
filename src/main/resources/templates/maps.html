@@ -6,13 +6,14 @@
 </head>
 <link rel="stylesheet" href="/css/maps.css">
 <link rel="stylesheet" href="/css/reset-css.css">
+<!--<link rel="stylesheet" href="/css/responsive.css">-->
 <body>
 <header th:replace="fragments/commons::nav">
 </header>
 
 <div class="info">
     <div class="wrapper">
-        <h1 class="title">Ancient History Maps</h1><br>
+        <h1 class="title">Ancient History Maps</h1>
         <div class="section-container column">
             <div class="max-width-container">
                 <div class="section-heading-section-heading">
@@ -42,14 +43,15 @@ border-radius: 4px"
                              id="image"
                              onclick="enlargeImg()"
                              class="category-card-image"/>
-                        <span class="category-card-text"><span>Roman Rule in the Balkans,c.200 CE</span></span> <br>
+                        <div class="category-card-text"><a>Roman Rule in the Balkans,c.200 CE</a></div> <br>
+
                         <div class="mybox">
-                            <div style="font-size: 12px">
+                            <div>
                                 A map illustrating Roman rule in the Balkans around 200 CE,  <br>
                                 characterized by significant administrative,   <br>
                                 military, and cultural integration into the Empire. <br>
                                 <span id="span1">...</span>
-                                <span class="mybox1" id="mybox1id">
+                                <span  class="mybox1" id="mybox1id">
                                      Economically, <br>
                                     the region benefited from extensive trade networks. <br>
                                     The spread of Roman law, language,<br>
@@ -59,15 +61,36 @@ border-radius: 4px"
                                     the Balkans experienced relative stability and prosperity under Roman rule.
             </span>
                             </div>
-                            <button id="mybuttonid"
+                            <button style="margin-bottom: 1rem" id="mybuttonid"
                                     class="buttonReadMore"
                                     onclick="changeReadMore()">
                                 Read More
                             </button>
+                            <script>
+                                function changeReadMore() {
+                                    const mycontent =
+                                        document.getElementById('mybox1id');
+                                    const mybutton =
+                                        document.getElementById('mybuttonid');
+                                    // document.getElementsByClassName('buttonReadMore');
+                                    const span1 = document.getElementById("span1")
+
+                                    if (span1.style.display === 'none'
+                                        || span1.style.display === '') {
+                                        span1.style.display = 'inline';
+                                        mycontent.style.display = "none";
+                                        mybutton.innerHTML = 'Read More';
+                                    } else {
+                                        mycontent.style.display = 'inline';
+                                        mybutton.innerHTML = 'Read Less';
+                                        span1.style.display = "none";
+                                    }
+                                }
+                            </script>
                         </div>
 
 
-                        <br /><br /><br />
+                        <br /><br />
                         <!-- Button to reset the Image size -->
                         <button  class="resetButton" onclick="resetImg()">Reset Image</button>
                     </div>
@@ -84,7 +107,8 @@ border-radius: 4px"
                         <!-- Button to reset the Image size -->
                         <button  class="resetButton" onclick="resetImg1()">Reset Image</button>
                     </div>
-                    <div class="category-card-category-card">
+
+                    <div style="margin-top: 3rem" class="category-card-category-card">
                         <img alt="image"
                              th:src="@{/images/romeFall480ce.png}"
                              id="image2"
@@ -95,16 +119,62 @@ border-radius: 4px"
                         <!-- Button to reset the Image size -->
                         <button  class="resetButton" onclick="resetImg2()">Reset Image</button>
                     </div>
-                    <div class="category-card-category-card">
+
+                    <div style="margin-top: 3rem" class="category-card-category-card">
                         <img alt="image"
                              th:src="@{/images/herackleLabours.png}"
                              id="image3"
                              onclick="enlargeImg3()"
                              class="category-card-image"/>
                         <span class="category-card-text"><span>The Twelve Labours of Herakles</span></span>
+                        <div class="mybox" style="font-size: medium">
+                            <div>
+                                A map illustrating the Twelve Labours of Herakles (Heracles, romanized as Hercules),<br>
+                                probably the most famous of the ancient heroes in Greek mythology.<br>
+                                Born as a demi-god (son of Zeus and the mortal Alcmene,) <br>
+                                Herakles was tricked out of his kingdom and constantly pursued by Hera,<br>
+                                which culminated in a fit of madness that drove him to murder his wife and children.<br>
+                                <span id="span4">...</span>
+                                <span  class="mybox4" id="mybox4id">
+                                      As a penance,<br>
+                                    he was urged by the Oracle of Delphi to enter into service of Eurystheus, <br>
+                                    the king of Tiryns and Mycenae, <br>
+                                    for twelve years and perform a sequence of Twelve Labours that seemed impossible,<br>
+                                    (the fixed narrative of Twelve Labours, <br>
+                                    as well as Herakles' signature lion's skin attire and a club is attributed,<br>
+                                    to the ancient poet Peisander, from c. 600 BCE).<br>
+            </span>
+                            </div>
+                            <button style="margin-bottom: 1rem" id="mybutton4id"
+                                    class="buttonReadMore"
+                                    onclick="changeReadMore4()">
+                                Read More
+                            </button>
                         <br /><br /><br />
                         <!-- Button to reset the Image size -->
                         <button  class="resetButton" onclick="resetImg3()">Reset Image</button>
+                            <script>
+                                function changeReadMore4() {
+                                    const mycontent =
+                                        document.getElementById('mybox4id');
+                                    const mybutton =
+                                        document.getElementById('mybutton4id');
+                                    // document.getElementsByClassName('buttonReadMore');
+                                    const span1 = document.getElementById("span4")
+
+                                    if (span1.style.display === 'none'
+                                        || span1.style.display === '') {
+                                        span1.style.display = 'inline';
+                                        mycontent.style.display = "none";
+                                        mybutton.innerHTML = 'Read More';
+                                    } else {
+                                        mycontent.style.display = 'inline';
+                                        mybutton.innerHTML = 'Read Less';
+                                        span1.style.display = "none";
+                                    }
+                                }
+                            </script>
+                        </div>
                     </div>
 
                 </div>
@@ -152,6 +222,7 @@ border-radius: 4px"
                         img3.style.transition = "transform 0.25s ease";
                 }
             </script>
+
 
             <!-- Wrapper Ends -->
 </body>
