@@ -48,6 +48,8 @@ Thymeleaf View Engine Thymeleaf is utilized in this project for rendering dynami
 Back End
 The project incorporates a bit of Aspect-Oriented Programming (AOP) to modularize cross-cutting concerns.
 
+Validation Implement client-side and server side validation wiht proper messeges to the user.
+
 Scheduled Tasks :
 Removing Deprecate and old articles: Articles not edited or deleted from admin considered inactive and are automatically removed from the system.
 
@@ -55,6 +57,8 @@ Handling Old Log in system: Scheduled task todelete old logs within the system.
 
 Send shceduled emails upon registration and on every 12 hours.
 
+AOP
+Log Aspect imlemetation take all logs and make diagram and can inspect who and what do when log in app.
 
 Internalization/i18n
 Bulgarian
