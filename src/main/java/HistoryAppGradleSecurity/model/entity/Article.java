@@ -35,6 +35,9 @@ public class Article {
     private Set<Picture>pictures;
     @ManyToMany
     private Set<Category>categories;
+    
+     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LogEntity> logs;
 
     public Article() {
         this.pictures = new HashSet<>();
@@ -58,7 +61,14 @@ public class Article {
 //        this.established = established;
 //        return this;
 //    }
+ public List<LogEntity> getLogs() {
+        return logs;
+    }
 
+    public Article setLogs(List<LogEntity> logs) {
+        this.logs = logs;
+        return this;
+    }
     public String getTitle() {
         return title;
     }
